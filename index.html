@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IDN Boarding School - Jagoan IT Pinter Ngaji</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'primary-blue': '#1c4cd0',
+            'dark-blue': '#0e2464',
+            'light-blue': '#5879ff',
+            'text-dark': '#181d27',
+            'text-gray': '#717680',
+            'text-light': '#d5d7da',
+            'background-gray': '#f5f5f5',
+            'accent-orange': '#f59e0b',
+            'danger-red': '#d92d21',
+          },
+          fontFamily: {
+            figtree: ['Figtree', 'sans-serif'],
+            poppins: ['Poppins', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+
+    body{
+      cursor: none;
+    }
+
+    /* Custom Cursor */
+    .custom-cursor {
+      width: 40px;
+      height: 40px;
+      border: 2px solid #4873e9;
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+      opacity: 0;
+    }
+    .custom-cursor.active { opacity: 1; }
+    .custom-cursor.hover {
+      transform: scale(1.2);
+      background-color: #1c4cd037;
+    }
+    .cursor-follower {
+      width: 8px;
+      height: 8px;
+      background-color: #4873e9;
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9998;
+      transition: transform 0.2s ease;
+      opacity: 0;
+    }
+    
+    .cursor-follower.active { opacity: 1; }
+
+    .custom-cursor.clicked {
+        transform: scale(0.9);
+        background-color: rgba(28, 76, 208, 0.2);
+    }
+    .cursor-follower.clicked {
+        transform: scale(0.5);
+    }
+
+    /* Parallax Elements */
+    .parallax-element { transition: transform 0.3s ease-out; }
+
+    /* Scroll Animations */
+    .animate-on-scroll { opacity: 0; transform: translateY(50px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .animate-on-scroll.animated { opacity: 1; transform: translateY(0); }
+    .animate-fade-in { opacity: 0; transition: opacity 1s ease; }
+    .animate-fade-in.animated { opacity: 1; }
+    .animate-slide-left { opacity: 0; transform: translateX(-50px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .animate-slide-left.animated { opacity: 1; transform: translateX(0); }
+    .animate-slide-right { opacity: 0; transform: translateX(50px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .animate-slide-right.animated { opacity: 1; transform: translateX(0); }
+    .animate-scale { opacity: 0; transform: scale(0.8); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .animate-scale.animated { opacity: 1; transform: scale(1); }
+
+    /* Button Ripple Effect */
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background-color: rgba(235, 235, 235, 0.279);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s ease, height 0.6s ease;
+    }
+
+    .btn:hover::before { width: 300px; height: 300px; }
+
+    /* Header Nav Link Underline Effect */
+    .main-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 8px;
+      left: 14px;
+      right: 14px;
+      height: 2px;
+      background-color: white;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    .main-nav a:hover::after { transform: scaleX(1); }
+    .main-header.scrolled { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); }
+    
+    /* Background Shape Animation */
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(22.89deg); }
+      50% { transform: translateY(-20px) rotate(22.89deg); }
+    }
+    .background-shapes .shape-1 { 
+        position: absolute;
+        width: 131px;
+        height: 131px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 1000px;
+        transform: rotate(22.89deg);
+        top: 120px;
+        left: 135px;
+        animation: float 6s ease-in-out infinite; 
+    }
+    .background-shapes .shape-2 { 
+        position: absolute;
+        width: 131px;
+        height: 131px;
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: rotate(22.89deg);
+        top: 430px;
+        right: 130px;
+        animation: float 6s ease-in-out infinite 3s; 
+    }
+
+    /* Hero Title Glow Animation */
+    @keyframes titleGlow {
+      0%, 100% { filter: brightness(1); }
+      50% { filter: brightness(1.2); }
+    }
+    .hero-title { animation: titleGlow 3s ease-in-out infinite; }
+    
+    /* Scroll Indicator Animation */
+    @keyframes scroll-anim {
+      0% { top: 7px; opacity: 1; }
+      100% { top: 15px; opacity: 0; }
+    }
+    .mouse-wheel { animation: scroll-anim 2s infinite; }
+
+    /* Timeline Styles */
+    .timeline { position: relative; width: 100%; height: 250px; }
+    .timeline-line { position: absolute; top: 50%; left: 10%; right: 10%; height: 5px; background-color: #f59e0b; border-radius: 1000px; transform: translateY(-50%); }
+    .timeline-item { position: absolute; top: 50%; transform: translateY(-50%); }
+    .timeline-dot { width: 24px; height: 24px; background-color: #f59e0b; border: 5px solid white; border-radius: 50%; box-sizing: border-box; transition: transform 0.3s ease; }
+    .timeline-item:hover .timeline-dot { transform: scale(1.5); }
+    .timeline-item.item-1 { left: 10%; }
+    .timeline-item.item-2 { left: 30%; }
+    .timeline-item.item-3 { left: 50%; }
+    .timeline-item.item-4 { left: 70%; }
+    .timeline-item.item-5 { left: 90%; }
+    .timeline-content { position: absolute; left: 50%; transform: translateX(-50%); background-color: white; color: #1c4cd0; padding: 20px; border-radius: 20px; box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.15); text-align: center; width: max-content; transition: all 0.3s ease; }
+    .timeline-item:hover .timeline-content { transform: translateX(-50%) scale(1.05); box-shadow: 0px 10px 35px rgba(0, 0, 0, 0.25); }
+    .timeline-content.top { bottom: 40px; }
+    .timeline-content.bottom { top: 40px; }
+
+    /* Footer Link Arrow */
+    .footer-links a::before { content: '→'; position: absolute; left: -20px; opacity: 0; transition: all 0.3s ease; }
+    .footer-links a:hover { padding-left: 25px; }
+    .footer-links a:hover::before { left: 0; opacity: 1; }
+
+    .carousel-slide {
+        border: 4px solid #ebe9e9;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .branch-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) ease-in-out;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .branch-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(149, 176, 250, 0.563);
+  }
+
+  .branch-card img {
+    transition: transform 0.3s ease-out;
+    will-change: transform;
+  }
+
+  .branch-card:hover img {
+    transform: scale(1.1);
+  }
+
+  .branch-card .bg-gradient-to-t {
+    transition: opacity 0.4s ease;
+  }
+
+  .branch-card:hover .bg-gradient-to-t {
+    opacity: 0.9;
+  }
+
+  .branch-card h3 {
+    transition: all 0.3s ease;
+  }
+
+  .branch-card:hover h3 {
+    transform: translateY(-5px);
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .branch-card span {
+    transition: all 0.3s ease;
+  }
+
+  .branch-card:hover span {
+    background-color: rgba(28, 76, 208, 0.9);
+    transform: translateY(-2px);
+  }
+
+  .branch-card a {
+    transition: all 0.3s ease;
+  }
+
+  .branch-card:hover a {
+    background-color: #1c4cd0;
+    color: white;
+    border-color: #1c4cd0;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(28, 76, 208, 0.4);
+  }
+  </style>
+</head>
+<body class="font-figtree bg-white text-text-dark overflow-x-hidden">
+  <div class="custom-cursor"></div>
+  <div class="cursor-follower"></div>
+
+  <div class="w-full mx-auto relative">
+    <header class="main-header bg-dark-blue h-[90px] flex items-center sticky top-0 z-50 w-full transition-shadow duration-300 ease-in-out px-5 md:px-10 lg:px-[110px]">
+      <div class="flex justify-between items-center w-full max-w-[1220px] mx-auto">
+        <a href="#" class="logo">
+          <img src="images/logo_idn.png" alt="IDN Boarding School Logo" class="h-[50px] transition-transform duration-300 ease-in-out hover:scale-110">
+        </a>
+        <nav class="main-nav hidden lg:flex items-center gap-4">
+          <a href="#hero-about" class="text-white text-lg font-bold flex items-center gap-2 py-3 px-3.5 rounded-lg transition-all duration-300 ease-in-out relative hover:bg-white/10 hover:-translate-y-0.5">Beranda</a>
+          <a href="#registration" class="text-white text-lg font-normal flex items-center gap-2 py-3 px-3.5 rounded-lg transition-all duration-300 ease-in-out relative hover:bg-white/10 hover:-translate-y-0.5">PPDB</a>
+          <a href="#majors" class="text-white text-lg font-normal flex items-center gap-2 py-3 px-3.5 rounded-lg transition-all duration-300 ease-in-out relative hover:bg-white/10 hover:-translate-y-0.5">Kurikulum <img src="images/I8931_31074_8931_30754_8039_20104.svg" alt="dropdown" class="w-6 h-6 transition-transform duration-300 ease-in-out group-hover:rotate-180"></a>
+          <a href="#projects" class="text-white text-lg font-normal flex items-center gap-2 py-3 px-3.5 rounded-lg transition-all duration-300 ease-in-out relative hover:bg-white/10 hover:-translate-y-0.5">Program <img src="images/I8931_31074_8931_30755_8039_20104.svg" alt="dropdown" class="w-6 h-6 transition-transform duration-300 ease-in-out group-hover:rotate-180"></a>
+          <a href="#" class="text-white text-lg font-normal flex items-center gap-2 py-3 px-3.5 rounded-lg transition-all duration-300 ease-in-out relative hover:bg-white/10 hover:-translate-y-0.5">Artikel</a>
+          <a href="https://api.whatsapp.com/send?phone=6282116653328" target="_blank" class="text-white text-lg font-normal flex items-center gap-2 py-3 px-3.5 rounded-lg transition-all duration-300 ease-in-out relative hover:bg-white/10 hover:-translate-y-0.5">Kontak</a>
+        </nav>
+        <button class="mobile-nav-toggle block lg:hidden bg-none border-none cursor-pointer">
+          <span class="block w-[25px] h-[3px] bg-white my-[5px] transition-all duration-300 ease-in-out"></span>
+          <span class="block w-[25px] h-[3px] bg-white my-[5px] transition-all duration-300 ease-in-out"></span>
+          <span class="block w-[25px] h-[3px] bg-white my-[5px] transition-all duration-300 ease-in-out"></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section id="hero-about" class="relative overflow-hidden bg-gradient-to-br from-[#0025ba] to-[#5879ff] text-white pt-16 pb-10 flex flex-col items-center">
+        <div class="background-shapes absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+          <div class="shape-1"></div>
+          <div class="shape-2"></div>
+        </div>
+        <div class="container w-full w-full mx-auto px-5 box-border flex flex-col items-center gap-4 pb-[120px] text-center">
+          <div class="tag relative z-10 inline-flex justify-center items-center py-2 px-4 rounded-full bg-primary-blue text-white border border-white transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-[0_4px_15px_rgba(28,76,208,0.3)] animate-fade-in">
+            <img src="images/8836_780.svg" alt="star icon" class="mr-2">
+            <span class="font-semibold text-base leading-6">Sekolah IT Terbaik di Indonesia</span>
+          </div>
+          <div class="hero-title-group relative z-10 mt-4 animate-on-scroll" style="text-shadow: 0px 24px 52px rgba(0, 0, 0, 0.1);">
+            <h1 class="hero-title font-poppins font-bold text-6xl md:text-[96px] lg:text-[128px] leading-tight bg-gradient-to-tr from-[#f5f9ff] to-[#c0dbff] bg-clip-text text-transparent">JAGOAN IT</h1>
+            <h1 class="hero-title font-poppins font-bold text-6xl md:text-[96px] lg:text-[128px] leading-tight bg-gradient-to-tr from-[#f5f9ff] to-[#c0dbff] bg-clip-text text-transparent">PINTER NGAJI</h1>
+          </div>
+          <img src="images/8836_785.svg" alt="decorative line" class="relative z-10 -mt-[30px] -mb-[10px] animate-fade-in">
+          <p class="hero-subtitle relative z-10 font-medium text-lg md:text-2xl leading-relaxed max-w-[870px] mt-4 animate-on-scroll">Merupakan slogan dari IDN Boarding School yang mana bukan berarti hanya expert ilmu IT tetapi ilmu akhirat.</p>
+          <div class="hero-buttons relative z-10 flex flex-col md:flex-row gap-4 md:gap-8 mt-6 animate-on-scroll">
+            <a href="#registration" class="btn bg-white text-primary-blue border-2 border-primary-blue inline-flex justify-center items-center gap-2.5 py-3 md:py-3.5 px-6 md:px-7 rounded-xl font-semibold text-base md:text-lg cursor-pointer transition-all duration-300 ease-in-out relative overflow-hidden hover:-translate-y-1 hover:shadow-lg active:-translate-y-px">Daftar Sekarang <img src="images/I8836_791_6048_64342.svg" alt="arrow right"></a>
+            <a href="#why-idn" class="btn bg-primary-blue border-2 border-white inline-flex justify-center items-center gap-2.5 py-3 md:py-3.5 px-6 md:px-7 rounded-xl font-semibold text-base md:text-lg cursor-pointer transition-all duration-300 ease-in-out relative overflow-hidden hover:-translate-y-1 hover:shadow-lg active:-translate-y-px">Selengkapnya <img src="images/I8836_792_6048_64342.svg" alt="arrow right"></a>
+          </div>
+          <div class="scroll-indicator relative z-10 flex flex-col items-center gap-1 mt-6 text-xs animate-fade-in">
+            <div class="mouse-icon w-[26px] h-[38px] border-3 border-white rounded-[21px] relative">
+              <div class="mouse-wheel w-[7px] h-[14px] bg-white rounded-[7px] absolute top-[7px] left-1/2 -translate-x-1/2"></div>
+            </div>
+            <span>Scroll</span>
+          </div>
+        </div>
+        <div class="container w-full w-full mx-auto px-5 mb-10 box-border flex flex-col lg:flex-row justify-between items-center gap-[50px]">
+            <div class="about-us-content flex flex-col gap-[30px] items-start flex-1 animate-slide-left">
+              <div class="tag inline-flex justify-center items-center py-2 px-4 rounded-full bg-primary-blue text-white border border-white transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-[0_4px_15px_rgba(28,76,208,0.3)]">
+                <img src="images/8836_801.svg" alt="graduation cap icon" class="mr-2">
+                <span class="tag-text font-semibold text-base leading-6">Tentang Kami</span>
+              </div>
+              <h2 class="font-poppins font-bold text-4xl md:text-5xl leading-tight text-left text-white">IDN BOARDING SCHOOL</h2>
+              <p class="text-white text-lg md:text-2xl leading-relaxed">Islamic Development Network (IDN) adalah lembaga pendidikan berbasis IT yang memandang pendidikan sebagai investasi terbaik dalam kehidupan manusia, karena melalui pendidikan, kita dapat membangun karakter dan peradaban yang lebih maju.</p>
+              <div class="flex flex-col md:flex-row gap-6 mt-2.5 w-full md:w-auto">
+                <div class="stat-item bg-primary-blue text-white py-4 px-8 rounded-[20px] text-center transition-all duration-300 ease-in-out hover:-translate-y-1.5 hover:scale-105 hover:shadow-[0_10px_30px_rgba(28,76,208,0.3)] border border-white">
+                  <h3 class="text-3xl font-bold leading-10">1000+</h3>
+                  <p class="text-2xl font-medium leading-loose">Alumni Sukses</p>
+                </div>
+                <div class="stat-item bg-primary-blue text-white py-4 px-8 rounded-[20px] text-center transition-all duration-300 ease-in-out hover:-translate-y-1.5 hover:scale-105 hover:shadow-[0_10px_30px_rgba(28,76,208,0.3)] border border-white">
+                  <h3 class="text-3xl font-bold leading-10">1 Milyar+</h3>
+                  <p class="text-2xl font-medium leading-loose">Penghasilan Siswa</p>
+                </div>
+              </div>
+              <a href="#" class="btn border-2 border-white border-2 border-primary-blue inline-flex justify-center items-center gap-2.5 py-3 md:py-3.5 px-6 md:px-7 rounded-xl font-semibold md:text-lg cursor-pointer transition-all duration-300 ease-in-out relative overflow-hidden hover:-translate-y-1 hover:shadow-lg active:-translate-y-px">Selengkapnya <img src="images/I8836_814_6048_64342.svg" alt="arrow right" class="brightness-200"></a>
+            </div>
+            <div class="about-us-image flex-shrink-0 lg:w-[500px] overflow-hidden rounded-[20px] w-full animate-slide-right">
+              <img src="images/2b8c03cb71984e1e9f7677eb495efb3be53bc449.png" alt="IDN Boarding School campus" class="w-full h-auto md:h-[500px] object-cover rounded-[20px] transition-transform duration-500 ease-in-out hover:scale-110">
+            </div>
+          </div>
+      </section>
+
+      <section id="why-idn" class="relative bg-[url(images/8927_546.png)] overflow-hidden py-[60px] md:py-[120px] bg-white">
+        <div class="container w-full max-w-[1220px] mx-auto px-5 box-border flex flex-col items-center gap-[60px]">
+          <div class="tag inline-flex justify-center items-center py-2 px-4 rounded-full bg-primary-blue text-white border border-white transition-transform duration-300 ease-in-out hover:scale-105 shadow-[0px_4px_25px_0px_rgba(0,0,0,0.15)] animate-scale">
+            <img src="images/8836_818.svg" alt="key icon" class="mr-2">
+            <span class="font-semibold text-2xl md:text-3xl leading-snug">Kenapa harus IDN?</span>
+          </div>
+          <!-- Added functional carousel with 7 cards and navigation -->
+          <div class="flex items-center gap-4 w-full justify-center animate-on-scroll">
+            <button id="carousel-prev" class="carousel-nav bg-primary-blue border-none rounded-xl w-[58px] h-[58px] flex justify-center items-center cursor-pointer flex-shrink-0 transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-[0_4px_15px_rgba(28,76,208,0.4)] active:scale-95">
+              <img src="images/I8845_2139_6048_64446.svg" alt="previous">
+            </button>
+            <div class="carousel-container w-full max-w-[1220px] overflow-hidden relative">
+              <div id="carousel-track" class="flex transition-transform duration-500 ease-in-out">
+                <!-- Card 1 -->
+                <div class="carousel-slide min-w-full h-[400px] md:h-[679px] rounded-[32px] overflow-hidden relative transition-transform duration-300 ease-in-out hover:scale-102">
+                  <img src="images/d402e6c51bba42f8b94c3cb86939ca8553f15249.png" alt="Jagoan IT Pinter Ngaji" class="w-full h-full object-cover">
+                  <div class="absolute bottom-0 left-0 right-0 h-[200px] bg-gradient-to-t from-black to-transparent flex flex-wrap items-end p-10 text-white">
+                    <div class="w-full h-[5px] bg-white"></div>
+                    <div class="grid grid-cols-1 md:grid-cols-[auto_1fr_auto] items-center gap-6 w-full text-center md:text-left">
+                      <div class="font-figtree font-bold text-4xl leading-tight">
+                        <h3>JAGOAN IT</h3>
+                        <h3>PINTER NGAJI</h3>
+                      </div>
+                      <hr class="border-none border-t-[1.5px] border-white/40 w-full hidden md:block">
+                      <div class="text-sm leading-5">
+                        <p>Merupakan slogan dari IDN Boarding School yang mana bukan berarti hanya expert ilmu IT tetapi expert ilmu akhirat.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="carousel-slide min-w-full h-[400px] md:h-[679px] rounded-[32px] overflow-hidden relative transition-transform duration-300 ease-in-out hover:scale-102">
+                  <img src="images/Slide_2.png" alt="Fasilitas Modern" class="w-full h-full object-cover">
+                  <div class="absolute bottom-0 left-0 right-0 h-[200px] bg-gradient-to-t from-black to-transparent flex flex-wrap items-end p-10 text-white">
+                    <div class="w-full h-[5px] bg-white"></div>
+                    <div class="grid grid-cols-1 md:grid-cols-[auto_1fr_auto] items-center gap-6 w-full text-center md:text-left">
+                      <div class="font-figtree font-bold text-4xl leading-tight">
+                        <h3>SEKOLAH</h3>
+                        <h3>IT TERBAIK</h3>
+                      </div>
+                      <hr class="border-none border-t-[1.5px] border-white/40 w-full hidden md:block">
+                      <div class="text-sm leading-5">
+                        <p>Terbukti dengan lulusan kami yang diatas standard atau bisa dikatakan expert</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="carousel-slide min-w-full h-[400px] md:h-[679px] rounded-[32px] overflow-hidden relative transition-transform duration-300 ease-in-out hover:scale-102">
+                  <img src="images/Slide_3.png" alt="Tenaga Pengajar Profesional" class="w-full h-full object-cover">
+                  <div class="absolute bottom-0 left-0 right-0 h-[200px] bg-gradient-to-t from-black to-transparent flex flex-wrap items-end p-10 text-white">
+                    <div class="w-full h-[5px] bg-white"></div>
+                    <div class="grid grid-cols-1 md:grid-cols-[auto_1fr_auto] items-center gap-6 w-full text-center md:text-left">
+                      <div class="font-figtree font-bold text-4xl leading-tight">
+                        <h3>EKSTRAKURIKULER</h3>
+                        <h3>ISTIMEWA</h3>
+                      </div>
+                      <hr class="border-none border-t-[1.5px] border-white/40 w-full hidden md:block">
+                      <div class="text-sm leading-5">
+                        <p>Backpacking ASEAN, Edurace, Entrepreneur, Public Speaking, Berkuda, Beladiri, Character Building, Leadership Camp, Memanah, Susur Sungai, Panjat Tebing, Pecinta Alam, Berenang, Business Survival.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="carousel-slide min-w-full h-[400px] md:h-[679px] rounded-[32px] overflow-hidden relative transition-transform duration-300 ease-in-out hover:scale-102">
+                  <img src="images/Slide_4.png" alt="Kurikulum Berbasis Praktik" class="w-full h-full object-cover">
+                  <div class="absolute bottom-0 left-0 right-0 h-[200px] bg-gradient-to-t from-black to-transparent flex flex-wrap items-end p-10 text-white">
+                    <div class="w-full h-[5px] bg-white"></div>
+                    <div class="grid grid-cols-1 md:grid-cols-[auto_1fr_auto] items-center gap-6 w-full text-center md:text-left">
+                      <div class="font-figtree font-bold text-4xl leading-tight">
+                        <h3>TENAGA PENGAJAR</h3>
+                        <h3>PROFESIONAL</h3>
+                      </div>
+                      <hr class="border-none border-t-[1.5px] border-white/40 w-full hidden md:block">
+                      <div class="text-sm leading-5">
+                        <p>S2 UI CCIE, Alumni STDI Imam Syafii Jember, Florida USA, dll</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="carousel-slide min-w-full h-[400px] md:h-[679px] rounded-[32px] overflow-hidden relative transition-transform duration-300 ease-in-out hover:scale-102">
+                  <img src="images/Slide_5.png" alt="Pembentukan Karakter Islami" class="w-full h-full object-cover">
+                  <div class="absolute bottom-0 left-0 right-0 h-[200px] bg-gradient-to-t from-black to-transparent flex flex-wrap items-end p-10 text-white">
+                    <div class="w-full h-[5px] bg-white"></div>
+                    <div class="grid grid-cols-1 md:grid-cols-[auto_1fr_auto] items-center gap-6 w-full text-center md:text-left">
+                      <div class="font-figtree font-bold text-4xl leading-tight">
+                        <h3>PROGRAM</h3>
+                        <h3>UNGGULAN</h3>
+                      </div>
+                      <hr class="border-none border-t-[1.5px] border-white/40 w-full hidden md:block">
+                      <div class="text-sm leading-5">
+                        <p>Menumbuh kembangkan soft skill maupun skill kompetensi melalui IDN Mengajar, Bootcamp, Leadership Camp, English Camp, IT Camp, dan masih banyak lagi.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="carousel-slide min-w-full h-[400px] md:h-[679px] rounded-[32px] overflow-hidden relative transition-transform duration-300 ease-in-out hover:scale-102">
+                  <img src="images/Slide_6.png" alt="Prestasi Gemilang" class="w-full h-full object-cover">
+                  <div class="absolute bottom-0 left-0 right-0 h-[200px] bg-gradient-to-t from-black to-transparent flex flex-wrap items-end p-10 text-white">
+                    <div class="w-full h-[5px] bg-white"></div>
+                    <div class="grid grid-cols-1 md:grid-cols-[auto_1fr_auto] items-center gap-6 w-full text-center md:text-left">
+                      <div class="font-figtree font-bold text-4xl leading-tight">
+                        <h3>PESANTREN</h3>
+                        <h3>BERBASIS IT</h3>
+                      </div>
+                      <hr class="border-none border-t-[1.5px] border-white/40 w-full hidden md:block">
+                      <div class="text-sm leading-5">
+                        <p>IDN Fokus ke 3 Mata Pelajaran diantaranya IT, English & Diniyah, tidak hanya itu IDN juga menerapkan Program Tahfidz.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="carousel-slide min-w-full h-[400px] md:h-[679px] rounded-[32px] overflow-hidden relative transition-transform duration-300 ease-in-out hover:scale-102">
+                  <img src="images/Slide_7.png" alt="Alumni Sukses" class="w-full h-full object-cover">
+                  <div class="absolute bottom-0 left-0 right-0 h-[200px] bg-gradient-to-t from-black to-transparent flex flex-wrap items-end p-10 text-white">
+                    <div class="w-full h-[5px] bg-white"></div>
+                    <div class="grid grid-cols-1 md:grid-cols-[auto_1fr_auto] items-center gap-6 w-full text-center md:text-left">
+                      <div class="font-figtree font-bold text-4xl leading-tight">
+                        <h3>FULL</h3>
+                        <h3>PRAKTEK</h3>
+                      </div>
+                      <hr class="border-none border-t-[1.5px] border-white/40 w-full hidden md:block">
+                      <div class="text-sm leading-5">
+                        <p>Sekolah full praktek agar siap terjun di lapangan.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button id="carousel-next" class="carousel-nav bg-primary-blue border-none rounded-xl w-[58px] h-[58px] flex justify-center items-center cursor-pointer flex-shrink-0 transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-[0_4px_15px_rgba(28,76,208,0.4)] active:scale-95">
+              <img src="images/I8836_829_6048_64446.svg" alt="next">
+            </button>
+          </div>
+          <!-- Added carousel indicators -->
+          <div class="flex gap-2 justify-center">
+            <button class="carousel-indicator w-3 h-3 rounded-full bg-primary-blue transition-all duration-300 ease-in-out" data-index="0"></button>
+            <button class="carousel-indicator w-3 h-3 rounded-full bg-gray-300 transition-all duration-300 ease-in-out" data-index="1"></button>
+            <button class="carousel-indicator w-3 h-3 rounded-full bg-gray-300 transition-all duration-300 ease-in-out" data-index="2"></button>
+            <button class="carousel-indicator w-3 h-3 rounded-full bg-gray-300 transition-all duration-300 ease-in-out" data-index="3"></button>
+            <button class="carousel-indicator w-3 h-3 rounded-full bg-gray-300 transition-all duration-300 ease-in-out" data-index="4"></button>
+            <button class="carousel-indicator w-3 h-3 rounded-full bg-gray-300 transition-all duration-300 ease-in-out" data-index="5"></button>
+            <button class="carousel-indicator w-3 h-3 rounded-full bg-gray-300 transition-all duration-300 ease-in-out" data-index="6"></button>
+          </div>
+        </div>
+      </section>
+      
+      <section id="majors" class="relative overflow-hidden bg-gradient-to-br from-[#0025ba] via-[#5879ff] to-[#5879ff] py-[60px] md:py-[110px] text-white">
+        <div class="container w-full max-w-[1220px] mx-auto px-5 box-border flex flex-col items-center gap-[100px]">
+            <h2 class="font-poppins font-bold text-4xl md:text-5xl text-center animate-fade-in">Jurusan di IDN Boarding School</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[50px] w-full">
+                <div class="major-card bg-white text-text-dark rounded-xl overflow-hidden shadow-[0px_4px_25px_0px_rgba(0,0,0,0.15)] flex flex-col transition-all duration-300 ease-in-out hover:-translate-y-2.5 hover:shadow-[0px_15px_40px_rgba(0,0,0,0.25)] animate-on-scroll group">
+                    <div class="overflow-hidden"><img src="images/b674864028bdb49b7c607bd068688fc34c0b5296.png" alt="Desain Komunikasi Visual" class="w-full h-[200px] object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"></div>
+                    <div class="p-4 flex flex-col gap-5 flex-grow">
+                        <div class="card-icon-btn bg-primary-blue w-10 h-10 rounded-lg flex justify-center items-center transition-all duration-300 ease-in-out group-hover:rotate-360 group-hover:bg-accent-orange"><img src="images/I8836_669_6048_65286.svg" alt="pen tool icon"></div>
+                        <h3 class="text-lg font-semibold leading-7">Desain Komunikasi Visual</h3>
+                        <p class="text-sm font-medium leading-5 text-text-gray flex-grow">DKV (Desain Komunikasi Visual) bukan cuma soal estetika, tapi juga soal komunikasi. Kamu diajak untuk berpikir kreatif, peka terhadap tren, dan bisa bikin karya yang punya makna.</p>
+                        <div class="flex flex-wrap gap-4">
+                            <span class="skill-tag bg-background-gray text-text-gray text-xs font-medium py-1.5 px-2.5 rounded-full transition-all duration-300 ease-in-out hover:bg-primary-blue hover:text-white hover:scale-110">3D</span>
+                            <span class="skill-tag bg-background-gray text-text-gray text-xs font-medium py-1.5 px-2.5 rounded-full transition-all duration-300 ease-in-out hover:bg-primary-blue hover:text-white hover:scale-110">UI/UX</span>
+                            <span class="skill-tag bg-background-gray text-text-gray text-xs font-medium py-1.5 px-2.5 rounded-full transition-all duration-300 ease-in-out hover:bg-primary-blue hover:text-white hover:scale-110">Visual</span>
+                            <span class="skill-tag bg-background-gray text-text-gray text-xs font-medium py-1.5 px-2.5 rounded-full transition-all duration-300 ease-in-out hover:bg-primary-blue hover:text-white hover:scale-110">Videography</span>
+                        </div>
+                        <a href="#" class="card-btn mt-auto bg-primary-blue text-white text-center py-3 px-4.5 rounded-[10px] text-sm font-semibold transition-all duration-300 ease-in-out hover:bg-accent-orange hover:-translate-y-0.5 hover:shadow-[0_4px_15px_rgba(245,158,11,0.4)]">Selengkapnya</a>
+                    </div>
+                </div>
+                <div class="major-card bg-white text-text-dark rounded-xl overflow-hidden shadow-[0px_4px_25px_0px_rgba(0,0,0,0.15)] flex flex-col transition-all duration-300 ease-in-out hover:-translate-y-2.5 hover:shadow-[0px_15px_40px_rgba(0,0,0,0.25)] animate-on-scroll group">
+                     <div class="overflow-hidden"><img src="images/6076aa123084b5d727ee281f346af9dfc55a4b32.png" alt="Rekayasa Perangkat Lunak" class="w-full h-[200px] object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"></div>
+                     <div class="p-4 flex flex-col gap-5 flex-grow">
+                        <div class="card-icon-btn bg-primary-blue w-10 h-10 rounded-lg flex justify-center items-center transition-all duration-300 ease-in-out group-hover:rotate-360 group-hover:bg-accent-orange"><img src="images/I8836_682_6048_65286.svg" alt="code icon"></div>
+                        <h3 class="text-lg font-semibold leading-7">Rekayasa Perangkat Lunak</h3>
+                        <p class="text-sm font-medium leading-5 text-text-gray flex-grow">RPL (Rekayasa Perangkat Lunak) bukan cuma soal ngoding, tapi juga soal logika dan solusi. Kamu diajak untuk berpikir sistematis, bikin aplikasi web dan mobile pakai PHP, MySQL, Laravel, sampai Flutter.</p>
+                        <div class="flex flex-wrap gap-4">
+                            <span class="skill-tag bg-background-gray text-text-gray text-xs font-medium py-1.5 px-2.5 rounded-full transition-all duration-300 ease-in-out hover:bg-primary-blue hover:text-white hover:scale-110">Front-End</span>
+                            <span class="skill-tag bg-background-gray text-text-gray text-xs font-medium py-1.5 px-2.5 rounded-full transition-all duration-300 ease-in-out hover:bg-primary-blue hover:text-white hover:scale-110">Back-End</span>
+                            <span class="skill-tag bg-background-gray text-text-gray text-xs font-medium py-1.5 px-2.5 rounded-full transition-all duration-300 ease-in-out hover:bg-primary-blue hover:text-white hover:scale-110">Flutter</span>
+                            <span class="skill-tag bg-background-gray text-text-gray text-xs font-medium py-1.5 px-2.5 rounded-full transition-all duration-300 ease-in-out hover:bg-primary-blue hover:text-white hover:scale-110">Laravel</span>
+                        </div>
+                        <a href="#" class="card-btn mt-auto bg-primary-blue text-white text-center py-3 px-4.5 rounded-[10px] text-sm font-semibold transition-all duration-300 ease-in-out hover:bg-accent-orange hover:-translate-y-0.5 hover:shadow-[0_4px_15px_rgba(245,158,11,0.4)]">Selengkapnya</a>
+                    </div>
+                </div>
+                <div class="major-card bg-white text-text-dark rounded-xl overflow-hidden shadow-[0px_4px_25px_0px_rgba(0,0,0,0.15)] flex flex-col transition-all duration-300 ease-in-out hover:-translate-y-2.5 hover:shadow-[0px_15px_40px_rgba(0,0,0,0.25)] animate-on-scroll group">
+                     <div class="overflow-hidden"><img src="images/1e1d4f6dd593842c5de0c76f506f44435769218f.png" alt="Teknik Komputer Jaringan" class="w-full h-[200px] object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"></div>
+                     <div class="p-4 flex flex-col gap-5 flex-grow">
+                        <div class="card-icon-btn bg-primary-blue w-10 h-10 rounded-lg flex justify-center items-center transition-all duration-300 ease-in-out group-hover:rotate-360 group-hover:bg-accent-orange"><img src="images/I8836_695_6048_65286.svg" alt="globe icon"></div>
+                        <h3 class="text-lg font-semibold leading-7">Teknik Komputer Jaringan</h3>
+                        <p class="text-sm font-medium leading-5 text-text-gray flex-grow">TKJ (Teknik Komputer dan Jaringan) bukan cuma belajar kabel dan jaringan, tapi juga soal bagaimana komputer saling terhubung dan bekerja. Kamu diajak memahami dasar jaringan komputer, instalasi, hingga konfigurasi alat seperti Cisco dan Mikrotik.</p>
+                        <div class="flex flex-wrap gap-4">
+                            <span class="skill-tag bg-background-gray text-text-gray text-xs font-medium py-1.5 px-2.5 rounded-full transition-all duration-300 ease-in-out hover:bg-primary-blue hover:text-white hover:scale-110">Cisco</span>
+                            <span class="skill-tag bg-background-gray text-text-gray text-xs font-medium py-1.5 px-2.5 rounded-full transition-all duration-300 ease-in-out hover:bg-primary-blue hover:text-white hover:scale-110">Mikrotik</span>
+                            <span class="skill-tag bg-background-gray text-text-gray text-xs font-medium py-1.5 px-2.5 rounded-full transition-all duration-300 ease-in-out hover:bg-primary-blue hover:text-white hover:scale-110">Fortinet</span>
+                            <span class="skill-tag bg-background-gray text-text-gray text-xs font-medium py-1.5 px-2.5 rounded-full transition-all duration-300 ease-in-out hover:bg-primary-blue hover:text-white hover:scale-110">AWS</span>
+                        </div>
+                        <a href="#" class="card-btn mt-auto bg-primary-blue text-white text-center py-3 px-4.5 rounded-[10px] text-sm font-semibold transition-all duration-300 ease-in-out hover:bg-accent-orange hover:-translate-y-0.5 hover:shadow-[0_4px_15px_rgba(245,158,11,0.4)]">Selengkapnya</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+
+<section id="projects" class="relative bg-[url(images/8927_546.png)] overflow-hidden py-[60px] md:py-[120px] bg-white">
+    <div class="container w-full max-w-[1220px] mx-auto px-5 box-border flex flex-col items-center gap-8">
+      <h2 class="font-poppins font-bold text-4xl md:text-5xl text-center text-primary-blue animate-fade-in">Project Jurusan</h2>
+      <div class="flex flex-col md:flex-row gap-2.5 bg-white p-1 rounded-lg shadow-[0px_4px_25px_0px_rgba(0,0,0,0.15)] w-full md:w-auto animate-scale">
+        <button class="project-filter-btn py-3 px-5 md:px-[60px] border-none rounded-lg text-base font-medium cursor-pointer bg-primary-blue text-white transition-all duration-300 ease-in-out w-full font-bold" data-category="dkv">DKV</button>
+        <button class="project-filter-btn py-3 px-5 md:px-[60px] border-none rounded-lg text-base font-medium cursor-pointer bg-transparent text-text-gray transition-all duration-300 ease-in-out w-full hover:bg-primary-blue/10" data-category="tkj">TKJ</button>
+        <button class="project-filter-btn py-3 px-5 md:px-[60px] border-none rounded-lg text-base font-medium cursor-pointer bg-transparent text-text-gray transition-all duration-300 ease-in-out w-full hover:bg-primary-blue/10" data-category="rpl">RPL</button>
+      </div>
+      <div id="projects-container" class="grid grid-cols-1 lg:grid-cols-3 gap-10 w-full mt-8">
+        <!-- Projects will be dynamically inserted here -->
+      </div>
+    </div>
+  </section>
+      <section id="achievements" class="relative overflow-hidden bg-gradient-to-r from-[#0025ba] to-[#5879ff] py-[60px] md:py-[110px] text-white">
+        <div class="container w-full max-w-[1220px] mx-auto px-5 box-border flex flex-col items-center gap-[60px]">
+            <div class="flex flex-col items-center gap-[30px] animate-fade-in">
+                <h2 class="font-poppins font-bold text-4xl md:text-5xl text-center">🏆 Prestasi Siswa</h2>
+                <p class="font-semibold text-2xl md:text-3xl text-center text-text-light">Bukti nyata kualitas pendidikan dan dedikasi Siswa IDN</p>
+            </div>
+            <div class="bg-white rounded-[20px] pt-[30px] text-center w-full overflow-hidden transition-transform duration-300 ease-in-out hover:scale-102 animate-scale">
+                <h3 class="text-primary-blue text-3xl md:text-4xl font-bold mb-[30px]">100+ Prestasi Nasional & Internasional</h3>
+                <img src="images/9ef72e4a1bcfd2cb198b04ab6f4d47ac2de60afd.png" alt="Student achievements collage" class="w-full max-h-[500px] h-auto object-cover block">
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 w-full">
+                <div class="flex flex-col gap-[60px]">
+                    <div class="bg-white text-text-dark rounded-[20px] p-5 md:p-6 flex flex-col items-center text-center gap-6 flex-grow transition-all duration-300 ease-in-out hover:-translate-y-2.5 hover:shadow-[0px_15px_40px_rgba(0,0,0,0.25)] animate-on-scroll group">
+                        <img src="images/61df151b60ecee2f7b9114254c0eecc151281930.png" alt="Web Design Award" class="w-[100px] h-[100px] object-contain transition-transform duration-500 ease-in-out group-hover:rotate-360 group-hover:scale-110">
+                        <h4 class="text-2xl font-semibold leading-relaxed">Juara 1 Lomba Web Design Nasional</h4>
+                        <div class="flex flex-col gap-2 text-text-gray text-xl leading-7">
+                            <p>Athallah Muhammad Ghiyast Qinthara</p>
+                            <p>Rafif Sava Adyvka Pratama</p>
+                            <p>Abdullah</p>
+                        </div>
+                        <span class="text-xl font-semibold text-text-dark mt-auto pt-6">Icomfest 2025: IDN BSA</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 text-center transition-transform duration-300 ease-in-out hover:scale-110 animate-scale">
+                        <span class="font-poppins font-bold text-5xl md:text-6xl leading-tight">🏆</span>
+                        <span class="font-poppins font-bold text-5xl md:text-6xl leading-tight">100+</span>
+                        <span class="text-2xl md:text-3xl font-semibold leading-snug">Juara Nasional</span>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-[60px]">
+                    <div class="bg-white text-text-dark rounded-[20px] p-5 md:p-6 flex flex-col items-center text-center gap-6 flex-grow transition-all duration-300 ease-in-out hover:-translate-y-2.5 hover:shadow-[0px_15px_40px_rgba(0,0,0,0.25)] animate-on-scroll group">
+                        <img src="images/6a0d681ce256faccb09d7393576081d3b04b3ef4.png" alt="Speech Award" class="w-[100px] h-[100px] object-contain transition-transform duration-500 ease-in-out group-hover:rotate-360 group-hover:scale-110">
+                        <h4 class="text-2xl font-semibold leading-relaxed">Juara 2 Lomba Speech Nasional</h4>
+                        <div class="flex flex-col gap-2 text-text-gray text-xl leading-7">
+                            <p>Maulana Moreno Ibrahim</p>
+                        </div>
+                        <span class="text-xl font-semibold text-text-dark mt-auto pt-6">CORE 2025: Universitas Tazkia</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 text-center transition-transform duration-300 ease-in-out hover:scale-110 animate-scale">
+                        <span class="font-poppins font-bold text-5xl md:text-6xl leading-tight">🌏</span>
+                        <span class="font-poppins font-bold text-5xl md:text-6xl leading-tight">20+</span>
+                        <span class="text-2xl md:text-3xl font-semibold leading-snug">Juara Internasional</span>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-[60px]">
+                    <div class="bg-white text-text-dark rounded-[20px] p-5 md:p-6 flex flex-col items-center text-center gap-6 flex-grow transition-all duration-300 ease-in-out hover:-translate-y-2.5 hover:shadow-[0px_15px_40px_rgba(0,0,0,0.25)] animate-on-scroll group">
+                        <img src="images/d6d929fed5f498593eef2b6262893e284df4663c.png" alt="Informatics Award" class="w-[100px] h-[100px] object-contain transition-transform duration-500 ease-in-out group-hover:rotate-360 group-hover:scale-110">
+                        <h4 class="text-2xl font-semibold leading-relaxed">Juara 2 Lomba Informatika Nasional</h4>
+                        <div class="flex flex-col gap-2 text-text-gray text-xl leading-7">
+                            <p>Moch. Guntur Budi Pratama</p>
+                        </div>
+                        <span class="text-xl font-semibold text-text-dark mt-auto pt-6">OP2N IYFEST 2025</span>
+                    </div>
+                    <div class="flex flex-col items-center gap-2 text-center transition-transform duration-300 ease-in-out hover:scale-110 animate-scale">
+                        <span class="font-poppins font-bold text-5xl md:text-6xl leading-tight">💡</span>
+                        <span class="font-poppins font-bold text-5xl md:text-6xl leading-tight">200+</span>
+                        <span class="text-2xl md:text-3xl font-semibold leading-snug">Sertifikat Kompetensi</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+
+      <section id="alumni-testimonials" class="relative bg-[url(images/8927_546.png)] overflow-hidden py-[60px] md:py-[120px] bg-white">
+        <div class="container w-full max-w-[1220px] mx-auto px-5 box-border flex flex-col gap-[120px]">
+            <div class="flex flex-col items-center gap-[60px]">
+                <div class="tag inline-flex justify-center items-center py-2 px-4 rounded-full bg-primary-blue text-white border border-white transition-transform duration-300 ease-in-out hover:scale-105 shadow-[0px_4px_25px_0px_rgba(0,0,0,0.15)] animate-scale">
+                    <img src="images/8836_1027.svg" alt="graduation cap icon" class="mr-2">
+                    <span class="font-semibold text-2xl md:text-3xl leading-snug">Kampus Alumni IDN</span>
+                </div>
+                <div class="grid grid-cols-[repeat(auto-fill,minmax(114px,1fr))] gap-2 w-full">
+                    <div class="logo-box bg-[#f1f7ff] border-[1.25px] border-primary-blue rounded-md p-2.5 flex justify-center items-center h-[114px] transition-all duration-300 ease-in-out hover:scale-110 hover:bg-primary-blue hover:shadow-[0_4px_15px_rgba(28,76,208,0.3)] animate-on-scroll group"><img src="images/3d20487d542b99325d08571e046a52383190a8e2.png" alt="Alumni Logo" class="max-w-[94px] max-h-[94px] object-contain transition-filter duration-300 ease-in-out group-hover:bg-[#ffffffdd] p-2 group-hover:rounded-lg"></div>
+                    <div class="logo-box bg-[#f1f7ff] border-[1.25px] border-primary-blue rounded-md p-2.5 flex justify-center items-center h-[114px] transition-all duration-300 ease-in-out hover:scale-110 hover:bg-primary-blue hover:shadow-[0_4px_15px_rgba(28,76,208,0.3)] animate-on-scroll group"><img src="images/e87e55b13a1300e4eb9e3e6b8cf64c751dcac2ce.png" alt="Alumni Logo" class="max-w-[94px] max-h-[94px] object-contain transition-filter duration-300 ease-in-out group-hover:bg-[#ffffffdd] p-2 rounded-lg"></div>
+                    <div class="logo-box bg-[#f1f7ff] border-[1.25px] border-primary-blue rounded-md p-2.5 flex justify-center items-center h-[114px] transition-all duration-300 ease-in-out hover:scale-110 hover:bg-primary-blue hover:shadow-[0_4px_15px_rgba(28,76,208,0.3)] animate-on-scroll group"><img src="images/cace4905101542bca5cbd5a012e6a797841e16de.png" alt="Alumni Logo" class="max-w-[94px] max-h-[94px] object-contain transition-filter duration-300 ease-in-out group-hover:bg-[#ffffffdd] p-2 rounded-lg"></div>
+                    <div class="logo-box bg-[#f1f7ff] border-[1.25px] border-primary-blue rounded-md p-2.5 flex justify-center items-center h-[114px] transition-all duration-300 ease-in-out hover:scale-110 hover:bg-primary-blue hover:shadow-[0_4px_15px_rgba(28,76,208,0.3)] animate-on-scroll group"><img src="images/16a1b0ad081cfae4ee78158ec0a590e8a9a4361b.png" alt="Alumni Logo" class="max-w-[94px] max-h-[94px] object-contain transition-filter duration-300 ease-in-out group-hover:bg-[#ffffffdd] p-2 rounded-lg"></div>
+                    <div class="logo-box bg-[#f1f7ff] border-[1.25px] border-primary-blue rounded-md p-2.5 flex justify-center items-center h-[114px] transition-all duration-300 ease-in-out hover:scale-110 hover:bg-primary-blue hover:shadow-[0_4px_15px_rgba(28,76,208,0.3)] animate-on-scroll group"><img src="images/80a297b869b70b4fb51bb6097a2abcf5e2f906c8.png" alt="Alumni Logo" class="max-w-[94px] max-h-[94px] object-contain transition-filter duration-300 ease-in-out group-hover:bg-[#ffffffdd] p-2 rounded-lg"></div>
+                    <div class="logo-box bg-[#f1f7ff] border-[1.25px] border-primary-blue rounded-md p-2.5 flex justify-center items-center h-[114px] transition-all duration-300 ease-in-out hover:scale-110 hover:bg-primary-blue hover:shadow-[0_4px_15px_rgba(28,76,208,0.3)] animate-on-scroll group"><img src="images/7f3c32d30e25ce808d17df3488c1cd0313cf1860.png" alt="Alumni Logo" class="max-w-[94px] max-h-[94px] object-contain transition-filter duration-300 ease-in-out group-hover:bg-[#ffffffdd] p-2 rounded-lg"></div>
+                    <div class="logo-box bg-[#f1f7ff] border-[1.25px] border-primary-blue rounded-md p-2.5 flex justify-center items-center h-[114px] transition-all duration-300 ease-in-out hover:scale-110 hover:bg-primary-blue hover:shadow-[0_4px_15px_rgba(28,76,208,0.3)] animate-on-scroll group"><img src="images/db18cfa67ecd53d5dcace137d01ee3cc81e32158.png" alt="Alumni Logo" class="max-w-[94px] max-h-[94px] object-contain transition-filter duration-300 ease-in-out group-hover:bg-[#ffffffdd] p-2 rounded-lg"></div>
+                    <div class="logo-box bg-[#f1f7ff] border-[1.25px] border-primary-blue rounded-md p-2.5 flex justify-center items-center h-[114px] transition-all duration-300 ease-in-out hover:scale-110 hover:bg-primary-blue hover:shadow-[0_4px_15px_rgba(28,76,208,0.3)] animate-on-scroll group"><img src="images/ad26aa63db7907cdbf06ad6bcd61e501c3d09b6c.png" alt="Alumni Logo" class="max-w-[94px] max-h-[94px] object-contain transition-filter duration-300 ease-in-out group-hover:bg-[#ffffffdd] p-2 rounded-lg"></div>
+                    <div class="logo-box bg-[#f1f7ff] border-[1.25px] border-primary-blue rounded-md p-2.5 flex justify-center items-center h-[114px] transition-all duration-300 ease-in-out hover:scale-110 hover:bg-primary-blue hover:shadow-[0_4px_15px_rgba(28,76,208,0.3)] animate-on-scroll group"><img src="images/99dfdcbdeb708c42cf7a2f08c26eae4315d78540.png" alt="Alumni Logo" class="max-w-[94px] max-h-[94px] object-contain transition-filter duration-300 ease-in-out group-hover:bg-[#ffffffdd] p-2 rounded-lg"></div>
+                    <div class="logo-box bg-[#f1f7ff] border-[1.25px] border-primary-blue rounded-md p-2.5 flex justify-center items-center h-[114px] transition-all duration-300 ease-in-out hover:scale-110 hover:bg-primary-blue hover:shadow-[0_4px_15px_rgba(28,76,208,0.3)] animate-on-scroll group"><img src="images/777f5756a84e4883223be20c9c5a15f6c9ea9b91.png" alt="Alumni Logo" class="max-w-[94px] max-h-[94px] object-contain transition-filter duration-300 ease-in-out group-hover:bg-[#ffffffdd] p-2 rounded-lg"></div>
+                    <div class="logo-box bg-[#f1f7ff] border-[1.25px] border-primary-blue rounded-md p-2.5 flex justify-center items-center h-[114px] transition-all duration-300 ease-in-out hover:scale-110 hover:bg-primary-blue hover:shadow-[0_4px_15px_rgba(28,76,208,0.3)] animate-on-scroll group"><img src="images/65d371164e99bd7febda9909c31e36b132732495.png" alt="Alumni Logo" class="max-w-[94px] max-h-[94px] object-contain transition-filter duration-300 ease-in-out group-hover:bg-[#ffffffdd] p-2 rounded-lg"></div>
+                    <div class="logo-box bg-[#f1f7ff] border-[1.25px] border-primary-blue rounded-md p-2.5 flex justify-center items-center h-[114px] transition-all duration-300 ease-in-out hover:scale-110 hover:bg-primary-blue hover:shadow-[0_4px_15px_rgba(28,76,208,0.3)] animate-on-scroll group"><img src="images/7ba2d11d0495d1d245fb6772f1ab54df85c2d0b7.png" alt="Alumni Logo" class="max-w-[94px] max-h-[94px] object-contain transition-filter duration-300 ease-in-out group-hover:bg-[#ffffffdd] p-2 rounded-lg"></div>
+                    <div class="logo-box bg-[#f1f7ff] border-[1.25px] border-primary-blue rounded-md p-2.5 flex justify-center items-center h-[114px] transition-all duration-300 ease-in-out hover:scale-110 hover:bg-primary-blue hover:shadow-[0_4px_15px_rgba(28,76,208,0.3)] animate-on-scroll group"><img src="images/7959a2e776edf2a95aea428a953cc7446a6593a6.png" alt="Alumni Logo" class="max-w-[94px] max-h-[94px] object-contain transition-filter duration-300 ease-in-out group-hover:bg-[#ffffffdd] p-2 rounded-lg"></div>
+                    <div class="logo-box bg-[#f1f7ff] border-[1.25px] border-primary-blue rounded-md p-2.5 flex justify-center items-center h-[114px] transition-all duration-300 ease-in-out hover:scale-110 hover:bg-primary-blue hover:shadow-[0_4px_15px_rgba(28,76,208,0.3)] animate-on-scroll group"><img src="images/9e1bda6358861c3771925dea2b850cd4ecdfd95f.png" alt="Alumni Logo" class="max-w-[94px] max-h-[94px] object-contain transition-filter duration-300 ease-in-out group-hover:bg-[#ffffffdd] p-2 rounded-lg"></div>
+                    <div class="logo-box bg-[#f1f7ff] border-[1.25px] border-primary-blue rounded-md p-2.5 flex justify-center items-center h-[114px] transition-all duration-300 ease-in-out hover:scale-110 hover:bg-primary-blue hover:shadow-[0_4px_15px_rgba(28,76,208,0.3)] animate-on-scroll group"><img src="images/31b2dffed452314f903acdc618afd099b96f57c5.png" alt="Alumni Logo" class="max-w-[94px] max-h-[94px] object-contain transition-filter duration-300 ease-in-out group-hover:bg-[#ffffffdd] p-2 rounded-lg"></div>
+                    <div class="logo-box bg-[#f1f7ff] border-[1.25px] border-primary-blue rounded-md p-2.5 flex justify-center items-center h-[114px] transition-all duration-300 ease-in-out hover:scale-110 hover:bg-primary-blue hover:shadow-[0_4px_15px_rgba(28,76,208,0.3)] animate-on-scroll group"><img src="images/8235811dc26c1aa12b464de631e72ad483b09f2b.png" alt="Alumni Logo" class="max-w-[94px] max-h-[94px] object-contain transition-filter duration-300 ease-in-out group-hover:bg-[#ffffffdd] p-2 rounded-lg"></div>
+                    <div class="logo-box bg-[#f1f7ff] border-[1.25px] border-primary-blue rounded-md p-2.5 flex justify-center items-center h-[114px] transition-all duration-300 ease-in-out hover:scale-110 hover:bg-primary-blue hover:shadow-[0_4px_15px_rgba(28,76,208,0.3)] animate-on-scroll group"><img src="images/4c1334d7cf0b59de27f16a166323a3c7e3cef3c1.png" alt="Alumni Logo" class="max-w-[94px] max-h-[94px] object-contain transition-filter duration-300 ease-in-out group-hover:bg-[#ffffffdd] p-2 rounded-lg"></div>
+                    <div class="logo-box bg-[#f1f7ff] border-[1.25px] border-primary-blue rounded-md p-2.5 flex justify-center items-center h-[114px] transition-all duration-300 ease-in-out hover:scale-110 hover:bg-primary-blue hover:shadow-[0_4px_15px_rgba(28,76,208,0.3)] animate-on-scroll group"><img src="images/42a1b09740c9981fac5e6ebb988bf24d25035f13.png" alt="Alumni Logo" class="max-w-[94px] max-h-[94px] object-contain transition-filter duration-300 ease-in-out group-hover:bg-[#ffffffdd] p-2 rounded-lg"></div>
+                    <div class="logo-box bg-[#f1f7ff] border-[1.25px] border-primary-blue rounded-md p-2.5 flex justify-center items-center h-[114px] transition-all duration-300 ease-in-out hover:scale-110 hover:bg-primary-blue hover:shadow-[0_4px_15px_rgba(28,76,208,0.3)] animate-on-scroll group"><img src="images/d2d26d61ca3ab8d5645fb9436fc840274c233336.png" alt="Alumni Logo" class="max-w-[94px] max-h-[94px] object-contain transition-filter duration-300 ease-in-out group-hover:bg-[#ffffffdd] p-2 rounded-lg"></div>
+                    <div class="logo-box bg-[#f1f7ff] border-[1.25px] border-primary-blue rounded-md p-2.5 flex justify-center items-center h-[114px] transition-all duration-300 ease-in-out hover:scale-110 hover:bg-primary-blue hover:shadow-[0_4px_15px_rgba(28,76,208,0.3)] animate-on-scroll group"><img src="images/8dbb340f46d3484a8ab3593ed2572ce0359f8c02.png" alt="Alumni Logo" class="max-w-[94px] max-h-[94px] object-contain transition-filter duration-300 ease-in-out group-hover:bg-[#ffffffdd] p-2 rounded-lg"></div>
+                    <div class="logo-box bg-[#f1f7ff] border-[1.25px] border-primary-blue rounded-md p-2.5 flex justify-center items-center h-[114px] transition-all duration-300 ease-in-out hover:scale-110 hover:bg-primary-blue hover:shadow-[0_4px_15px_rgba(28,76,208,0.3)] animate-on-scroll group"><img src="images/73f4a33b0133cd1f9b8555ab7d3b7331bd4ca700.png" alt="Alumni Logo" class="max-w-[94px] max-h-[94px] object-contain transition-filter duration-300 ease-in-out group-hover:bg-[#ffffffdd] p-2 rounded-lg"></div>
+                    <div class="logo-box bg-[#f1f7ff] border-[1.25px] border-primary-blue rounded-md p-2.5 flex justify-center items-center h-[114px] transition-all duration-300 ease-in-out hover:scale-110 hover:bg-primary-blue hover:shadow-[0_4px_15px_rgba(28,76,208,0.3)] animate-on-scroll group"><img src="images/eeb08cdf78263891de95db70d0a4e0661a957739.png" alt="Alumni Logo" class="max-w-[94px] max-h-[94px] object-contain transition-filter duration-300 ease-in-out group-hover:bg-[#ffffffdd] p-2 rounded-lg"></div>
+                    <div class="logo-box bg-[#f1f7ff] border-[1.25px] border-primary-blue rounded-md p-2.5 flex justify-center items-center h-[114px] transition-all duration-300 ease-in-out hover:scale-110 hover:bg-primary-blue hover:shadow-[0_4px_15px_rgba(28,76,208,0.3)] animate-on-scroll group"><img src="images/a94f54176e36c7dd239774f363555d353ca7527d.png" alt="Alumni Logo" class="max-w-[94px] max-h-[94px] object-contain transition-filter duration-300 ease-in-out group-hover:bg-[#ffffffdd] p-2 rounded-lg"></div>
+                    <div class="logo-box bg-[#f1f7ff] border-[1.25px] border-primary-blue rounded-md p-2.5 flex justify-center items-center h-[114px] transition-all duration-300 ease-in-out hover:scale-110 hover:bg-primary-blue hover:shadow-[0_4px_15px_rgba(28,76,208,0.3)] animate-on-scroll group"><img src="images/3573cc9e15dcdfa3bd12a58d69f9038ad00ab37b.png" alt="Alumni Logo" class="max-w-[94px] max-h-[94px] object-contain transition-filter duration-300 ease-in-out group-hover:bg-[#ffffffdd] p-2 rounded-lg"></div>
+                    <div class="logo-box bg-[#f1f7ff] border-[1.25px] border-primary-blue rounded-md p-2.5 flex justify-center items-center h-[114px] transition-all duration-300 ease-in-out hover:scale-110 hover:bg-primary-blue hover:shadow-[0_4px_15px_rgba(28,76,208,0.3)] animate-on-scroll group"><img src="images/f624ec200bde5ce2523b4b3c5224af56e9710e58.png" alt="Alumni Logo" class="max-w-[94px] max-h-[94px] object-contain transition-filter duration-300 ease-in-out group-hover:bg-[#ffffffdd] p-2 rounded-lg"></div>
+                    <div class="logo-box bg-[#f1f7ff] border-[1.25px] border-primary-blue rounded-md p-2.5 flex justify-center items-center h-[114px] transition-all duration-300 ease-in-out hover:scale-110 hover:bg-primary-blue hover:shadow-[0_4px_15px_rgba(28,76,208,0.3)] animate-on-scroll group"><img src="images/db7f584b6ec12245db715702f33198c240bbd919.png" alt="Alumni Logo" class="max-w-[94px] max-h-[94px] object-contain transition-filter duration-300 ease-in-out group-hover:bg-[#ffffffdd] p-2 rounded-lg"></div>
+                    <div class="logo-box bg-[#f1f7ff] border-[1.25px] border-primary-blue rounded-md p-2.5 flex justify-center items-center h-[114px] transition-all duration-300 ease-in-out hover:scale-110 hover:bg-primary-blue hover:shadow-[0_4px_15px_rgba(28,76,208,0.3)] animate-on-scroll group"><img src="images/597f73d27e9a6f2d5af2f8dfc0d720016cfc0a29.png" alt="Alumni Logo" class="max-w-[94px] max-h-[94px] object-contain transition-filter duration-300 ease-in-out group-hover:bg-[#ffffffdd] p-2 rounded-lg"></div>
+                </div>
+            </div>
+            <div class="flex flex-col items-center gap-[60px]">
+                <div class="tag inline-flex justify-center items-center py-2 px-4 rounded-full bg-primary-blue text-white border border-white transition-transform duration-300 ease-in-out hover:scale-105 shadow-[0px_4px_25px_0px_rgba(0,0,0,0.15)] animate-scale">
+                    <img src="images/8879_749.svg" alt="like icon" class="mr-2">
+                    <span class="font-semibold text-2xl md:text-3xl leading-snug">Apa kata Walisantri?</span>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 w-full">
+                    <div class="bg-white rounded-[20px] shadow-[0px_4px_25px_0px_rgba(0,0,0,0.15)] p-5 flex flex-col gap-3 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-[0px_15px_40px_rgba(0,0,0,0.25)] animate-slide-left group">
+                        <div class="text-[#f59e0b] text-2xl">★★★★★</div>
+                        <p class="text-sm leading-5 text-text-dark flex-grow">"Sebagai orang tua, saya awalnya khawatir melepas anak tinggal di asrama. Namun setelah beberapa bulan di IDN Boarding School, saya melihat perubahan besar pada dirinya..."</p>
+                        <div class="flex items-center gap-2.5 mt-4">
+                            <img src="images/8879_487.svg" alt="author avatar" class="w-11 h-11 transition-transform duration-300 ease-in-out group-hover:scale-125">
+                            <div class="flex flex-col">
+                                <strong class="text-sm font-medium text-text-dark">Ummu Athallah</strong>
+                                <span class="text-xs text-text-gray">Walisantri SMK IDN</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-[20px] shadow-[0px_4px_25px_0px_rgba(0,0,0,0.15)] p-5 flex flex-col gap-3 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-[0px_15px_40px_rgba(0,0,0,0.25)] animate-slide-right group">
+                        <div class="text-[#f59e0b] text-2xl">★★★★★</div>
+                        <p class="text-sm leading-5 text-text-dark flex-grow">"Anak saya dulu cukup pendiam dan kurang percaya diri. Tapi setelah belajar di IDN, ia jadi lebih terbuka dan berani tampil di depan umum..."</p>
+                        <div class="flex items-center gap-2.5 mt-4">
+                            <img src="images/8879_513.svg" alt="author avatar" class="w-11 h-11 transition-transform duration-300 ease-in-out group-hover:scale-125">
+                            <div class="flex flex-col">
+                                <strong class="text-sm font-medium text-text-dark">Abu Fauzan</strong>
+                                <span class="text-xs text-text-gray">Walisantri SMK IDN</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-[20px] shadow-[0px_4px_25px_0px_rgba(0,0,0,0.15)] p-5 flex flex-col gap-3 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-[0px_15px_40px_rgba(0,0,0,0.25)] animate-slide-left group">
+                        <div class="text-[#f59e0b] text-2xl">★★★★★</div>
+                        <p class="text-sm leading-5 text-text-dark flex-grow">"Yang paling saya kagumi dari IDN adalah bagaimana mereka menanamkan nilai-nilai Islam dalam setiap aktivitas anak-anak..."</p>
+                        <div class="flex items-center gap-2.5 mt-4">
+                            <img src="images/8879_533.svg" alt="author avatar" class="w-11 h-11 transition-transform duration-300 ease-in-out group-hover:scale-125">
+                            <div class="flex flex-col">
+                                <strong class="text-sm font-medium text-text-dark">Abu Guntur</strong>
+                                <span class="text-xs text-text-gray">Walisantri SMK IDN</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-[20px] shadow-[0px_4px_25px_0px_rgba(0,0,0,0.15)] p-5 flex flex-col gap-3 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-[0px_15px_40px_rgba(0,0,0,0.25)] animate-slide-right group">
+                        <div class="text-[#f59e0b] text-2xl">★★★★★</div>
+                        <p class="text-sm leading-5 text-text-dark flex-grow">"Saya bangga anak saya bisa menjadi bagian dari IDN Boarding School. Kurikulum yang berbasis praktik membuatnya tidak hanya pintar teori..."</p>
+                        <div class="flex items-center gap-2.5 mt-4">
+                            <img src="images/8879_717.svg" alt="author avatar" class="w-11 h-11 transition-transform duration-300 ease-in-out group-hover:scale-125">
+                            <div class="flex flex-col">
+                                <strong class="text-sm font-medium text-text-dark">Ummu Raja</strong>
+                                <span class="text-xs text-text-gray">Walisantri SMK IDN</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+
+      <section id="tuition" class="relative bg-[url(images/8927_546.png)] overflow-hidden py-[60px] md:py-[120px] bg-white">
+        <div class="container w-full max-w-[1220px] mx-auto px-5 box-border flex flex-col items-center gap-[60px]">
+            <div class="tag inline-flex justify-center items-center py-2 px-4 rounded-full bg-primary-blue text-white border border-white transition-transform duration-300 ease-in-out hover:scale-105 shadow-[0px_4px_25px_0px_rgba(0,0,0,0.15)] animate-scale">
+                <img src="images/8882_809.svg" alt="wallet icon" class="mr-2">
+                <span class="font-semibold text-2xl md:text-3xl leading-snug">Biaya Pendidikan</span>
+            </div>
+            <div class="flex flex-col gap-5 w-full">
+                <div class="bg-white rounded-[20px] shadow-[0px_4px_25px_0px_rgba(0,0,0,0.15)] p-5 flex flex-col gap-4 transition-all duration-300 ease-in-out hover:translate-x-2.5 hover:shadow-[0px_15px_40px_rgba(0,0,0,0.25)] animate-slide-left">
+                    <div class="flex items-baseline gap-2">
+                        <span class="text-3xl md:text-4xl font-bold text-[#006bff] leading-tight">900rb</span>
+                        <span class="text-sm font-medium text-text-gray">Sekali bayar</span>
+                    </div>
+                    <h4 class="text-lg font-semibold text-black">Pendaftaran</h4>
+                    <p class="text-base leading-6 text-text-gray">Biaya Pendaftaran harus ditransferkan paling lambat 3 hari setelah membuat akun di sistem PSB Online. Sudah termasuk biaya Tes Masuk (Psikotes, Tes online, Tes wawancara orang tua dan santri)</p>
+                </div>
+                <div class="bg-white rounded-[20px] shadow-[0px_4px_25px_0px_rgba(0,0,0,0.15)] p-5 flex flex-col gap-4 transition-all duration-300 ease-in-out hover:translate-x-2.5 hover:shadow-[0px_15px_40px_rgba(0,0,0,0.25)] animate-slide-right">
+                    <div class="flex items-baseline gap-2">
+                        <span class="text-3xl md:text-4xl font-bold text-[#006bff] leading-tight">40jt</span>
+                        <span class="text-sm font-medium text-text-gray">Sekali bayar</span>
+                    </div>
+                    <h4 class="text-lg font-semibold text-black">Biaya Masuk</h4>
+                    <ul class="text-base leading-6 text-text-gray list-disc list-inside space-y-2">
+                        <li>Biaya Pengembangan Pendidikan</li>
+                        <li>Biaya Organisasi Santri</li>
+                        <li>Ekstrakurikuler Tahun Pertama</li>
+                        <li>Pelayanan Kesehatan</li>
+                        <li>Seragam sekolah 3 Stel</li>
+                        <li>Seragam olahraga 1 Stel</li>
+                        <li>Kebutuhan asrama : kasur, ranjang, lemari, dll</li>
+                        <li>Biaya kegiatan tahun pertama</li>
+                        <li>Buku/modul pembelajaran tahun pertama</li>
+                        <li class="text-danger-red">Biaya TIDAK termasuk SPP Bulan Juli 2026</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-[20px] shadow-[0px_4px_25px_0px_rgba(0,0,0,0.15)] p-5 flex flex-col gap-4 transition-all duration-300 ease-in-out hover:translate-x-2.5 hover:shadow-[0px_15px_40px_rgba(0,0,0,0.25)] animate-slide-left">
+                    <div class="flex items-baseline gap-2">
+                        <span class="text-3xl md:text-4xl font-bold text-[#006bff] leading-tight">4jt</span>
+                        <span class="text-sm font-medium text-text-gray">per Tahun</span>
+                    </div>
+                    <h4 class="text-lg font-semibold text-black">Biaya Tahunan</h4>
+                    <p class="text-base leading-6 text-text-gray">Termasuk biaya kegiatan character development baik di dalam maupun luar pesantren. Termasuk biaya ekstrakulikuler di dalam maupun di luar pesantren. Termasuk biaya kegiatan entrepreneur baik di dalam maupun luar pesantren. Buku/modul pembelajaran. Dibayarkan saat naik kelas di tahun ke-2 dan ke-3. Biaya tahunan wajib dilunasi paling lambat 1 Juli setiap tahun, mulai tahun kedua.</p>
+                </div>
+                <div class="bg-white rounded-[20px] shadow-[0px_4px_25px_0px_rgba(0,0,0,0.15)] p-5 flex flex-col gap-4 transition-all duration-300 ease-in-out hover:translate-x-2.5 hover:shadow-[0px_15px_40px_rgba(0,0,0,0.25)] animate-slide-right">
+                    <div class="flex items-baseline gap-2">
+                        <span class="text-3xl md:text-4xl font-bold text-[#006bff] leading-tight">4jt</span>
+                        <span class="text-sm font-medium text-text-gray">per Bulan</span>
+                    </div>
+                    <h4 class="text-lg font-semibold text-black">SPP</h4>
+                    <p class="text-base leading-6 text-text-gray">Dibayarkan setiap bulan paling lambat tanggal 10. Sudah termasuk makan 3x sehari. Fasilitas kesehatan santri, namun diluar biaya operasi, rawat inap, cek lab dll. Sudah termasuk laundry bulanan maksimal 20Kg per bulan, apabila lebih akan dikenakan biaya Rp 7.500 per Kg. Biaya Khusus Siswa PKL, biaya bulanan adalah sebesar Rp 1.000.000 per bulan selama Santri menjalankan kegiatan PKL di luar pesantren. Termasuk biaya pendidikan bulanan dan biaya ujian sekolah atau ujian semesteran, namun tidak termasuk biaya ujian khusus seperti Ujian Sertifikasi Cisco, Android Developer, AWS Cloud, serta Ujian-ujian khusus lainnya yang bersifat pilihan/tidak wajib. Dibayarkan selama 12 bulan per tahun dengan besaran tetap tanpa adanya pengurangan dikarenakan hari libur, cuti atau ketidakhadiran santri. Termasuk biaya pendidikan bulanan dan biaya ujian sekolah, namun tidak termasuk biaya ujian khusus yang bersifat pilihan seperti Ujian Pengambilan Sanad.</p>
+                </div>
+            </div>
+            <p class="text-xl md:text-3xl font-semibold text-danger-red text-center leading-normal animate-fade-in">Catatan: Biaya yang sudah di transfer tidak bisa dikembalikan dengan kondisi dan alasan apapun</p>
+        </div>
+      </section>
+
+<!-- Cabang IDN -->
+      <section id="branches" class="bg-white flex flex-wrap justify-center py-16 sm:py-24">
+  <div class="tag inline-flex justify-center items-center py-2 px-4 mb-[80px] rounded-full bg-primary-blue text-white border border-white transition-transform duration-300 ease-in-out hover:scale-105 shadow-[0px_4px_25px_0px_rgba(0,0,0,0.15)] animate-scale">
+    <img src="images/8890_1294.svg" alt="location pin icon" class="mr-2">
+    <span class="font-semibold text-2xl md:text-3xl leading-snug">Cabang IDN</span>
+  </div>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3">
+      
+      <!-- Added animate-on-scroll class and stagger delay for each branch card -->
+      <div class="branch-card relative flex h-[500px] flex-col justify-end overflow-hidden rounded-2xl animate-on-scroll" style="transition-delay: 0ms;">
+        <img src="images/idn_jonggol.png" alt="IDN Jonggol Campus" class="absolute inset-0 h-full w-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
+        <div class="relative z-10 flex flex-col justify-end p-4">
+          <div class="flex flex-col gap-8">
+            <div>
+              <h3 class="text-3xl font-semibold leading-snug text-white">IDN Jonggol</h3>
+              <p class="mt-4 text-base font-medium leading-6 text-gray-300">Sebagai kampus pusat IDN Boarding School, cabang Jonggol menjadi tempat utama kegiatan akademik dan manajemen.</p>
+              <div class="mt-4 flex flex-wrap items-center gap-2">
+                <span class="rounded-full bg-white/20 px-5 py-2.5 text-base font-medium text-white">SMP</span>
+                <span class="rounded-full bg-white/20 px-5 py-2.5 text-base font-medium text-white">SMK</span>
+                <span class="rounded-full bg-white/20 px-5 py-2.5 text-base font-medium text-white">Politeknik</span>
+              </div>
+            </div>
+            <a href="#" class="w-full rounded-xl border-2 border-gray-200 bg-white py-4 px-6 text-center text-lg font-semibold text-gray-800 transition hover:bg-gray-100">Selengkapnya</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="branch-card relative flex h-[500px] flex-col justify-end overflow-hidden rounded-2xl animate-on-scroll" style="transition-delay: 150ms;">
+        <img src="images/idn_akhwat.png" alt="IDN Akhwat Campus" class="absolute inset-0 h-full w-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
+        <div class="relative z-10 flex flex-col justify-end p-4">
+          <div class="flex flex-col gap-8">
+            <div>
+              <h3 class="text-3xl font-semibold leading-snug text-white">IDN Akhwat</h3>
+              <p class="mt-4 text-base font-medium leading-6 text-gray-300">IDN Akhwat adalah cabang khusus untuk santri putri yang ingin menimba ilmu teknologi sekaligus memperdalam nilai-nilai Islam.</p>
+              <div class="mt-4 flex flex-wrap items-center gap-2">
+                <span class="rounded-full bg-white/20 px-5 py-2.5 text-base font-medium text-white">SMP</span>
+                <span class="rounded-full bg-white/20 px-5 py-2.5 text-base font-medium text-white">SMK</span>
+                <span class="rounded-full bg-white/20 px-5 py-2.5 text-base font-medium text-white">Politeknik</span>
+              </div>
+            </div>
+            <a href="#" class="w-full rounded-xl border-2 border-gray-200 bg-white py-4 px-6 text-center text-lg font-semibold text-gray-800 transition hover:bg-gray-100">Selengkapnya</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="branch-card relative flex h-[500px] flex-col justify-end overflow-hidden rounded-2xl animate-on-scroll" style="transition-delay: 300ms;">
+        <img src="images/idn_pamijahan.png" alt="IDN Pamijahan Campus" class="absolute inset-0 h-full w-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
+        <div class="relative z-10 flex flex-col justify-end p-4">
+          <div class="flex flex-col gap-8">
+            <div>
+              <h3 class="text-3xl font-semibold leading-snug text-white">IDN Pamijahan</h3>
+              <p class="mt-4 text-base font-medium leading-6 text-gray-300">Cabang Pamijahan dikenal dengan suasananya yang sejuk dan religius, berada di kawasan pegunungan Bogor.</p>
+              <div class="mt-4 flex flex-wrap items-center gap-2">
+                <span class="rounded-full bg-white/20 px-5 py-2.5 text-base font-medium text-white">SMP</span>
+                <span class="rounded-full bg-white/20 px-5 py-2.5 text-base font-medium text-white">SMK</span>
+              </div>
+            </div>
+            <a href="#" class="w-full rounded-xl border-2 border-gray-200 bg-white py-4 px-6 text-center text-lg font-semibold text-gray-800 transition hover:bg-gray-100">Selengkapnya</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="branch-card relative flex h-[500px] flex-col justify-end overflow-hidden rounded-2xl animate-on-scroll" style="transition-delay: 450ms;">
+        <img src="images/idn_solo.png" alt="IDN Solo Campus" class="absolute inset-0 h-full w-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
+        <div class="relative z-10 flex flex-col justify-end p-4">
+          <div class="flex flex-col gap-8">
+            <div>
+              <h3 class="text-3xl font-semibold leading-snug text-white">IDN Solo</h3>
+              <p class="mt-4 text-base font-medium leading-6 text-gray-300">Cabang Solo hadir sebagai perluasan misi IDN untuk menjangkau lebih banyak pelajar di Jawa Tengah dan sekitarnya.</p>
+              <div class="mt-4 flex flex-wrap items-center gap-2">
+                <span class="rounded-full bg-white/20 px-5 py-2.5 text-base font-medium text-white">SMP</span>
+                <span class="rounded-full bg-white/20 px-5 py-2.5 text-base font-medium text-white">SMK</span>
+              </div>
+            </div>
+            <a href="#" class="w-full rounded-xl border-2 border-gray-200 bg-white py-4 px-6 text-center text-lg font-semibold text-gray-800 transition hover:bg-gray-100">Selengkapnya</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="branch-card relative flex h-[500px] flex-col justify-end overflow-hidden rounded-2xl animate-on-scroll" style="transition-delay: 600ms;">
+        <img src="images/idn_sentul.png" alt="IDN Sentul Campus" class="absolute inset-0 h-full w-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
+        <div class="relative z-10 flex flex-col justify-end p-4">
+          <div class="flex flex-col gap-8">
+            <div>
+              <h3 class="text-3xl font-semibold leading-snug text-white">IDN Sentul</h3>
+              <p class="mt-4 text-base font-medium leading-6 text-gray-300">IDN Sentul menjadi salah satu cabang dengan fasilitas modern dan lokasi yang strategis dekat pusat kota Bogor.</p>
+              <div class="mt-4 flex flex-wrap items-center gap-2">
+                <span class="rounded-full bg-white/20 px-5 py-2.5 text-base font-medium text-white">SMP</span>
+                <span class="rounded-full bg-white/20 px-5 py-2.5 text-base font-medium text-white">SMK</span>
+              </div>
+            </div>
+            <a href="#" class="w-full rounded-xl border-2 border-gray-200 bg-white py-4 px-6 text-center text-lg font-semibold text-gray-800 transition hover:bg-gray-100">Selengkapnya</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="branch-card relative flex h-[500px] flex-col justify-end overflow-hidden rounded-2xl animate-on-scroll" style="transition-delay: 750ms;">
+        <img src="images/idn_malang.png" alt="IDN Malang Campus" class="absolute inset-0 h-full w-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
+        <div class="relative z-10 flex flex-col justify-end p-4">
+          <div class="flex flex-col gap-8">
+            <div>
+              <h3 class="text-3xl font-semibold leading-snug text-white">IDN Malang</h3>
+              <p class="mt-4 text-base font-medium leading-6 text-gray-300">Berlokasi di lingkungan yang sejuk dan kondusif, IDN Malang menjadi cabang yang mengedepankan kreativitas dan eksplorasi.</p>
+              <div class="mt-4 flex flex-wrap items-center gap-2">
+                <span class="rounded-full bg-white/20 px-5 py-2.5 text-base font-medium text-white">SMP</span>
+                <span class="rounded-full bg-white/20 px-5 py-2.5 text-base font-medium text-white">SMK</span>
+              </div>
+            </div>
+            <a href="#" class="w-full rounded-xl border-2 border-gray-200 bg-white py-4 px-6 text-center text-lg font-semibold text-gray-800 transition hover:bg-gray-100">Selengkapnya</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+      </section>
+
+
+      <section id="registration" class="relative overflow-hidden bg-gradient-to-r from-[#0025ba] to-[#5879ff] py-[90px] text-white">
+        <div class="container w-full max-w-[1220px] mx-auto px-5 box-border flex flex-col items-center gap-[60px] lg:gap-[120px]">
+            <div class="flex flex-col items-center gap-4 text-center animate-fade-in">
+                <h2 class="font-poppins font-bold text-4xl md:text-5xl">Alur Pendaftaran Santri Baru</h2>
+                <p class="font-semibold text-2xl md:text-3xl">Berikut ini beberapa tahapan untuk bisa gabung jadi santri IDN Boarding School</p>
+            </div>
+            <div class="timeline hidden lg:block animate-on-scroll">
+                <div class="timeline-line"></div>
+                <div class="timeline-item item-1">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content bottom">
+                        <h4 class="text-xl font-bold leading-7">Pendaftaran Dibuka</h4>
+                        <div class="flex items-center gap-2 mt-2 text-text-gray font-semibold">
+                            <img src="images/8901_1356.svg" alt="calendar icon">
+                            <span>23 Agustus 2025</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item item-2"><div class="timeline-dot"></div><div class="timeline-content top"><h4 class="text-xl font-bold leading-7">Isi Form di Website IDN</h4></div></div>
+                <div class="timeline-item item-3"><div class="timeline-dot"></div><div class="timeline-content bottom"><h4 class="text-xl font-bold leading-7">Mengikuti Tes Seleksi</h4></div></div>
+                <div class="timeline-item item-4"><div class="timeline-dot"></div><div class="timeline-content top"><h4 class="text-xl font-bold leading-7">Menunggu Hasil Kelulusan</h4></div></div>
+                <div class="timeline-item item-5"><div class="timeline-dot"></div><div class="timeline-content bottom"><h4 class="text-xl font-bold leading-7">Melakukan Daftar Ulang</h4></div></div>
+            </div>
+            <div class="flex flex-col items-center gap-[30px] animate-scale">
+                <h2 class="font-poppins font-bold text-4xl md:text-5xl text-center">Ayo Daftarkan Sekarang Juga!</h2>
+                <a href="#" class="btn bg-accent-orange text-white border-none shadow-[0px_4px_25px_0px_rgba(0,0,0,0.15)] inline-flex justify-center items-center gap-2.5 py-3 md:py-3.5 px-6 md:px-7 rounded-xl font-semibold text-base md:text-lg cursor-pointer transition-all duration-300 ease-in-out relative overflow-hidden hover:-translate-y-1 hover:shadow-lg active:-translate-y-px">Daftar Santri Baru <img src="images/I8901_1472_6048_64342.svg" alt="arrow right"></a>
+            </div>
+        </div>
+      </section>
+
+      <section id="location" class="relative overflow-hidden bg-primary-blue py-[60px] md:py-[90px]">
+        <div class="container w-full max-w-[1220px] mx-auto px-5 box-border flex flex-col gap-[60px] items-center">
+            <h3 class="font-semibold text-2xl md:text-3xl text-center text-white animate-fade-in">Lokasi IDN Boarding School</h3>
+      <div class="w-full rounded-lg overflow-hidden shadow-[0_4px_15px_rgba(0,0,0,0.2)] animate-on-scroll">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.9715071589053!2d107.03556067437898!3d-6.5252822934672965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69bc6e5be3d9bd%3A0x6b9881dabd801476!2sSMK%20IDN%20Boarding%20School!5e0!3m2!1sid!2sid!4v1760608092970!5m2!1sid!2sid"
+          width="100%"
+          height="450"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="footer" class="font-figtree">
+      <div class="bg-dark-blue text-white py-[50px]">
+          <div class="container w-full max-w-[1220px] mx-auto px-5 box-border flex flex-col lg:flex-row justify-between gap-[60px]">
+              <div class="max-w-[360px] flex flex-col gap-[30px] items-start animate-slide-left">
+                  <img src="images/logo_idn.png" alt="IDN Boarding School Logo" class="h-[81px] transition-transform duration-300 ease-in-out hover:scale-110">
+                  <p class="text-base leading-6 font-medium">lembaga pendidikan berbasis IT yang memandang pendidikan sebagai investasi terbaik dalam kehidupan manusia, karena melalui pendidikan, kita dapat membangun karakter dan peradaban yang lebih maju.</p>
+                  <div class="flex gap-6">
+                      <a href="https://www.instagram.com/idnboardingschool/" target="_blank" class="transition-transform duration-300 ease-in-out hover:-translate-y-1"><img src="images/8836_1040.svg" alt="Instagram" class="w-[30px] h-[30px]"></a>
+                      <a href="https://api.whatsapp.com/send?phone=6281216653328" target="_blank" class="transition-transform duration-300 ease-in-out hover:-translate-y-1"><img src="images/8836_1041.svg" alt="WhatsApp" class="w-[30px] h-[30px]"></a>
+                      <a href="https://www.facebook.com/idnboardingschool/?locale=id_ID" target="_blank" class="transition-transform duration-300 ease-in-out hover:-translate-y-1"><img src="images/8836_1042.svg" alt="Facebook" class="w-[30px] h-[30px]"></a>
+                      <a href="https://www.youtube.com/@IDNTV2022" class="transition-transform duration-300 ease-in-out hover:-translate-y-1"><img src="images/8836_1043.svg" alt="YouTube" class="w-[30px] h-[30px]"></a>
+                  </div>
+              </div>
+              <div class="footer-links flex flex-col md:flex-row gap-[30px] md:gap-[60px] animate-slide-right">
+                  <nav class="flex flex-col gap-3">
+                      <a href="#" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">PPDB</a>
+                      <a href="#" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">Akademik SMK</a>
+                      <a href="#" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">Akademik SMP</a>
+                      <a href="#" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">Ekstrakurikuler</a>
+                      <a href="#" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">Program Internasional</a>
+                      <a href="#" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">Backpacker</a>
+                      <a href="#" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">IDN Mengajar</a>
+                      <a href="#" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">Live In</a>
+                  </nav>
+                  <nav class="flex flex-col gap-3">
+                      <a href="#" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">Susur Goa</a>
+                      <a href="#" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">Business Survival</a>
+                      <a href="#" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">Edurace</a>
+                      <a href="#" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">IDN Bersyukur</a>
+                      <a href="#" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">LDKS</a>
+                      <a href="#" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">IT Camp</a>
+                      <a href="#" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">Artikel</a>
+                      <a href="https://api.whatsapp.com/send?phone=6282116653328" target="_blank" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">Kontak</a>
+                  </nav>
+              </div>
+          </div>
+      </div>
+      <div class="bg-white py-2.5">
+          <div class="container w-full max-w-[1220px] mx-auto px-5 box-border flex flex-col md:flex-row justify-between items-center gap-5">
+              <p class="font-poppins text-sm text-[#535353] font-light">© Copyright 2025 - <strong class="font-semibold text-blue-500">IDN Boarding School</strong></p>
+              <div class="flex items-center gap-4">
+                  <img src="images/016698a76ad9a32430b855f5b14e67f975aa7f1d.png" alt="Partner Logo 1" class="h-[41px] object-contain">
+                  <img src="images/ff4dd3f58988e9c84b9bb141610e22b15ccd7517.png" alt="Partner Logo 2" class="h-[41px] object-contain">
+                  <img src="images/7aa61f391f8a3e5ee44b96311384f438a35fda38.png" alt="Partner Logo 3" class="h-[41px] object-contain">
+                  <img src="images/afa19fa50240996d441fda41861cd78ab62d92c7.png" alt="Partner Logo 4" class="h-[41px] object-contain">
+              </div>
+          </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+  // Custom Cursor
+  const cursorRing = document.querySelector('.custom-cursor');
+  const cursorDot = document.querySelector('.cursor-follower');
+
+  let mouseX = 0;
+  let mouseY = 0;
+  let ringX = 0;
+  let ringY = 0;
+  let dotX = 0;
+  let dotY = 0;
+  // Adjust speed values for different animation feel
+  const ringSpeed = 0.10; // Ring lags more
+  const dotSpeed = 0.7;  // Dot is more responsive
+
+  document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      
+      if (!cursorRing.classList.contains('active')) {
+          cursorRing.classList.add('active');
+          cursorDot.classList.add('active');
+      }
+  });
+
+  document.addEventListener('mouseleave', () => {
+      cursorRing.classList.remove('active');
+      cursorDot.classList.remove('active');
+  });
+
+  function animateCursor() {
+      // Move ring towards mouse with a delay
+      ringX += (mouseX - ringX) * ringSpeed;
+      ringY += (mouseY - ringY) * ringSpeed;
+
+      // Move dot towards mouse faster
+      dotX += (mouseX - dotX) * dotSpeed;
+      dotY += (mouseY - dotY) * dotSpeed;
+      
+      cursorRing.style.left = ringX + 'px';
+      cursorRing.style.top = ringY + 'px';
+      
+      cursorDot.style.left = dotX + 'px';
+      cursorDot.style.top = dotY + 'px';
+      
+      requestAnimationFrame(animateCursor);
+  }
+  animateCursor();
+
+  // Click animation listeners
+  document.addEventListener('mousedown', () => {
+      cursorRing.classList.add('clicked');
+      cursorDot.classList.add('clicked');
+  });
+  document.addEventListener('mouseup', () => {
+      cursorRing.classList.remove('clicked');
+      cursorDot.classList.remove('clicked');
+  });
+
+  // Hover effect listeners
+  const hoverElements = document.querySelectorAll('a, button, .btn, .major-card, .project-card, .achievement-card, .branch-card, .logo-box, .logo');
+  hoverElements.forEach(el => {
+      el.addEventListener('mouseenter', () => cursorRing.classList.add('hover'));
+      el.addEventListener('mouseleave', () => cursorRing.classList.remove('hover'));
+  });
+
+  // Parallax Effect
+  const parallaxElements = document.querySelectorAll('.parallax-element');
+  document.addEventListener('mousemove', (e) => {
+    const mouseXPercent = (e.clientX / window.innerWidth - 0.5) * 2;
+    const mouseYPercent = (e.clientY / window.innerHeight - 0.5) * 2;
+    parallaxElements.forEach(el => {
+      const speed = el.dataset.speed || 0.5;
+      const x = mouseXPercent * 50 * speed;
+      const y = mouseYPercent * 50 * speed;
+      el.style.transform = `translate(${x}px, ${y}px)`;
+    });
+  });
+
+  // Scroll Animations
+  const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -100px 0px' };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animated');
+      }
+    });
+  }, observerOptions);
+  const animatedElements = document.querySelectorAll('.animate-on-scroll, .animate-fade-in, .animate-slide-left, .animate-slide-right, .animate-scale');
+  animatedElements.forEach(el => observer.observe(el));
+
+  // Header scroll effect
+  const header = document.querySelector('.main-header');
+  window.addEventListener('scroll', () => {
+    window.pageYOffset > 50 ? header.classList.add('scrolled') : header.classList.remove('scrolled');
+  });
+
+  // Filter buttons logic
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach(b => {
+        b.classList.remove('active', 'bg-primary-blue', 'text-white', 'font-bold');
+        b.classList.add('bg-transparent', 'text-text-gray');
+      });
+      btn.classList.add('active', 'bg-primary-blue', 'text-white', 'font-bold');
+      btn.classList.remove('bg-transparent', 'text-text-gray');
+    });
+  });
+  
+  // Stagger animation (using CSS transition-delay for simplicity)
+  const addStaggerAnimation = (selector, delay = 100) => {
+    document.querySelectorAll(selector).forEach((item, index) => {
+      item.style.transitionDelay = `${index * delay}ms`;
+    });
+  };
+  addStaggerAnimation('.major-card', 150);
+  addStaggerAnimation('.project-card', 150);
+  addStaggerAnimation('.achievement-card', 150);
+  addStaggerAnimation('.branch-card', 100);
+  addStaggerAnimation('.logo-box', 50);
+
+  const branchCards = document.querySelectorAll('.branch-card');
+
+branchCards.forEach(card => {
+    const cardImage = card.querySelector('img');
+
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        // Calculate rotation based on mouse position
+        const rotateX = ((y - centerY) / centerY) * -10; // Max 10deg tilt
+        const rotateY = ((x - centerX) / centerX) * 10;
+
+        // Calculate translation for parallax effect
+        const moveX = ((x - centerX) / centerX) * 20; // Max 20px movement
+        const moveY = ((y - centerY) / centerY) * 20;
+
+        // Apply 3D transform to image
+        cardImage.style.transform = `
+        scale(1.1) 
+        perspective(1000px) 
+        rotateX(${rotateX}deg) 
+        rotateY(${rotateY}deg)
+        translate(${moveX}px, ${moveY}px)
+      `;
+    });
+
+    card.addEventListener('mouseleave', () => {
+        // Reset transform when mouse leaves
+        cardImage.style.transform = 'scale(1) perspective(1000px) rotateX(0) rotateY(0) translate(0, 0)';
+    });
+});
+
+  const carouselTrack = document.getElementById('carousel-track');
+  const prevBtn = document.getElementById('carousel-prev');
+  const nextBtn = document.getElementById('carousel-next');
+  const indicators = document.querySelectorAll('.carousel-indicator');
+  const slides = document.querySelectorAll('.carousel-slide');
+  let currentIndex = 0;
+  const totalSlides = 7;
+  let isAnimating = false;
+
+  function updateCarousel(direction = 'next') {
+    if (isAnimating) return;
+    isAnimating = true;
+
+    // Add animation class based on direction
+    carouselTrack.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+    
+    // Animate slides
+    slides.forEach((slide, index) => {
+      if (index === currentIndex) {
+        // Current slide fade in and scale up
+        slide.style.opacity = '1';
+        slide.style.transform = 'scale(1)';
+      } else {
+        // Other slides fade out
+        slide.style.opacity = '0.3';
+        slide.style.transform = 'scale(0.95)';
+      }
+    });
+
+    const offset = -currentIndex * 100;
+    carouselTrack.style.transform = `translateX(${offset}%)`;
+    
+    // Update indicators with animation
+    indicators.forEach((indicator, index) => {
+      indicator.style.transition = 'all 0.3s ease-in-out';
+      if (index === currentIndex) {
+        indicator.classList.remove('bg-gray-300');
+        indicator.classList.add('bg-primary-blue');
+        indicator.style.transform = 'scale(1.3)';
+        indicator.style.width = '32px';
+        indicator.style.borderRadius = '6px';
+      } else {
+        indicator.classList.remove('bg-primary-blue');
+        indicator.classList.add('bg-gray-300');
+        indicator.style.transform = 'scale(1)';
+        indicator.style.width = '12px';
+        indicator.style.borderRadius = '50%';
+      }
+    });
+
+    // Animate navigation buttons
+    if (direction === 'next') {
+      nextBtn.style.transform = 'scale(0.9) rotate(10deg)';
+      setTimeout(() => {
+        nextBtn.style.transform = 'scale(1) rotate(0deg)';
+      }, 150);
+    } else {
+      prevBtn.style.transform = 'scale(0.9) rotate(-10deg)';
+      setTimeout(() => {
+        prevBtn.style.transform = 'scale(1) rotate(0deg)';
+      }, 150);
+    }
+
+    setTimeout(() => {
+      isAnimating = false;
+    }, 800);
+  }
+
+  prevBtn.addEventListener('click', () => {
+    if (isAnimating) return;
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    updateCarousel('prev');
+  });
+
+  nextBtn.addEventListener('click', () => {
+    if (isAnimating) return;
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateCarousel('next');
+  });
+
+  // Indicator click functionality with animation
+  indicators.forEach((indicator, index) => {
+    indicator.addEventListener('click', () => {
+      if (isAnimating || currentIndex === index) return;
+      const direction = index > currentIndex ? 'next' : 'prev';
+      currentIndex = index;
+      updateCarousel(direction);
+    });
+  });
+
+  // Add keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+      prevBtn.click();
+    } else if (e.key === 'ArrowRight') {
+      nextBtn.click();
+    }
+  });
+
+  // Add swipe support for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  carouselTrack.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  carouselTrack.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
+
+  function handleSwipe() {
+    if (touchEndX < touchStartX - 50) {
+      nextBtn.click();
+    }
+    if (touchEndX > touchStartX + 50) {
+      prevBtn.click();
+    }
+  }
+
+  // Initialize carousel with first slide animation
+  updateCarousel();
+
+  // Auto-play carousel (optional - uncomment to enable)
+  let autoplayInterval = setInterval(() => {
+    nextBtn.click();
+  }, 5000);
+
+  // Pause autoplay on hover (if autoplay is enabled)
+  carouselTrack.addEventListener('mouseenter', () => {
+    clearInterval(autoplayInterval);
+  });
+
+  carouselTrack.addEventListener('mouseleave', () => {
+    autoplayInterval = setInterval(() => {
+      nextBtn.click();
+    }, 5000);
+  });
+
+// --- SCRIPT PERBAIKAN UNTUK FILTER PROYEK JURUSAN ---
+
+// 1. Data untuk setiap kartu proyek (tidak ada perubahan di sini)
+const projectsData = {
+  dkv: [
+    {
+      image: 'images/76e803f72748c92743ac8e76d8c672f488b9ada0.png',
+      title: 'Web Design',
+      description: 'Craft Engaging, User Friendly Website, provide the best website for user.',
+      tags: ['Landing Page', 'School Website', 'Portfolio']
+    },
+    {
+      image: 'images/0894bad173f73a2fff816853a3f05614630e0dfc.png',
+      title: 'UI/UX Design',
+      description: 'Create Simple, User Friendly App, also with the Feature and others.',
+      tags: ['UI Design', 'UX Design', 'Prototype', 'Product Design', 'User Flow']
+    },
+    {
+      image: 'images/6d0dc842ceb4601ba70f047c1a7478ba5822bf04.png',
+      title: 'Graphic Design',
+      description: 'Make an Amazing & Beneficial Design, that is useful for user property.',
+      tags: ['UI Design', 'UX Design', 'Prototype', 'Product Design', 'User Flow']
+    }
+  ],
+  tkj: [
+    {
+      image: 'images/routing.png',
+      title: 'Routing',
+      description: 'Build your network, master digital connections with Cisco certification.',
+      tags: ['Topology', 'Cisco', 'Packet Tracer']
+    },
+    {
+      image: 'images/tkj_certification.png',
+      title: 'Certification',
+      description: 'Master modern networking technology and earn an international certification.',
+      tags: ['Networking', 'Experience', 'Certification', 'Cisco', 'Knowledge']
+    },
+    {
+      image: 'images/switching.png',
+      title: 'Switching',
+      description: 'Strong routing, fast switching — your future stays connected.',
+      tags: ['Data', 'Layer', 'Packet', 'Switch', 'Hardware']
+    }
+  ],
+  rpl: [
+    {
+      image: 'images/web_dev.png',
+      title: 'Website Dev',
+      description: 'Developing Website using the HTML, CSS & JavaScript Language.',
+      tags: ['Landing Page', 'Dashboard', 'Absention Website']
+    },
+    {
+      image: 'images/mobile_app.png',
+      title: 'Mobile Application',
+      description: 'Develop cross-platform mobile apps with beautiful UI and smooth performance.',
+      tags: ['Mobile', 'Application', 'Printing App', 'E-Commerce', 'Shop']
+    },
+    {
+      image: 'images/rpl_certification.png',
+      title: 'Certification',
+      description: 'Create complete solutions from frontend to backend with modern frameworks.',
+      tags: ['Course', 'Certification', 'Code', 'Knowledge', 'Experience']
+    }
+  ]
+};
+
+// 2. Fungsi untuk menampilkan kartu proyek berdasarkan kategori (Dengan Perbaikan)
+function renderProjects(category) {
+  const container = document.getElementById('projects-container');
+  if (!container) return; 
+
+  const projects = projectsData[category];
+  
+  container.style.opacity = '0';
+  container.style.transform = 'translateY(20px)';
+  
+  setTimeout(() => {
+    container.innerHTML = projects.map(project => `
+      <div class="project-card bg-white rounded-2xl shadow-[0px_4px_25px_0px_rgba(0,0,0,0.15)] overflow-hidden p-2 flex flex-col gap-2 transition-all duration-300 ease-in-out hover:-translate-y-2.5 hover:shadow-[0px_15px_40px_rgba(0,0,0,0.25)] group">
+        <div class="overflow-hidden rounded-lg">
+          <img src="${project.image}" alt="${project.title}" class="w-full h-[200px] object-cover rounded-lg transition-transform duration-500 ease-in-out group-hover:scale-110">
+        </div>
+        
+        <div class="p-4 rounded-lg flex flex-col gap-4 flex-grow" style="background-color: #f0f0f0;">
+          <h3 class="text-3xl font-semibold leading-10 text-text-dark">${project.title}</h3>
+          
+          <p class="text-base font-medium leading-6 text-text-gray">${project.description}</p>
+          
+          <div class="flex flex-wrap gap-2 mt-auto">
+            ${project.tags.map(tag => `<span class="bg-white text-text-gray text-sm py-1.5 px-2.5 rounded-full transition-all duration-300 ease-in-out hover:bg-primary-blue hover:text-white hover:scale-110">${tag}</span>`).join('')}
+          </div>
+        </div>
+      </div>
+    `).join('');
+    
+    setTimeout(() => {
+      container.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      container.style.opacity = '1';
+      container.style.transform = 'translateY(0)';
+    }, 50);
+
+  }, 300);
+}
+
+// 3. Logika untuk tombol filter (tidak ada perubahan di sini)
+const projectFilterButtons = document.querySelectorAll('.project-filter-btn');
+
+// Add a click event listener to each button
+projectFilterButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const category = btn.dataset.category;
+    
+    projectFilterButtons.forEach(b => {
+      b.classList.remove('bg-primary-blue', 'text-white', 'font-bold');
+      b.classList.add('bg-transparent', 'text-text-gray');
+    });
+    
+    btn.classList.add('bg-primary-blue', 'text-white', 'font-bold');
+    btn.classList.remove('bg-transparent', 'text-text-gray');
+    
+    renderProjects(category);
+  });
+});
+
+// 4. Panggilan Awal (tidak ada perubahan di sini)
+document.addEventListener('DOMContentLoaded', () => {
+  renderProjects('dkv');
+});
+  </script>
+</body>
+</html>
