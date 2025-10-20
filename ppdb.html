@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IDN Boarding School - PPDB</title>
+    <link href="./dist/output.css" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Poppins:wght@300;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "brand-dark-blue": "#0e2464",
+              "brand-blue": "#1c4cd0",
+              "brand-gradient-from": "#0126b9",
+              "brand-gradient-to": "#5879ff",
+              "brand-accent": "#f59e0b",
+              "brand-muted": "#717680",
+              "brand-light-muted": "#d5d7da",
+              "brand-danger": "#d92d21",
+            },
+            fontFamily: {
+              figtree: ["Figtree", "sans-serif"],
+              poppins: ["Poppins", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: "Figtree", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header id="section-header" class="bg-brand-dark-blue sticky top-0 z-50">
+      <div
+        class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-28 h-[90px] flex items-center justify-between"
+      >
+        <!-- Logo -->
+        <a href="#">
+          <img src="./images//logo_idn.png" alt="Logo" class="h-12" />
+        </a>
+        <!-- Navigation -->
+        <nav class="hidden md:flex items-center gap-4">
+          <a
+            href="index.html"
+            class="text-white font-figtree text-lg px-3.5 py-3 rounded-lg hover:bg-white/10 transition-colors"
+            >Beranda</a
+          >
+          <a
+            href="ppdb.html"
+            class="text-white font-figtree font-semibold text-xl px-3.5 py-3 rounded-lg hover:bg-white/10 transition-colors"
+            >PPDB</a
+          >
+          <a
+            href="kurikulumsmp.html"
+            class="text-white font-figtree text-lg px-3.5 py-3 rounded-lg hover:bg-white/10 transition-colors flex items-center gap-2"
+          >
+            Kurikulum
+            <img
+              src="./images//I8941_12423_8931_30799_8039_20104.svg"
+              alt="dropdown icon"
+              class="w-6 h-6"
+            />
+          </a>
+          <a
+            href="#"
+            class="text-white font-figtree text-lg px-3.5 py-3 rounded-lg hover:bg-white/10 transition-colors flex items-center gap-2"
+          >
+            Program
+            <img
+              src="./images//I8941_12423_8931_30800_8039_20104.svg"
+              alt="dropdown icon"
+              class="w-6 h-6"
+            />
+          </a>
+          <a
+            href="#"
+            class="text-white font-figtree text-lg px-3.5 py-3 rounded-lg hover:bg-white/10 transition-colors"
+            >Artikel</a
+          >
+          <a
+            href="#"
+            class="text-white font-figtree text-lg px-3.5 py-3 rounded-lg hover:bg-white/10 transition-colors"
+            >Kontak</a
+          >
+        </nav>
+        <!-- Mobile menu button -->
+        <button class="md:hidden text-white">
+          <svg
+            class="w-8 h-8"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            ></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+    <!-- Hero Section -->
+    <section
+      id="section-hero"
+      class="bg-gradient-to-r from-brand-gradient-from to-brand-gradient-to py-32"
+    >
+      <div
+        class="max-w-6xl mx-auto px-4 grid lg:grid-cols-2 gap-16 lg:gap-24 items-center"
+      >
+        <div class="flex justify-center">
+          <img
+            src="./images//0477a4c278f58e2b356be3e63d8f1c338657c919.png"
+            alt="Santri illustration"
+            class="w-full max-w-md lg:max-w-lg"
+          />
+        </div>
+        <div class="text-center lg:text-left flex flex-col gap-8">
+          <h1
+            class="font-poppins font-semibold text-5xl lg:text-6xl text-white leading-tight"
+          >
+            Penerimaan Santri Baru Tahun Ajaran 2026-2027
+          </h1>
+          <p
+            class="font-figtree font-medium text-xl lg:text-2xl text-brand-light-muted"
+          >
+            Ayo daftar segera, ini saatnya anda menjadi bagian keluarga besar
+            IDN!
+          </p>
+          <div class="flex items-center gap-4 justify-center lg:justify-start">
+            <a
+              href="#"
+              class="bg-white text-brand-blue border-2 border-brand-blue font-semibold px-6 py-4 rounded-xl flex items-center gap-2.5 hover:bg-gray-100 transition-colors"
+            >
+              <span>Daftar</span>
+              <img
+                src="./images//I8943_12662_6048_64342.svg"
+                alt="arrow right"
+                class="w-6 h-6"
+              />
+            </a>
+            <a
+              href="#"
+              class="bg-brand-blue text-white border-2 border-white font-semibold px-6 py-4 rounded-xl flex items-center gap-2.5 hover:bg-blue-800 transition-colors"
+            >
+              <span>Login</span>
+              <img
+                src="./images//I8943_12881_6048_64342.svg"
+                alt="arrow right"
+                class="w-6 h-6"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Administrative Requirements Section -->
+    <section id="section-requirements" class="py-24 bg-white relative">
+      <img
+        src="./images//8949_13511.svg"
+        alt="background pattern"
+        class="absolute top-0 left-0 w-full h-auto -z-10"
+      />
+      <div class="max-w-6xl mx-auto px-4 flex flex-col items-center gap-16">
+        <div
+          class="bg-brand-blue text-white font-figtree font-semibold text-3xl py-2 px-6 rounded-lg shadow-lg flex items-center gap-3"
+        >
+          <img
+            src="./images//8949_12998.svg"
+            alt="file list icon"
+            class="w-7 h-7"
+          />
+          <span>Persyaratan Administrasi</span>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-16 lg:gap-32 items-center w-full">
+          <div class="flex justify-center">
+            <img
+              src="./images//8949_13007.svg"
+              alt="Administrative documents illustration"
+              class="w-full max-w-md"
+            />
+          </div>
+          <div class="flex flex-col gap-5">
+            <h2 class="text-3xl font-semibold text-gray-800">
+              Apa yang harus di persiapkan?
+            </h2>
+            <ul class="space-y-3 text-xl font-medium text-brand-muted">
+              <li>• Pas photo 80% wajah, background biru</li>
+              <li>• Akte kelahiran</li>
+              <li>• KTP orang tua</li>
+              <li>• Kartu Keluarga</li>
+              <li>• Surat pernyataan orang tua (format disediakan)</li>
+              <li>• Surat pernyataan santri (format disediakan)</li>
+              <li>• Sertifikat prestasi (jika ada)</li>
+            </ul>
+            <p class="text-xl text-brand-muted mt-4">
+              Semua berkas di atas disediakan dalam bentuk
+              <strong class="font-bold text-gray-900">Soft Copy/Scan</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Education Fees Section -->
+    <section id="section-fees" class="py-24 bg-white">
+      <div class="max-w-6xl mx-auto px-4 flex flex-col items-center gap-16">
+        <div
+          class="bg-brand-blue text-white font-figtree font-semibold text-3xl py-2 px-6 rounded-lg shadow-lg flex items-center gap-3"
+        >
+          <img
+            src="./images//8941_12252.svg"
+            alt="wallet icon"
+            class="w-7 h-7"
+          />
+          <span>Biaya Pendidikan</span>
+        </div>
+        <div class="w-full flex flex-col gap-8">
+          <!-- Fee Card 1 -->
+          <div class="bg-white rounded-2xl shadow-lg p-5 flex flex-col gap-4">
+            <div class="flex items-baseline gap-2">
+              <span class="text-4xl font-bold text-blue-500">900rb</span>
+              <span class="text-sm font-medium text-brand-muted"
+                >Sekali bayar</span
+              >
+            </div>
+            <div class="flex flex-col gap-2">
+              <h3 class="text-lg font-semibold text-black">Pendaftaran</h3>
+              <p class="text-base font-medium text-brand-muted">
+                Biaya Pendaftaran harus ditransferkan paling lambat 3 hari
+                setelah membuat akun di sistem PSB Online. Sudah termasuk biaya
+                Tes Masuk (Psikotes, Tes online, Tes wawancara orang tua dan
+                santri)
+              </p>
+            </div>
+          </div>
+          <!-- Fee Card 2 -->
+          <div class="bg-white rounded-2xl shadow-lg p-5 flex flex-col gap-4">
+            <div class="flex items-baseline gap-2">
+              <span class="text-4xl font-bold text-blue-500">40jt</span>
+              <span class="text-sm font-medium text-brand-muted"
+                >Sekali bayar</span
+              >
+            </div>
+            <div class="flex flex-col gap-2">
+              <h3 class="text-lg font-semibold text-black">Biaya Masuk</h3>
+              <ul
+                class="text-base font-medium text-brand-muted list-disc list-inside space-y-1"
+              >
+                <li>Biaya Pengembangan Pendidikan</li>
+                <li>Biaya Organisasi Santri</li>
+                <li>Ekstrakurikuler Tahun Pertama</li>
+                <li>Pelayanan Kesehatan</li>
+                <li>Seragam sekolah 3 Stel</li>
+                <li>Seragam olahraga 1 Stel</li>
+                <li>Kebutuhan asrama : kasur, ranjang, lemari, dll</li>
+                <li>Biaya kegiatan tahun pertama</li>
+                <li>Buku/modul pembelajaran tahun pertama</li>
+                <li class="text-brand-danger">
+                  Biaya TIDAK termasuk SPP Bulan Juli 2026
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- Fee Card 3 -->
+          <div class="bg-white rounded-2xl shadow-lg p-5 flex flex-col gap-4">
+            <div class="flex items-baseline gap-2">
+              <span class="text-4xl font-bold text-blue-500">4jt</span>
+              <span class="text-sm font-medium text-brand-muted"
+                >per Tahun</span
+              >
+            </div>
+            <div class="flex flex-col gap-2">
+              <h3 class="text-lg font-semibold text-black">Biaya Tahunan</h3>
+              <p class="text-base font-medium text-brand-muted">
+                Termasuk biaya kegiatan character development baik di dalam
+                maupun luar pesantren. Termasuk biaya ekstrakulikuler di dalam
+                maupun di luar pesantren. Termasuk biaya kegiatan entrepreneur
+                baik di dalam maupun luar pesantren. Buku/modul pembelajaran.
+                Dibayarkan saat naik kelas di tahun ke-2 dan ke-3. Biaya tahunan
+                wajib dilunasi paling lambat 1 Juli setiap tahun, mulai tahun
+                kedua.
+              </p>
+            </div>
+          </div>
+          <!-- Fee Card 4 -->
+          <div class="bg-white rounded-2xl shadow-lg p-5 flex flex-col gap-4">
+            <div class="flex items-baseline gap-2">
+              <span class="text-4xl font-bold text-blue-500">4jt</span>
+              <span class="text-sm font-medium text-brand-muted"
+                >per Bulan</span
+              >
+            </div>
+            <div class="flex flex-col gap-2">
+              <h3 class="text-lg font-semibold text-black">SPP</h3>
+              <p class="text-base font-medium text-brand-muted">
+                Dibayarkan setiap bulan paling lambat tanggal 10. Sudah termasuk
+                makan 3x sehari. Fasilitas kesehatan santri, namun diluar biaya
+                operasi, rawat inap, cek lab dll. Sudah termasuk laundry bulanan
+                maksimal 20Kg per bulan, apabila lebih akan dikenakan biaya Rp
+                7.500 per Kg. Biaya Khusus Siswa PKL, biaya bulanan adalah
+                sebesar Rp 1.000.000 per bulan selama Santri menjalankan
+                kegiatan PKL di luar pesantren. Termasuk biaya pendidikan
+                bulanan dan biaya ujian sekolah atau ujian semesteran, namun
+                tidak termasuk biaya ujian khusus seperti Ujian Sertifikasi
+                Cisco, Android Developer, AWS Cloud, serta Ujian-ujian khusus
+                lainnya yang bersifat pilihan/tidak wajib. Dibayarkan selama 12
+                bulan per tahun dengan besaran tetap tanpa adanya pengurangan
+                dikarenakan hari libur, cuti atau ketidakhadiran santri.
+                Termasuk biaya pendidikan bulanan dan biaya ujian sekolah, namun
+                tidak termasuk biaya ujian khusus yang bersifat pilihan seperti
+                Ujian Pengambilan Sanad.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="w-full text-center text-brand-danger font-semibold text-2xl lg:text-3xl leading-tight bg-red-50 p-6 rounded-lg mt-8"
+        >
+          Catatan: Biaya yang sudah di transfer tidak bisa dikembalikan dengan
+          kondisi dan alasan apapun
+        </div>
+      </div>
+    </section>
+    <!-- Branch Uniqueness Section -->
+    <section id="section-branches" class="py-24 bg-white relative">
+      <img
+        src="./images//8951_43170.svg"
+        alt="background pattern"
+        class="absolute top-0 left-0 w-full h-auto -z-10"
+      />
+      <div class="max-w-6xl mx-auto px-4 flex flex-col items-center gap-12">
+        <div class="text-center flex flex-col items-center gap-8">
+          <div
+            class="bg-brand-blue text-white font-figtree font-semibold text-3xl py-2 px-6 rounded-lg shadow-lg flex items-center gap-3"
+          >
+            <img
+              src="./images//9084_1026.svg"
+              alt="star icon"
+              class="w-7 h-7"
+            />
+            <span>Keunikan Antar Cabang</span>
+          </div>
+          <p class="text-2xl text-brand-muted max-w-4xl">
+            Lihat Keunikan masing-masing dari setiap cabang IDN Boarding School
+            yang terletak di berbagai Daerah. setiap Cabang memiliki perbedaan
+            masing-masing.
+          </p>
+        </div>
+        <div class="bg-white rounded-2xl shadow-lg p-4 w-full">
+          <div
+            id="tabs-container"
+            class="flex flex-wrap justify-center border border-gray-200 rounded-md p-1"
+          >
+            <button
+              data-tab="jonggol"
+              class="tab-button px-5 py-3 text-2xl font-medium border border-brand-blue text-gray-900 rounded-md"
+            >
+              Jonggol
+            </button>
+            <button
+              data-tab="akhwat"
+              class="tab-button px-5 py-3 text-2xl font-medium text-brand-muted"
+            >
+              Akhwat
+            </button>
+            <button
+              data-tab="pamijahan"
+              class="tab-button px-5 py-3 text-2xl font-medium text-brand-muted"
+            >
+              Pamijahan
+            </button>
+            <button
+              data-tab="solo"
+              class="tab-button px-5 py-3 text-2xl font-medium text-brand-muted"
+            >
+              Solo
+            </button>
+            <button
+              data-tab="sentul"
+              class="tab-button px-5 py-3 text-2xl font-medium text-brand-muted"
+            >
+              Sentul
+            </button>
+            <button
+              data-tab="malang"
+              class="tab-button px-5 py-3 text-2xl font-medium text-brand-muted"
+            >
+              Malang
+            </button>
+          </div>
+
+          <div
+            id="jonggol"
+            class="tab-content mt-10 lg:mt-16 grid lg:grid-cols-2 gap-8 lg:gap-16 items-start"
+          >
+            <img
+              src="./images//3de51656de9985fd8126f79d15f9b95bbc9870db.png"
+              alt="IDN Jonggol"
+              class="rounded-2xl w-full h-full object-cover"
+            />
+            <div class="flex flex-col gap-6 p-2">
+              <h3 class="text-2xl font-semibold text-gray-900 text-center">
+                Keunikan IDN Jonggol
+              </h3>
+              <ul class="space-y-4">
+                <li
+                  class="flex items-center gap-4 text-xl font-medium text-brand-muted"
+                >
+                  <img src="./images//9071_936.svg" class="w-7 h-7" />Pusat dari
+                  seluruh Cabang
+                </li>
+                <li
+                  class="flex items-center gap-4 text-xl font-medium text-brand-muted"
+                >
+                  <img src="./images//9151_965.svg" class="w-7 h-7" />Lapangan
+                  Futsal
+                </li>
+                <li
+                  class="flex items-center gap-4 text-xl font-medium text-brand-muted"
+                >
+                  <img src="./images//9071_942.svg" class="w-7 h-7" />Lapangan
+                  Basket
+                </li>
+                <li
+                  class="flex items-center gap-4 text-xl font-medium text-brand-muted"
+                >
+                  <img src="./images//9071_946.svg" class="w-7 h-7" />Lapangan
+                  Badminton
+                </li>
+                <li
+                  class="flex items-center gap-4 text-xl font-medium text-brand-muted"
+                >
+                  <img src="./images//9071_950.svg" class="w-7 h-7" />Gedung
+                  Sekolah
+                </li>
+                <li
+                  class="flex items-center gap-4 text-xl font-medium text-brand-muted"
+                >
+                  <img src="./images//9071_954.svg" class="w-7 h-7" />Gedung
+                  Asrama
+                </li>
+                <li
+                  class="flex items-center gap-4 text-xl font-medium text-brand-muted"
+                >
+                  <img src="./images//9151_989.svg" class="w-7 h-7" />Cafe
+                </li>
+                <li
+                  class="flex items-center gap-4 text-xl font-medium text-brand-muted"
+                >
+                  <img
+                    src="./images//9148_949.svg"
+                    class="w-7 h-7"
+                  />Pemandangan Alam
+                </li>
+                <li
+                  class="flex items-center gap-4 text-xl font-medium text-brand-muted"
+                >
+                  <img src="./images//9151_957.svg" class="w-7 h-7" />Sungai
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            id="akhwat"
+            class="tab-content hidden mt-10 lg:mt-16 grid lg:grid-cols-2 gap-8 lg:gap-16 items-start"
+          >
+            <img
+              src="./images//idn_akhwat.png"
+              alt="IDN Akhwat"
+              class="rounded-2xl w-full h-full object-cover"
+            />
+            <div class="flex flex-col gap-6 p-2">
+              <h3 class="text-2xl font-semibold text-gray-900 text-center">
+                Keunikan IDN Akhwat
+              </h3>
+              <ul class="space-y-4">
+                <li
+                  class="flex items-center gap-4 text-xl font-medium text-brand-muted"
+                >
+                  <img src="./images//9071_936.svg" class="w-7 h-7" />Khusus Akhwat
+                </li>
+                <li
+                  class="flex items-center gap-4 text-xl font-medium text-brand-muted"
+                >
+                  <img src="./images//9151_965.svg" class="w-7 h-7" />Kolam Renang
+                </li>
+                <li
+                  class="flex items-center gap-4 text-xl font-medium text-brand-muted"
+                >
+                  <img src="./images//9071_942.svg" class="w-7 h-7" />Lapangan Serbaguna
+                </li>
+                <li
+                  class="flex items-center gap-4 text-xl font-medium text-brand-muted"
+                >
+                  <img src="./images//9148_949.svg" class="w-7 h-7" />Gedung Sekolah
+                </li>
+                <li
+                  class="flex items-center gap-4 text-xl font-medium text-brand-muted"
+                >
+                  <img src="./images//9148_949.svg" class="w-7 h-7" />Gedung Asrama
+                </li>
+                <li
+                  class="flex items-center gap-4 text-xl font-medium text-brand-muted"
+                >
+                  <img src="./images//9148_949.svg" class="w-7 h-7" />Pemandangan Alam
+                </li>
+                <li
+                  class="flex items-center gap-4 text-xl font-medium text-brand-muted"
+                >
+                  <img src="./images//9148_949.svg" class="w-7 h-7" />Sungai
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            id="pamijahan"
+            class="tab-content hidden mt-10 lg:mt-16 grid lg:grid-cols-2 gap-8 lg:gap-16 items-start"
+          >
+            <img
+              src="./images//idn_pamijahan.png"
+              alt="IDN Pamijahan"
+              class="rounded-2xl w-full h-full object-cover"
+            />
+            <div class="flex flex-col gap-6 p-2">
+              <h3 class="text-2xl font-semibold text-gray-900 text-center">
+                Keunikan IDN Pamijahan
+              </h3>
+              <ul class="space-y-4">
+                <li
+                  class="flex items-center gap-4 text-xl font-medium text-brand-muted"
+                >
+                  <img src="./images//9148_949.svg" class="w-7 h-7" />Suasana
+                  Pedesaan Asri
+                </li>
+                <li
+                  class="flex items-center gap-4 text-xl font-medium text-brand-muted"
+                >
+                  <img src="./images//9071_950.svg" class="w-7 h-7" />Fokus pada
+                  Tahfidz Al-Qur'an
+                </li>
+                <li
+                  class="flex items-center gap-4 text-xl font-medium text-brand-muted"
+                >
+                  <img src="./images//9151_957.svg" class="w-7 h-7" />Dekat
+                  dengan Alam
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            id="solo"
+            class="tab-content hidden mt-10 lg:mt-16 grid lg:grid-cols-2 gap-8 lg:gap-16 items-start"
+          >
+            <img
+              src="./images//idn_solo.png"
+              alt="IDN Solo"
+              class="rounded-2xl w-full h-full object-cover"
+            />
+            <div class="flex flex-col gap-6 p-2">
+              <h3 class="text-2xl font-semibold text-gray-900 text-center">
+                Keunikan IDN Solo
+              </h3>
+              <ul class="space-y-4">
+                <li
+                  class="flex items-center gap-4 text-xl font-medium text-brand-muted"
+                >
+                  <img src="./images//9071_936.svg" class="w-7 h-7" />Akses
+                  Mudah di Pusat Kota
+                </li>
+                <li
+                  class="flex items-center gap-4 text-xl font-medium text-brand-muted"
+                >
+                  <img src="./images//9151_965.svg" class="w-7 h-7" />Kurikulum
+                  Berbasis Teknologi
+                </li>
+                <li
+                  class="flex items-center gap-4 text-xl font-medium text-brand-muted"
+                >
+                  <img src="./images//9151_989.svg" class="w-7 h-7" />Kolaborasi
+                  dengan Industri Lokal
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            id="sentul"
+            class="tab-content hidden mt-10 lg:mt-16 grid lg:grid-cols-2 gap-8 lg:gap-16 items-start"
+          >
+            <img
+              src="./images//idn_sentul.png"
+              alt="IDN Sentul"
+              class="rounded-2xl w-full h-full object-cover"
+            />
+            <div class="flex flex-col gap-6 p-2">
+              <h3 class="text-2xl font-semibold text-gray-900 text-center">
+                Keunikan IDN Sentul
+              </h3>
+              <ul class="space-y-4">
+                <li
+                  class="flex items-center gap-4 text-xl font-medium text-brand-muted"
+                >
+                  <img
+                    src="./images//9148_949.svg"
+                    class="w-7 h-7"
+                  />Pemandangan Modern & Strategis
+                </li>
+                <li
+                  class="flex items-center gap-4 text-xl font-medium text-brand-muted"
+                >
+                  <img src="./images//9071_950.svg" class="w-7 h-7" />Fasilitas
+                  Olahraga Lengkap
+                </li>
+                <li
+                  class="flex items-center gap-4 text-xl font-medium text-brand-muted"
+                >
+                  <img src="./images//9071_946.svg" class="w-7 h-7" />Program
+                  Pengembangan Diri
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div
+            id="malang"
+            class="tab-content hidden mt-10 lg:mt-16 grid lg:grid-cols-2 gap-8 lg:gap-16 items-start"
+          >
+            <img
+              src="./images//idn_malang.png"
+              alt="IDN Malang"
+              class="rounded-2xl w-full h-full object-cover"
+            />
+            <div class="flex flex-col gap-6 p-2">
+              <h3 class="text-2xl font-semibold text-gray-900 text-center">
+                Keunikan IDN Malang
+              </h3>
+              <ul class="space-y-4">
+                <li
+                  class="flex items-center gap-4 text-xl font-medium text-brand-muted"
+                >
+                  <img src="./images//9148_949.svg" class="w-7 h-7" />Udara
+                  Sejuk & Pemandangan Gunung
+                </li>
+                <li
+                  class="flex items-center gap-4 text-xl font-medium text-brand-muted"
+                >
+                  <img src="./images//9151_957.svg" class="w-7 h-7" />Kegiatan
+                  Outdoor & Alam
+                </li>
+                <li
+                  class="flex items-center gap-4 text-xl font-medium text-brand-muted"
+                >
+                  <img src="./images//9071_942.svg" class="w-7 h-7" />Fokus pada
+                  Wirausaha
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Registration Flow Section -->
+    <section id="section-timeline" class="py-24 bg-white">
+      <div class="max-w-6xl mx-auto px-4 flex flex-col items-center gap-16">
+        <div
+          class="bg-brand-blue text-white font-figtree font-semibold text-3xl py-2 px-6 rounded-lg shadow-lg flex items-center gap-3"
+        >
+          <img
+            src="./images//8951_40757.svg"
+            alt="calendar icon"
+            class="w-7 h-7"
+          />
+          <span>Alur Pendaftaran Santri Baru</span>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-16 lg:gap-32 items-center w-full">
+          <div class="space-y-4">
+            <div
+              class="bg-white rounded-xl shadow-lg p-4 flex justify-between items-center cursor-pointer"
+            >
+              <span class="text-lg font-semibold text-brand-blue"
+                >Waktu Pendaftaran</span
+              >
+              <img
+                src="./images//I8949_34795_6048_64342.svg"
+                alt="arrow down"
+                class="w-6 h-6"
+              />
+            </div>
+            <div
+              class="bg-white rounded-xl shadow-lg p-4 flex justify-between items-center cursor-pointer"
+            >
+              <span class="text-lg font-semibold text-brand-blue"
+                >Pelaksanaan Tes Masuk</span
+              >
+              <img
+                src="./images//I8949_34853_6048_64342.svg"
+                alt="arrow down"
+                class="w-6 h-6"
+              />
+            </div>
+            <div
+              class="bg-white rounded-xl shadow-lg p-4 flex justify-between items-center cursor-pointer"
+            >
+              <span class="text-lg font-semibold text-brand-blue"
+                >Jenis Tes</span
+              >
+              <img
+                src="./images//I8949_34866_6048_64342.svg"
+                alt="arrow down"
+                class="w-6 h-6"
+              />
+            </div>
+            <div
+              class="bg-white rounded-xl shadow-lg p-4 flex justify-between items-center cursor-pointer"
+            >
+              <span class="text-lg font-semibold text-brand-blue"
+                >Pengumuman Hasil Tes</span
+              >
+              <img
+                src="./images//I8949_34879_6048_64342.svg"
+                alt="arrow down"
+                class="w-6 h-6"
+              />
+            </div>
+            <div
+              class="bg-white rounded-xl shadow-lg p-4 flex justify-between items-center cursor-pointer"
+            >
+              <span class="text-lg font-semibold text-brand-blue"
+                >Daftar Ulang</span
+              >
+              <img
+                src="./images//I8949_34892_6048_64342.svg"
+                alt="arrow down"
+                class="w-6 h-6"
+              />
+            </div>
+          </div>
+          <div class="flex justify-center">
+            <img
+              src="./images//8951_40491.svg"
+              alt="Calendar illustration"
+              class="w-full max-w-lg"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Final CTA Section -->
+    <section id="section-cta" class="py-24 bg-white">
+      <div
+        class="max-w-4xl mx-auto px-4 text-center flex flex-col items-center gap-8"
+      >
+        <h2 class="font-poppins font-bold text-4xl md:text-5xl text-brand-blue">
+          Ayo Daftarkan Sekarang Juga!
+        </h2>
+        <a
+          href="#"
+          class="bg-brand-accent text-white font-semibold px-8 py-4 rounded-xl shadow-lg inline-flex items-center gap-2.5 text-lg hover:bg-amber-600 transition-colors"
+        >
+          <span>Daftar Santri Baru</span>
+          <img
+            src="./images//I8951_45377_6048_64342.svg"
+            alt="arrow right"
+            class="w-6 h-6"
+          />
+        </a>
+      </div>
+    </section>
+    <!-- Location Map Section -->
+    <section
+      id="section-location"
+      class="bg-gradient-to-r from-brand-gradient-from to-brand-gradient-to py-24"
+    >
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-white font-bold text-3xl text-center mb-12">
+          Lokasi IDN Boarding School
+        </h2>
+        <img
+          src="./images//f170e40ae0fa1d3aa60ebde43db4ddf07490887b.png"
+          alt="Map of IDN Boarding School"
+          class="rounded-2xl shadow-lg w-full"
+        />
+      </div>
+    </section>
+    <!-- Footer Section -->
+    <footer id="section-footer" class="bg-brand-dark-blue text-white">
+      <div class="max-w-6xl mx-auto px-4 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          <!-- About -->
+          <div class="space-y-6">
+            <img src="./images//8941_12034.svg" alt="Logo" class="h-20" />
+            <p class="text-base font-medium">
+              lembaga pendidikan berbasis IT yang memandang pendidikan sebagai
+              investasi terbaik dalam kehidupan manusia, karena melalui
+              pendidikan, kita dapat membangun karakter dan peradaban yang lebih
+              maju.
+            </p>
+            <div class="flex items-center gap-6">
+              <a href="#" class="hover:opacity-75"
+                ><img
+                  src="./images//8941_12039.svg"
+                  alt="Instagram"
+                  class="w-7 h-7"
+              /></a>
+              <a href="#" class="hover:opacity-75"
+                ><img
+                  src="./images//8941_12040.svg"
+                  alt="WhatsApp"
+                  class="w-7 h-7"
+              /></a>
+              <a href="#" class="hover:opacity-75"
+                ><img
+                  src="./images//8941_12041.svg"
+                  alt="Facebook"
+                  class="w-7 h-7"
+              /></a>
+              <a href="#" class="hover:opacity-75"
+                ><img
+                  src="./images//8941_12042.svg"
+                  alt="YouTube"
+                  class="w-7 h-7"
+              /></a>
+            </div>
+          </div>
+          <!-- Links 1 -->
+          <div class="space-y-3">
+            <a href="#" class="block text-xl hover:underline">Beranda</a>
+            <a href="#" class="block text-xl hover:underline">Akademik SMK</a>
+            <a href="#" class="block text-xl hover:underline">Akademik SMP</a>
+            <a href="#" class="block text-xl hover:underline"
+              >Ekstrakurikuler</a
+            >
+            <a href="#" class="block text-xl hover:underline"
+              >Program Internasional</a
+            >
+            <a href="#" class="block text-xl hover:underline">Backpacker</a>
+            <a href="#" class="block text-xl hover:underline">IDN Mengajar</a>
+            <a href="#" class="block text-xl hover:underline">Live In</a>
+          </div>
+          <!-- Links 2 -->
+          <div class="space-y-3">
+            <a href="#" class="block text-xl hover:underline">Susur Goa</a>
+            <a href="#" class="block text-xl hover:underline"
+              >Business Survival</a
+            >
+            <a href="#" class="block text-xl hover:underline">Edurace</a>
+            <a href="#" class="block text-xl hover:underline">IDN Bersyukur</a>
+            <a href="#" class="block text-xl hover:underline">LDKS</a>
+            <a href="#" class="block text-xl hover:underline">IT Camp</a>
+            <a href="#" class="block text-xl hover:underline">Artikel</a>
+            <a href="#" class="block text-xl hover:underline">Kontak</a>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white py-4">
+        <div
+          class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-center md:justify-between items-center gap-4"
+        >
+          <p class="text-sm text-gray-500 font-light font-poppins text-center">
+            © Copyright 2025 -
+            <span class="font-semibold text-blue-500">IDN Boarding School</span>
+          </p>
+          <img
+            src="./images//ffecd549aa88dc49a489fe3dc820951c05e9be50.png"
+            alt="Sponsor logos"
+            class="h-10"
+          />
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const tabs = document.querySelectorAll(".tab-button");
+        const tabContents = document.querySelectorAll(".tab-content");
+
+        tabs.forEach((tab) => {
+          tab.addEventListener("click", () => {
+            // Remove active classes from all tabs and hide all content
+            tabs.forEach((item) => {
+              item.classList.remove(
+                "border",
+                "border-brand-blue",
+                "text-gray-900"
+              );
+              item.classList.add("text-brand-muted");
+            });
+            tabContents.forEach((content) => {
+              content.classList.add("hidden");
+            });
+
+            // Add active classes to the clicked tab and show its content
+            tab.classList.add("border", "border-brand-blue", "text-gray-900");
+            tab.classList.remove("text-brand-muted");
+            document.getElementById(tab.dataset.tab).classList.remove("hidden");
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

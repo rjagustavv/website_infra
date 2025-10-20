@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kurikulum SMP<i class="fas fa-wordpress-simple    "></i></title>
+    <link href="./dist/output.css" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&family=Figtree:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              poppins: ["Poppins", "sans-serif"],
+              figtree: ["Figtree", "sans-serif"],
+            },
+            colors: {
+              "brand-blue": {
+                DEFAULT: "#1c4cd0",
+                dark: "#0e2464",
+                darker: "#0025ba",
+                light: "#5879ff",
+              },
+              "brand-gray": {
+                light: "#d5d7da",
+                DEFAULT: "#717680",
+                dark: "#535353",
+                border: "#e9eaeb",
+              },
+              "brand-dark": "#181d27",
+              "brand-amber": "#f59e0b",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header id="section-header" class="bg-brand-blue-dark sticky top-0 z-50">
+      <nav
+        class="mx-auto flex max-w-[1440px] items-center justify-between px-6 lg:px-28 h-[90px]"
+      >
+        <div class="flex lg:flex-1">
+          <a href="#" class="-m-1.5 p-1.5">
+            <span class="sr-only">IDN Boarding School</span>
+            <img
+              class="h-12 w-auto"
+              src="images/logo_idn.png"
+              alt="IDN Boarding School Logo"
+            />
+          </a>
+        </div>
+        <div class="hidden lg:flex lg:gap-x-4 items-center">
+          <a
+            href="index.html"
+            class="px-3.5 py-3 text-lg font-normal font-figtree text-white hover:opacity-80"
+            >Beranda</a
+          >
+          <a
+            href="ppdb.html"
+            class="px-3.5 py-3 text-lg font-normal font-figtree text-white hover:opacity-80"
+            >PPDB</a
+          >
+          <a
+            href="kurikulumsmp.html"
+            class="flex items-center gap-x-2 px-3.5 py-3 text-xl font-semibold font-figtree text-white hover:opacity-80"
+          >
+            Akademik
+            <img
+              src="./images//I9029_16322_8931_30842_8039_20104.svg"
+              class="h-6 w-6"
+              alt="dropdown arrow"
+            />
+          </a>
+          <a
+            href="#"
+            class="flex items-center gap-x-2 px-3.5 py-3 text-lg font-normal font-figtree text-white hover:opacity-80"
+          >
+            Program
+            <img
+              src="./images//I9029_16322_8931_30843_8039_20104.svg"
+              class="h-6 w-6"
+              alt="dropdown arrow"
+            />
+          </a>
+          <a
+            href="#"
+            class="px-3.5 py-3 text-lg font-normal font-figtree text-white hover:opacity-80"
+            >Artikel</a
+          >
+          <a
+            href="#"
+            class="px-3.5 py-3 text-lg font-normal font-figtree text-white hover:opacity-80"
+            >Kontak</a
+          >
+        </div>
+        <!-- Mobile menu button can be added here for responsiveness -->
+        <div class="lg:hidden">
+          <button type="button" class="text-white">
+            <span class="sr-only">Open main menu</span>
+            <svg
+              class="h-8 w-8"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              />
+            </svg>
+          </button>
+        </div>
+      </nav>
+    </header>
+    <!-- Hero Section -->
+    <section
+      id="section-hero"
+      class="relative bg-gradient-to-r from-[#0126b9] to-[#5879ff] py-16"
+    >
+      <div
+        class="container mx-auto px-4 grid md:grid-cols-2 items-center gap-x-24 gap-y-12"
+      >
+        <!-- Image Column -->
+        <div class="relative hidden md:block h-[608px]">
+          <img
+            src="./images//53d010f723a979867783ed5024dde1e6d266c90f.png"
+            alt="Student of IDN Boarding School"
+            class="absolute -bottom-16 left-0 w-auto h-full object-contain  z-10"
+          />
+          <img
+            src="./images//24d3a8922b30a086686ae30ce248b17e93df1729.png"
+            alt="Student of IDN Boarding School"
+            class="absolute -bottom-16 left-40 w-auto h-full object-contain "
+          />
+        </div>
+        <!-- Text Column -->
+        <div class="flex flex-col gap-8 text-left z-10">
+          <h1
+            class="font-poppins font-semibold text-white text-5xl lg:text-6xl leading-tight"
+          >
+            Akademik SMP IDN Boarding School
+          </h1>
+          <p
+            class="font-figtree font-medium text-brand-gray-light text-xl lg:text-2xl leading-relaxed"
+          >
+            Mengintegrasikan pendidikan umum, teknologi, dan nilai-nilai Islam
+            untuk membentuk generasi cerdas, berakhlak, dan siap menghadapi masa
+            depan.
+          </p>
+          <div>
+            <a
+              href="#"
+              class="inline-flex items-center justify-center gap-2.5 rounded-xl bg-white px-6 py-4 text-lg font-semibold text-brand-blue border border-brand-blue hover:bg-gray-100 transition-colors"
+            >
+              <span>Akademik SMK</span>
+              <img
+                src="./images//I9029_16329_6048_64342.svg"
+                class="h-6 w-6"
+                alt="arrow right"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Features/Curriculum Section -->
+    <section id="section-features" class="relative bg-white py-20 lg:py-32">
+      <!-- Background decorative SVGs -->
+      <div class="absolute inset-0 z-0 opacity-30">
+        <img
+          src="./images//9029_894.svg"
+          class="absolute top-0 left-0 w-full h-auto"
+        />
+        <img
+          src="./images//9029_3098.svg"
+          class="absolute top-[1450px] left-0 w-full h-auto"
+        />
+        <img
+          src="./images//9029_5302.svg"
+          class="absolute top-[2900px] left-0 w-full h-auto"
+        />
+      </div>
+
+      <div
+        class="relative z-10 container mx-auto px-4 flex flex-col items-center gap-y-20 lg:gap-y-32"
+      >
+        <!-- Kurikulum IT -->
+        <div class="w-full max-w-6xl flex flex-col items-center gap-y-12">
+          <div
+            class="inline-flex items-center gap-3 bg-brand-blue rounded-lg px-6 py-2 shadow-lg"
+          >
+            <img src="./images//9192_1181.svg" alt="IT Icon" class="h-8 w-8" />
+            <h2 class="font-figtree font-semibold text-white text-3xl">
+              Kurikulum IT
+            </h2>
+          </div>
+          <div
+            class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+          >
+            <!-- Card: Kelas 7 -->
+            <div
+              class="bg-white border border-brand-gray-border rounded-2xl shadow-lg flex flex-col py-4 gap-6"
+            >
+              <div class="flex flex-col gap-4 px-4">
+                <h3 class="font-figtree font-medium text-brand-dark text-2xl">
+                  Kelas 7
+                </h3>
+                <div
+                  class="border border-brand-gray-border rounded-lg p-4 space-y-2"
+                >
+                  <p class="font-figtree font-semibold text-brand-gray text-lg">
+                    🎯 Website
+                  </p>
+                  <p class="font-figtree font-semibold text-brand-gray text-lg">
+                    🎯 Game
+                  </p>
+                  <p class="font-figtree font-semibold text-brand-gray text-lg">
+                    🎯 Robotik
+                  </p>
+                </div>
+              </div>
+              <div class="flex flex-col gap-6 px-4">
+                <div class="flex items-center gap-2">
+                  <h4 class="font-figtree font-bold text-brand-dark text-lg">
+                    SKL
+                  </h4>
+                  <span class="font-figtree font-medium text-brand-gray text-sm"
+                    >(Standar Kompetensi Kelulusan)</span
+                  >
+                </div>
+                <div class="space-y-4">
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1201.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      8 Game Scratch
+                    </p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1204.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      Website Portfolio
+                    </p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1207.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      6 Project Robotik
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Card: Kelas 8 -->
+            <div
+              class="bg-white border border-brand-gray-border rounded-2xl shadow-lg flex flex-col py-4 gap-6"
+            >
+              <div class="flex flex-col gap-4 px-4">
+                <h3 class="font-figtree font-medium text-brand-dark text-2xl">
+                  Kelas 8
+                </h3>
+                <div
+                  class="border border-brand-gray-border rounded-lg p-4 space-y-2"
+                >
+                  <p class="font-figtree font-semibold text-brand-gray text-lg">
+                    🎯 Multimedia
+                  </p>
+                  <p class="font-figtree font-semibold text-brand-gray text-lg">
+                    🎯 Robotik
+                  </p>
+                  <p class="font-figtree font-semibold text-brand-gray text-lg">
+                    🎯 IoT
+                  </p>
+                </div>
+              </div>
+              <div class="flex flex-col gap-6 px-4">
+                <div class="flex items-center gap-2">
+                  <h4 class="font-figtree font-bold text-brand-dark text-lg">
+                    SKL
+                  </h4>
+                  <span class="font-figtree font-medium text-brand-gray text-sm"
+                    >(Standar Kompetensi Kelulusan)</span
+                  >
+                </div>
+                <div class="space-y-4">
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1238.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      7 Desain Grafis
+                    </p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1241.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      2 Desain 3D
+                    </p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1244.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      Animation
+                    </p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1247.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      Color Grading
+                    </p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1250.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      3 Project Video
+                    </p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1253.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      7 Project Robotik & IoT
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Card: Kelas 9 -->
+            <div
+              class="bg-white border border-brand-gray-border rounded-2xl shadow-lg flex flex-col py-4 gap-6"
+            >
+              <div class="flex flex-col gap-4 px-4">
+                <h3 class="font-figtree font-medium text-brand-dark text-2xl">
+                  Kelas 9
+                </h3>
+                <div
+                  class="border border-brand-gray-border rounded-lg p-4 space-y-2"
+                >
+                  <p class="font-figtree font-semibold text-brand-gray text-lg">
+                    🎯 Android App
+                  </p>
+                  <p class="font-figtree font-semibold text-brand-gray text-lg">
+                    🎯 Final Project
+                  </p>
+                  <p class="font-figtree font-semibold text-brand-gray text-lg">
+                    🎯 CV & Portfolio
+                  </p>
+                </div>
+              </div>
+              <div class="flex flex-col gap-6 px-4">
+                <div class="flex items-center gap-2">
+                  <h4 class="font-figtree font-bold text-brand-dark text-lg">
+                    SKL
+                  </h4>
+                  <span class="font-figtree font-medium text-brand-gray text-sm"
+                    >(Standar Kompetensi Kelulusan)</span
+                  >
+                </div>
+                <div class="space-y-4">
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1275.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      11 Project Aplikasi
+                    </p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1278.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      Final Project
+                    </p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1281.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      CV
+                    </p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1284.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      Portfolio
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kurikulum English -->
+        <div class="w-full max-w-6xl flex flex-col items-center gap-y-12">
+          <div
+            class="inline-flex items-center gap-3 bg-brand-blue rounded-lg px-6 py-2 shadow-lg"
+          >
+            <img
+              src="./images//9192_1365.svg"
+              alt="English Icon"
+              class="h-8 w-8"
+            />
+            <h2 class="font-figtree font-semibold text-white text-3xl">
+              Kurikulum English
+            </h2>
+          </div>
+          <div
+            class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+          >
+            <!-- Card: Kelas 7 -->
+            <div
+              class="bg-white border border-brand-gray-border rounded-2xl shadow-lg flex flex-col py-4 gap-6"
+            >
+              <div class="flex flex-col gap-4 px-4">
+                <h3 class="font-figtree font-medium text-brand-dark text-2xl">
+                  Kelas 7
+                </h3>
+                <div
+                  class="border border-brand-gray-border rounded-lg p-4 space-y-2"
+                >
+                  <p class="font-figtree font-semibold text-brand-gray text-lg">
+                    🎯 Conversation
+                  </p>
+                  <p class="font-figtree font-semibold text-brand-gray text-lg">
+                    🎯 Listening
+                  </p>
+                  <p class="font-figtree font-semibold text-brand-gray text-lg">
+                    🎯 Retelling Story
+                  </p>
+                  <p class="font-figtree font-semibold text-brand-gray text-lg">
+                    🎯 Describing
+                  </p>
+                  <p class="font-figtree font-semibold text-brand-gray text-lg">
+                    🎯 Fundamental Grammar
+                  </p>
+                  <p class="font-figtree font-semibold text-brand-gray text-lg">
+                    🎯 Discussion
+                  </p>
+                </div>
+              </div>
+              <div class="flex flex-col gap-6 px-4">
+                <div class="flex items-center gap-2">
+                  <h4 class="font-figtree font-bold text-brand-dark text-lg">
+                    SKL
+                  </h4>
+                  <span class="font-figtree font-medium text-brand-gray text-sm"
+                    >(Standar Kompetensi Kelulusan)</span
+                  >
+                </div>
+                <div class="space-y-4">
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1385.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      Real World English Conversation
+                    </p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1388.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      Story Telling
+                    </p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1391.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      2 IT Project Presentation
+                    </p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1473.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      Product Review
+                    </p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1477.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      Story Presentation
+                    </p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1481.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      Short Movie
+                    </p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1485.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      English Podcast
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Card: Kelas 8 -->
+            <div
+              class="bg-white border border-brand-gray-border rounded-2xl shadow-lg flex flex-col py-4 gap-6"
+            >
+              <div class="flex flex-col gap-4 px-4">
+                <h3 class="font-figtree font-medium text-brand-dark text-2xl">
+                  Kelas 8
+                </h3>
+                <div
+                  class="border border-brand-gray-border rounded-lg p-4 space-y-2"
+                >
+                  <p class="font-figtree font-semibold text-brand-gray text-lg">
+                    🎯 Conversation
+                  </p>
+                  <p class="font-figtree font-semibold text-brand-gray text-lg">
+                    🎯 Listening
+                  </p>
+                  <p class="font-figtree font-semibold text-brand-gray text-lg">
+                    🎯 Summarizing Story
+                  </p>
+                  <p class="font-figtree font-semibold text-brand-gray text-lg">
+                    🎯 Giving Opinion
+                  </p>
+                  <p class="font-figtree font-semibold text-brand-gray text-lg">
+                    🎯 Fundamental Grammar
+                  </p>
+                  <p class="font-figtree font-semibold text-brand-gray text-lg">
+                    🎯 Classifying
+                  </p>
+                  <p class="font-figtree font-semibold text-brand-gray text-lg">
+                    🎯 Reading Comprehension
+                  </p>
+                </div>
+              </div>
+              <div class="flex flex-col gap-6 px-4">
+                <div class="flex items-center gap-2">
+                  <h4 class="font-figtree font-bold text-brand-dark text-lg">
+                    SKL
+                  </h4>
+                  <span class="font-figtree font-medium text-brand-gray text-sm"
+                    >(Standar Kompetensi Kelulusan)</span
+                  >
+                </div>
+                <div class="space-y-4">
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1513.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      Shadowing Video
+                    </p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1516.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      English Prompter
+                    </p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1519.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      2 IT Project Presentation
+                    </p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1522.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      Book Review
+                    </p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1525.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      Problem Solving
+                    </p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1528.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      News Caster
+                    </p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1531.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      Deep Discussion
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Card: Kelas 9 -->
+            <div
+              class="bg-white border border-brand-gray-border rounded-2xl shadow-lg flex flex-col py-4 gap-6"
+            >
+              <div class="flex flex-col gap-4 px-4">
+                <h3 class="font-figtree font-medium text-brand-dark text-2xl">
+                  Kelas 9
+                </h3>
+                <div
+                  class="border border-brand-gray-border rounded-lg p-4 space-y-2"
+                >
+                  <p class="font-figtree font-semibold text-brand-gray text-lg">
+                    🎯 Conversation
+                  </p>
+                  <p class="font-figtree font-semibold text-brand-gray text-lg">
+                    🎯 Listening
+                  </p>
+                  <p class="font-figtree font-semibold text-brand-gray text-lg">
+                    🎯 Speaking Test
+                  </p>
+                  <p class="font-figtree font-semibold text-brand-gray text-lg">
+                    🎯 Problem Solving
+                  </p>
+                  <p class="font-figtree font-semibold text-brand-gray text-lg">
+                    🎯 Writing
+                  </p>
+                  <p class="font-figtree font-semibold text-brand-gray text-lg">
+                    🎯 Reading Comprehension
+                  </p>
+                  <p class="font-figtree font-semibold text-brand-gray text-lg">
+                    🎯 Fundamental Grammar
+                  </p>
+                </div>
+              </div>
+              <div class="flex flex-col gap-6 px-4">
+                <div class="flex items-center gap-2">
+                  <h4 class="font-figtree font-bold text-brand-dark text-lg">
+                    SKL
+                  </h4>
+                  <span class="font-figtree font-medium text-brand-gray text-sm"
+                    >(Standar Kompetensi Kelulusan)</span
+                  >
+                </div>
+                <div class="space-y-4">
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1562.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      Giving Argument of Policies
+                    </p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1565.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      Lecturing
+                    </p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1568.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      Study & Project Plan Presentation
+                    </p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1571.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      Speaking Test
+                    </p>
+                  </div>
+                  <div class="flex items-start gap-2">
+                    <img
+                      src="./images//9192_1574.svg"
+                      class="h-6 w-6 flex-shrink-0"
+                      alt="check"
+                    />
+                    <p
+                      class="font-figtree font-medium text-brand-gray text-base"
+                    >
+                      Portfolio Presentation
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kurikulum Diniyah -->
+        <div class="w-full max-w-6xl flex flex-col items-center gap-y-12">
+          <div
+            class="inline-flex items-center gap-3 bg-brand-blue rounded-lg px-6 py-2 shadow-lg"
+          >
+            <img
+              src="./images//9192_1591.svg"
+              alt="Diniyah Icon"
+              class="h-8 w-8"
+            />
+            <h2 class="font-figtree font-semibold text-white text-3xl">
+              Kurikulum Diniyah
+            </h2>
+          </div>
+          <div class="w-full flex flex-col items-center gap-4">
+            <div
+              class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+            >
+              <!-- Card: Semester 1 -->
+              <div
+                class="bg-white border border-brand-gray-border rounded-2xl shadow-lg flex flex-col py-4 gap-6"
+              >
+                <div class="flex flex-col gap-4 px-4">
+                  <h3 class="font-figtree font-medium text-brand-dark text-2xl">
+                    Semester 1
+                  </h3>
+                  <div
+                    class="border border-brand-gray-border rounded-lg p-4 space-y-2"
+                  >
+                    <p
+                      class="font-figtree font-semibold text-brand-gray text-lg"
+                    >
+                      🎯 Iman Pada Allah, Kalimat Tauhid
+                    </p>
+                    <p
+                      class="font-figtree font-semibold text-brand-gray text-lg"
+                    >
+                      🎯 Ikhlas, Tawadhu’, Taat Sabar
+                    </p>
+                    <p
+                      class="font-figtree font-semibold text-brand-gray text-lg"
+                    >
+                      🎯 Fiqih Thaharah & Sunnah Fitrah
+                    </p>
+                    <p
+                      class="font-figtree font-semibold text-brand-gray text-lg"
+                    >
+                      🎯 Tajwid Perbagus Bacaan
+                    </p>
+                    <p
+                      class="font-figtree font-semibold text-brand-gray text-lg"
+                    >
+                      🎯 Sirah Nabi: Lahir s/d Habasyah
+                    </p>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-6 px-4">
+                  <div class="flex items-center gap-2">
+                    <h4 class="font-figtree font-bold text-brand-dark text-lg">
+                      SKL
+                    </h4>
+                    <span
+                      class="font-figtree font-medium text-brand-gray text-sm"
+                      >(Standar Kompetensi Kelulusan)</span
+                    >
+                  </div>
+                  <div class="space-y-4">
+                    <div class="flex items-start gap-2">
+                      <img
+                        src="./images//9192_1614.svg"
+                        class="h-6 w-6 flex-shrink-0"
+                        alt="check"
+                      />
+                      <p
+                        class="font-figtree font-medium text-brand-gray text-base"
+                      >
+                        Poster Aqidah
+                      </p>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <img
+                        src="./images//9192_1617.svg"
+                        class="h-6 w-6 flex-shrink-0"
+                        alt="check"
+                      />
+                      <p
+                        class="font-figtree font-medium text-brand-gray text-base"
+                      >
+                        Video Praktik
+                      </p>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <img
+                        src="./images//9192_1620.svg"
+                        class="h-6 w-6 flex-shrink-0"
+                        alt="check"
+                      />
+                      <p
+                        class="font-figtree font-medium text-brand-gray text-base"
+                      >
+                        Video Sirah
+                      </p>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <img
+                        src="./images//9192_1623.svg"
+                        class="h-6 w-6 flex-shrink-0"
+                        alt="check"
+                      />
+                      <p
+                        class="font-figtree font-medium text-brand-gray text-base"
+                      >
+                        Video Tajwid
+                      </p>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <img
+                        src="./images//9192_1626.svg"
+                        class="h-6 w-6 flex-shrink-0"
+                        alt="check"
+                      />
+                      <p
+                        class="font-figtree font-medium text-brand-gray text-base"
+                      >
+                        Poster Dakwah Adab
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Card: Semester 2 -->
+              <div
+                class="bg-white border border-brand-gray-border rounded-2xl shadow-lg flex flex-col py-4 gap-6"
+              >
+                <div class="flex flex-col gap-4 px-4">
+                  <h3 class="font-figtree font-medium text-brand-dark text-2xl">
+                    Semester 2
+                  </h3>
+                  <div
+                    class="border border-brand-gray-border rounded-lg p-4 space-y-2"
+                  >
+                    <p
+                      class="font-figtree font-semibold text-brand-gray text-lg"
+                    >
+                      🎯 Iman Pada Malaikat, Pilar Ibadah
+                    </p>
+                    <p
+                      class="font-figtree font-semibold text-brand-gray text-lg"
+                    >
+                      🎯 Berbakti pada Orang Tua & Adab
+                    </p>
+                    <p
+                      class="font-figtree font-semibold text-brand-gray text-lg"
+                    >
+                      🎯 Fiqih Seputar Shalat Fardhu
+                    </p>
+                    <p
+                      class="font-figtree font-semibold text-brand-gray text-lg"
+                    >
+                      🎯 Tajwid Perbagus Bacaan
+                    </p>
+                    <p
+                      class="font-figtree font-semibold text-brand-gray text-lg"
+                    >
+                      🎯 Sirah Nabi: Islam Umar s/d Bai’at Aqabah
+                    </p>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-6 px-4">
+                  <div class="flex items-center gap-2">
+                    <h4 class="font-figtree font-bold text-brand-dark text-lg">
+                      SKL
+                    </h4>
+                    <span
+                      class="font-figtree font-medium text-brand-gray text-sm"
+                      >(Standar Kompetensi Kelulusan)</span
+                    >
+                  </div>
+                  <div class="space-y-4">
+                    <div class="flex items-start gap-2">
+                      <img
+                        src="./images//9192_1899.svg"
+                        class="h-6 w-6 flex-shrink-0"
+                        alt="check"
+                      />
+                      <p
+                        class="font-figtree font-medium text-brand-gray text-base"
+                      >
+                        Poster Aqidah
+                      </p>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <img
+                        src="./images//9192_1902.svg"
+                        class="h-6 w-6 flex-shrink-0"
+                        alt="check"
+                      />
+                      <p
+                        class="font-figtree font-medium text-brand-gray text-base"
+                      >
+                        Video Praktik
+                      </p>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <img
+                        src="./images//9192_1905.svg"
+                        class="h-6 w-6 flex-shrink-0"
+                        alt="check"
+                      />
+                      <p
+                        class="font-figtree font-medium text-brand-gray text-base"
+                      >
+                        Video Sirah
+                      </p>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <img
+                        src="./images//9192_1908.svg"
+                        class="h-6 w-6 flex-shrink-0"
+                        alt="check"
+                      />
+                      <p
+                        class="font-figtree font-medium text-brand-gray text-base"
+                      >
+                        Video Tajwid
+                      </p>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <img
+                        src="./images//9192_1911.svg"
+                        class="h-6 w-6 flex-shrink-0"
+                        alt="check"
+                      />
+                      <p
+                        class="font-figtree font-medium text-brand-gray text-base"
+                      >
+                        Poster Dakwah Adab
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Card: Semester 3 -->
+              <div
+                class="bg-white border border-brand-gray-border rounded-2xl shadow-lg flex flex-col py-4 gap-6"
+              >
+                <div class="flex flex-col gap-4 px-4">
+                  <h3 class="font-figtree font-medium text-brand-dark text-2xl">
+                    Semester 3
+                  </h3>
+                  <div
+                    class="border border-brand-gray-border rounded-lg p-4 space-y-2"
+                  >
+                    <p
+                      class="font-figtree font-semibold text-brand-gray text-lg"
+                    >
+                      🎯 Iman pada Kitab, Keistimewaan Al-Qur’an
+                    </p>
+                    <p
+                      class="font-figtree font-semibold text-brand-gray text-lg"
+                    >
+                      🎯 Taubat, Tawakal, Hasad, Namimah
+                    </p>
+                    <p
+                      class="font-figtree font-semibold text-brand-gray text-lg"
+                    >
+                      🎯 Fiqih Semua Shalat Sunnah
+                    </p>
+                    <p
+                      class="font-figtree font-semibold text-brand-gray text-lg"
+                    >
+                      🎯 Paham Bacaan Dzikir Shalat
+                    </p>
+                    <p
+                      class="font-figtree font-semibold text-brand-gray text-lg"
+                    >
+                      🎯 Sirah Nabi: Hijrah Nabi & Bani Musthaliq
+                    </p>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-6 px-4">
+                  <div class="flex items-center gap-2">
+                    <h4 class="font-figtree font-bold text-brand-dark text-lg">
+                      SKL
+                    </h4>
+                    <span
+                      class="font-figtree font-medium text-brand-gray text-sm"
+                      >(Standar Kompetensi Kelulusan)</span
+                    >
+                  </div>
+                  <div class="space-y-4">
+                    <div class="flex items-start gap-2">
+                      <img
+                        src="./images//9192_1696.svg"
+                        class="h-6 w-6 flex-shrink-0"
+                        alt="check"
+                      />
+                      <p
+                        class="font-figtree font-medium text-brand-gray text-base"
+                      >
+                        Poster Aqidah
+                      </p>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <img
+                        src="./images//9192_1699.svg"
+                        class="h-6 w-6 flex-shrink-0"
+                        alt="check"
+                      />
+                      <p
+                        class="font-figtree font-medium text-brand-gray text-base"
+                      >
+                        Mindmap Ibadah
+                      </p>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <img
+                        src="./images//9192_1702.svg"
+                        class="h-6 w-6 flex-shrink-0"
+                        alt="check"
+                      />
+                      <p
+                        class="font-figtree font-medium text-brand-gray text-base"
+                      >
+                        Video Sirah
+                      </p>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <img
+                        src="./images//9192_1705.svg"
+                        class="h-6 w-6 flex-shrink-0"
+                        alt="check"
+                      />
+                      <p
+                        class="font-figtree font-medium text-brand-gray text-base"
+                      >
+                        Paham Dzikir Shalat
+                      </p>
+                    </div>
+                    <div class="flex items-start gap-2">
+                      <img
+                        src="./images//9192_1708.svg"
+                        class="h-6 w-6 flex-shrink-0"
+                        alt="check"
+                      />
+                      <p
+                        class="font-figtree font-medium text-brand-gray text-base"
+                      >
+                        Poster Dakwah Adab
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="w-full flex justify-center">
+              <div
+                class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full lg:w-2/3"
+              >
+                <!-- Card: Semester 4 -->
+                <div
+                  class="bg-white border border-brand-gray-border rounded-2xl shadow-lg flex flex-col py-4 gap-6"
+                >
+                  <div class="flex flex-col gap-4 px-4">
+                    <h3
+                      class="font-figtree font-medium text-brand-dark text-2xl"
+                    >
+                      Semester 4
+                    </h3>
+                    <div
+                      class="border border-brand-gray-border rounded-lg p-4 space-y-2"
+                    >
+                      <p
+                        class="font-figtree font-semibold text-brand-gray text-lg"
+                      >
+                        🎯 Iman pada Rasul, Hak Rasulullah
+                      </p>
+                      <p
+                        class="font-figtree font-semibold text-brand-gray text-lg"
+                      >
+                        🎯 Adab Makan Minum, Nifak, Syirik, Kufur
+                      </p>
+                      <p
+                        class="font-figtree font-semibold text-brand-gray text-lg"
+                      >
+                        🎯 Fiqih Puasa & Zakat
+                      </p>
+                      <p
+                        class="font-figtree font-semibold text-brand-gray text-lg"
+                      >
+                        🎯 Paham Bacaan Al-Qur’an & Hafalan
+                      </p>
+                      <p
+                        class="font-figtree font-semibold text-brand-gray text-lg"
+                      >
+                        🎯 Sirah Nabi: Perang Khandaq s/d Wafat
+                      </p>
+                    </div>
+                  </div>
+                  <div class="flex flex-col gap-6 px-4">
+                    <div class="flex items-center gap-2">
+                      <h4
+                        class="font-figtree font-bold text-brand-dark text-lg"
+                      >
+                        SKL
+                      </h4>
+                      <span
+                        class="font-figtree font-medium text-brand-gray text-sm"
+                        >(Standar Kompetensi Kelulusan)</span
+                      >
+                    </div>
+                    <div class="space-y-4">
+                      <div class="flex items-start gap-2">
+                        <img
+                          src="./images//9192_1925.svg"
+                          class="h-6 w-6 flex-shrink-0"
+                          alt="check"
+                        />
+                        <p
+                          class="font-figtree font-medium text-brand-gray text-base"
+                        >
+                          Poster Aqidah
+                        </p>
+                      </div>
+                      <div class="flex items-start gap-2">
+                        <img
+                          src="./images//9192_1928.svg"
+                          class="h-6 w-6 flex-shrink-0"
+                          alt="check"
+                        />
+                        <p
+                          class="font-figtree font-medium text-brand-gray text-base"
+                        >
+                          Mindmap Ibadah
+                        </p>
+                      </div>
+                      <div class="flex items-start gap-2">
+                        <img
+                          src="./images//9192_1931.svg"
+                          class="h-6 w-6 flex-shrink-0"
+                          alt="check"
+                        />
+                        <p
+                          class="font-figtree font-medium text-brand-gray text-base"
+                        >
+                          Video Sirah
+                        </p>
+                      </div>
+                      <div class="flex items-start gap-2">
+                        <img
+                          src="./images//9192_1934.svg"
+                          class="h-6 w-6 flex-shrink-0"
+                          alt="check"
+                        />
+                        <p
+                          class="font-figtree font-medium text-brand-gray text-base"
+                        >
+                          Terjemahan Hafalan
+                        </p>
+                      </div>
+                      <div class="flex items-start gap-2">
+                        <img
+                          src="./images//9192_1937.svg"
+                          class="h-6 w-6 flex-shrink-0"
+                          alt="check"
+                        />
+                        <p
+                          class="font-figtree font-medium text-brand-gray text-base"
+                        >
+                          Poster Dakwah Adab
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Card: Semester 5 -->
+                <div
+                  class="bg-white border border-brand-gray-border rounded-2xl shadow-lg flex flex-col py-4 gap-6"
+                >
+                  <div class="flex flex-col gap-4 px-4">
+                    <h3
+                      class="font-figtree font-medium text-brand-dark text-2xl"
+                    >
+                      Semester 5
+                    </h3>
+                    <div
+                      class="border border-brand-gray-border rounded-lg p-4 space-y-2"
+                    >
+                      <p
+                        class="font-figtree font-semibold text-brand-gray text-lg"
+                      >
+                        🎯 Iman Pada Hari Akhir
+                      </p>
+                      <p
+                        class="font-figtree font-semibold text-brand-gray text-lg"
+                      >
+                        🎯 Fiqih Pengurusan Jenazah
+                      </p>
+                      <p
+                        class="font-figtree font-semibold text-brand-gray text-lg"
+                      >
+                        🎯 Adab Bersafar & Bersosial Media
+                      </p>
+                      <p
+                        class="font-figtree font-semibold text-brand-gray text-lg"
+                      >
+                        🎯 Paham Bacaan Al-Qur’an & Hafalan
+                      </p>
+                      <p
+                        class="font-figtree font-semibold text-brand-gray text-lg"
+                      >
+                        🎯 3 Khulafaur Rasyidi
+                      </p>
+                    </div>
+                  </div>
+                  <div class="flex flex-col gap-6 px-4">
+                    <div class="flex items-center gap-2">
+                      <h4
+                        class="font-figtree font-bold text-brand-dark text-lg"
+                      >
+                        SKL
+                      </h4>
+                      <span
+                        class="font-figtree font-medium text-brand-gray text-sm"
+                        >(Standar Kompetensi Kelulusan)</span
+                      >
+                    </div>
+                    <div class="space-y-4">
+                      <div class="flex items-start gap-2">
+                        <img
+                          src="./images//9192_1977.svg"
+                          class="h-6 w-6 flex-shrink-0"
+                          alt="check"
+                        />
+                        <p
+                          class="font-figtree font-medium text-brand-gray text-base"
+                        >
+                          Poster Aqidah
+                        </p>
+                      </div>
+                      <div class="flex items-start gap-2">
+                        <img
+                          src="./images//9192_1980.svg"
+                          class="h-6 w-6 flex-shrink-0"
+                          alt="check"
+                        />
+                        <p
+                          class="font-figtree font-medium text-brand-gray text-base"
+                        >
+                          Mindmap Ibadah
+                        </p>
+                      </div>
+                      <div class="flex items-start gap-2">
+                        <img
+                          src="./images//9192_1983.svg"
+                          class="h-6 w-6 flex-shrink-0"
+                          alt="check"
+                        />
+                        <p
+                          class="font-figtree font-medium text-brand-gray text-base"
+                        >
+                          Video Sirah
+                        </p>
+                      </div>
+                      <div class="flex items-start gap-2">
+                        <img
+                          src="./images//9192_1986.svg"
+                          class="h-6 w-6 flex-shrink-0"
+                          alt="check"
+                        />
+                        <p
+                          class="font-figtree font-medium text-brand-gray text-base"
+                        >
+                          Paham Dzikir Shalat
+                        </p>
+                      </div>
+                      <div class="flex items-start gap-2">
+                        <img
+                          src="./images//9192_1989.svg"
+                          class="h-6 w-6 flex-shrink-0"
+                          alt="check"
+                        />
+                        <p
+                          class="font-figtree font-medium text-brand-gray text-base"
+                        >
+                          Poster Dakwah Adab
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- CTA Section -->
+    <section id="section-cta" class="bg-white py-20">
+      <div class="container mx-auto px-4 text-center">
+        <div class="flex flex-col items-center gap-8">
+          <h2
+            class="font-poppins font-bold text-brand-blue text-4xl lg:text-5xl"
+          >
+            Ayo Daftarkan Sekarang Juga!
+          </h2>
+          <a
+            href="#"
+            class="inline-flex items-center justify-center gap-2.5 rounded-xl bg-brand-amber px-6 py-4 text-lg font-semibold text-white shadow-lg hover:bg-amber-600 transition-colors"
+          >
+            <span>Daftar Santri Baru</span>
+            <img
+              src="./images//I9029_16663_6048_64342.svg"
+              class="h-6 w-6"
+              alt="arrow right"
+            />
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- Location Section -->
+    <section
+      id="section-location"
+      class="bg-gradient-to-r from-[#0025ba] to-[#5879ff] py-24"
+    >
+      <div
+        class="container mx-auto px-4 lg:px-28 flex flex-col items-center gap-12"
+      >
+        <h2 class="font-figtree font-bold text-white text-3xl text-center">
+          Lokasi IDN Boarding School
+        </h2>
+        <img
+          src="./images//f170e40ae0fa1d3aa60ebde43db4ddf07490887b.png"
+          alt="Map location of IDN Boarding School"
+          class="w-full max-w-6xl h-auto rounded-2xl shadow-lg"
+        />
+      </div>
+    </section>
+    <!-- Footer Section -->
+    <footer id="section-footer">
+      <!-- Main Footer Content -->
+      <div class="bg-brand-blue-dark">
+        <div class="container mx-auto max-w-7xl px-6 lg:px-28 py-12">
+          <div
+            class="flex flex-col lg:flex-row justify-between gap-12 lg:gap-20"
+          >
+            <!-- Left Column: Logo and Socials -->
+            <div class="flex flex-col gap-8 max-w-sm">
+              <a href="#"
+                ><img
+                  src="./images//9029_16671.svg"
+                  alt="IDN Boarding School Logo"
+                  class="h-20 w-auto self-start"
+              /></a>
+              <p
+                class="font-figtree font-medium text-white text-base leading-6"
+              >
+                lembaga pendidikan berbasis IT yang memandang pendidikan sebagai
+                investasi terbaik dalam kehidupan manusia, karena melalui
+                pendidikan, kita dapat membangun karakter dan peradaban yang
+                lebih maju.
+              </p>
+              <div class="flex items-center gap-6">
+                <a href="#"
+                  ><img
+                    src="./images//9029_16676.svg"
+                    class="h-8 w-8 hover:opacity-80"
+                    alt="Instagram"
+                /></a>
+                <a href="#"
+                  ><img
+                    src="./images//9029_16677.svg"
+                    class="h-8 w-8 hover:opacity-80"
+                    alt="WhatsApp"
+                /></a>
+                <a href="#"
+                  ><img
+                    src="./images//9029_16678.svg"
+                    class="h-8 w-8 hover:opacity-80"
+                    alt="Facebook"
+                /></a>
+                <a href="#"
+                  ><img
+                    src="./images//9029_16679.svg"
+                    class="h-8 w-8 hover:opacity-80"
+                    alt="YouTube"
+                /></a>
+              </div>
+            </div>
+            <!-- Right Column: Links -->
+            <div
+              class="flex flex-col text-center sm:text-left sm:flex-row gap-12 lg:gap-16"
+            >
+              <div class="flex flex-col gap-3">
+                <a
+                  href="#"
+                  class="font-figtree text-white text-xl hover:underline"
+                  >Beranda</a
+                >
+                <a
+                  href="#"
+                  class="font-figtree text-white text-xl hover:underline"
+                  >PPDB</a
+                >
+                <a
+                  href="#"
+                  class="font-figtree text-white text-xl hover:underline"
+                  >Akademik SMK</a
+                >
+                <a
+                  href="#"
+                  class="font-figtree text-white text-xl hover:underline"
+                  >Ekstrakurikuler</a
+                >
+                <a
+                  href="#"
+                  class="font-figtree text-white text-xl hover:underline"
+                  >Program Internasional</a
+                >
+                <a
+                  href="#"
+                  class="font-figtree text-white text-xl hover:underline"
+                  >Backpacker</a
+                >
+                <a
+                  href="#"
+                  class="font-figtree text-white text-xl hover:underline"
+                  >IDN Mengajar</a
+                >
+                <a
+                  href="#"
+                  class="font-figtree text-white text-xl hover:underline"
+                  >Live In</a
+                >
+              </div>
+              <div class="flex flex-col gap-3">
+                <a
+                  href="#"
+                  class="font-figtree text-white text-xl hover:underline"
+                  >Susur Goa</a
+                >
+                <a
+                  href="#"
+                  class="font-figtree text-white text-xl hover:underline"
+                  >Business Survival</a
+                >
+                <a
+                  href="#"
+                  class="font-figtree text-white text-xl hover:underline"
+                  >Edurace</a
+                >
+                <a
+                  href="#"
+                  class="font-figtree text-white text-xl hover:underline"
+                  >IDN Bersyukur</a
+                >
+                <a
+                  href="#"
+                  class="font-figtree text-white text-xl hover:underline"
+                  >LDKS</a
+                >
+                <a
+                  href="#"
+                  class="font-figtree text-white text-xl hover:underline"
+                  >IT Camp</a
+                >
+                <a
+                  href="#"
+                  class="font-figtree text-white text-xl hover:underline"
+                  >Artikel</a
+                >
+                <a
+                  href="#"
+                  class="font-figtree text-white text-xl hover:underline"
+                  >Kontak</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Copyright Bar -->
+      <div class="bg-white py-4">
+        <div
+          class="container mx-auto max-w-7xl px-6 lg:px-28 flex flex-col md:flex-row justify-center md:justify-between items-center gap-4"
+        >
+          <p
+            class="text-brand-gray-dark font-poppins text-sm text-center md:text-left"
+          >
+            © Copyright 2025 -
+            <a href="#" class="font-semibold text-brand-blue hover:underline"
+              >IDN Boarding School</a
+            >
+          </p>
+          <img
+            src="./images//ffecd549aa88dc49a489fe3dc820951c05e9be50.png"
+            alt="Sponsors"
+            class="h-10 w-auto"
+          />
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // No JavaScript code required here currently.
+      // Add interactive features using Tailwind-friendly approach
+    </script>
+  </body>
+</html>
