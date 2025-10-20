@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artikel - IDN Boarding School</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'primary-blue': '#1c4cd0',
+            'dark-blue': '#0e2464',
+            'light-blue': '#5879ff',
+            'text-dark': '#181d27',
+            'text-gray': '#717680',
+            'text-light': '#d5d7da',
+            'background-gray': '#f5f5f5',
+            'accent-orange': '#f59e0b',
+            'danger-red': '#d92d21',
+          },
+          fontFamily: {
+            figtree: ['Figtree', 'sans-serif'],
+            poppins: ['Poppins', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body{
+      cursor: none;
+    }
+    /* Custom Cursor */
+    .custom-cursor {
+      width: 40px;
+      height: 40px;
+      border: 2px solid #4873e9;
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.1s ease-out, opacity 0.2s ease-out;
+      opacity: 0;
+      transform: translate(-50%, -50%);
+    }
+    .custom-cursor.active { opacity: 1; }
+    .custom-cursor.hover {
+      transform: translate(-50%, -50%) scale(1.2);
+      background-color: #1c4cd037;
+    }
+    .cursor-follower {
+      width: 8px;
+      height: 8px;
+      background-color: #4873e9;
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9998;
+      transition: transform 0.2s ease-out;
+      opacity: 0;
+      transform: translate(-50%, -50%);
+    }
+    
+    .cursor-follower.active { opacity: 1; }
+    .custom-cursor.clicked {
+        transform: translate(-50%, -50%) scale(0.9);
+        background-color: rgba(28, 76, 208, 0.2);
+    }
+    .cursor-follower.clicked {
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    .parallax-element { transition: transform 0.3s ease-out; }
+    .animate-on-scroll { opacity: 0; transform: translateY(50px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .animate-on-scroll.animated { opacity: 1; transform: translateY(0); }
+    .animate-fade-in { opacity: 0; transition: opacity 1s ease; }
+    .animate-fade-in.animated { opacity: 1; }
+    .animate-slide-left { opacity: 0; transform: translateX(-50px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .animate-slide-left.animated { opacity: 1; transform: translateX(0); }
+    .animate-slide-right { opacity: 0; transform: translateX(50px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .animate-slide-right.animated { opacity: 1; transform: translateX(0); }
+    .animate-scale { opacity: 0; transform: scale(0.8); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .animate-scale.animated { opacity: 1; transform: scale(1); }
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background-color: rgba(235, 235, 235, 0.279);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s ease, height 0.6s ease;
+    }
+    .btn:hover::before { width: 300px; height: 300px; }
+    .main-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 8px;
+      left: 14px;
+      right: 14px;
+      height: 2px;
+      background-color: white;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    .main-nav a:hover::after, .main-nav a.active::after { transform: scaleX(1); }
+    .main-header.scrolled { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); }
+    .footer-links a::before { content: '→'; position: absolute; left: -20px; opacity: 0; transition: all 0.3s ease; }
+    .footer-links a:hover { padding-left: 25px; }
+    .footer-links a:hover::before { left: 0; opacity: 1; }
+  </style>
+</head>
+<body class="font-figtree bg-white text-text-dark overflow-x-hidden">
+  <div class="custom-cursor"></div>
+  <div class="cursor-follower"></div>
+
+  <div class="w-full mx-auto relative">
+    <header class="main-header bg-dark-blue h-[90px] flex items-center sticky top-0 z-50 w-full transition-shadow duration-300 ease-in-out px-5 md:px-10 lg:px-[110px]">
+      <div class="flex justify-between items-center w-full max-w-[1220px] mx-auto">
+        <a href="../index.html" class="logo">
+          <img src="../images/logo_idn.png" alt="IDN Boarding School Logo" class="h-[50px] transition-transform duration-300 ease-in-out hover:scale-110">
+        </a>
+        <nav class="main-nav hidden lg:flex items-center gap-4">
+          <a href="../index.html#hero-about" class="text-white text-lg font-normal flex items-center gap-2 py-3 px-3.5 rounded-lg transition-all duration-300 ease-in-out relative hover:bg-white/10 hover:-translate-y-0.5">Beranda</a>
+          <a href="../index.html#registration" class="text-white text-lg font-normal flex items-center gap-2 py-3 px-3.5 rounded-lg transition-all duration-300 ease-in-out relative hover:bg-white/10 hover:-translate-y-0.5">PPDB</a>
+          <a href="../index.html#majors" class="text-white text-lg font-normal flex items-center gap-2 py-3 px-3.5 rounded-lg transition-all duration-300 ease-in-out relative hover:bg-white/10 hover:-translate-y-0.5">Kurikulum <img src="../images/I8931_31074_8931_30754_8039_20104.svg" alt="dropdown" class="w-6 h-6 transition-transform duration-300 ease-in-out group-hover:rotate-180"></a>
+          <a href="../index.html#projects" class="text-white text-lg font-normal flex items-center gap-2 py-3 px-3.5 rounded-lg transition-all duration-300 ease-in-out relative hover:bg-white/10 hover:-translate-y-0.5">Program <img src="../images/I8931_31074_8931_30755_8039_20104.svg" alt="dropdown" class="w-6 h-6 transition-transform duration-300 ease-in-out group-hover:rotate-180"></a>
+          <a href="#" class="text-white text-lg font-bold flex items-center gap-2 py-3 px-3.5 rounded-lg transition-all duration-300 ease-in-out relative hover:bg-white/10 hover:-translate-y-0.5 active">Artikel</a>
+          <a href="https://api.whatsapp.com/send?phone=6282116653328" target="_blank" class="text-white text-lg font-normal flex items-center gap-2 py-3 px-3.5 rounded-lg transition-all duration-300 ease-in-out relative hover:bg-white/10 hover:-translate-y-0.5">Kontak</a>
+        </nav>
+        <button class="mobile-nav-toggle block lg:hidden bg-none border-none cursor-pointer">
+          <span class="block w-[25px] h-[3px] bg-white my-[5px] transition-all duration-300 ease-in-out"></span>
+          <span class="block w-[25px] h-[3px] bg-white my-[5px] transition-all duration-300 ease-in-out"></span>
+          <span class="block w-[25px] h-[3px] bg-white my-[5px] transition-all duration-300 ease-in-out"></span>
+        </button>
+      </div>
+    </header>
+
+    <main id="section-article" class="bg-white py-16 lg:py-24">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 lg:mb-16 animate-on-scroll">
+          <h1 class="font-poppins font-semibold text-gray-800 text-4xl lg:text-5xl leading-tight lg:leading-[60px] mb-4">Deklarasi Anti-Bullying dan Stop Kekerasan IDN Boarding School</h1>
+          <p class="font-figtree font-medium text-gray-500 text-base">IDN Boarding School • 2 Months Ago • 5 Min Read</p>
+        </div>
+
+        <img src="./assets/5c9cf0d380214025d203a76b7fb1d3e20f754e10.png" alt="Students participating in anti-bullying declaration" class="w-full rounded-lg mb-12 lg:mb-16 animate-on-scroll" />
+
+        <article class="max-w-4xl mx-auto space-y-12 animate-on-scroll">
+          <div class="space-y-6">
+            <h2 class="font-figtree font-semibold text-black text-3xl leading-snug">Gerakan Anti Bullying: Sekolah Harus Aman dan Nyaman untuk Semua</h2>
+            <div class="font-figtree font-medium text-xl text-gray-500 leading-8 space-y-6 text-justify">
+              <p>
+                Maraknya bullying di sekolah yang dilakukan oleh antar pelajar menuai perhatian. Kekerasan verbal dan fisik kian dianggap wajar di berbagai sekolah di Indonesia, SMK IDN Boarding School bertindak. Dalam barisan di tengah
+                lapangan sekolah, siswa IDN Boarding School berkumpul untuk menyatakan sikap terhadap perundungan.
+              </p>
+              <p>
+                Sebagai sekolah boarding (asrama), IDN Boarding School memahami bahwa sekolah bukan hanya tempat belajar, tapi rumah kedua bagi para siswa. Setiap langkah kaki yang masuk ke gerbang sekolah ini, berhak merasa aman, diterima,
+                dan dihargai. Karena itu, deklarasi anti-bullying menjadi komitmen bersama.
+              </p>
+              <p>
+                Dalam agenda tersebut, guru pembina memberikan pesan melalui speech yang disampaikannya di depan para siswa. “In IDN Boarding School, there is no room for bullying, there is no room for mocking each other. We support each
+                other, we develop together, we grow together, to graduate from IDN Boarding School to be an expert in your major.”
+              </p>
+              <p>Selanjutnya, deklarasi ini dipimpin langsung oleh Ketua OSIS IDN Boarding School Jonggol Ikhwan. Dengan nada lantang dan tegas, ia mengajak seluruh siswa untuk turut serta dalam perubahan:</p>
+              <blockquote class="border-l-4 border-gray-200 pl-4 italic">
+                “With this declaration, I hope there is a clean environment, an environment that’s safe and comfortable. Repeat after me!”<br />Semua siswa lantang mengikuti seruannya:<br />“CEGAH! LAWAN! LAPORKAN!”
+              </blockquote>
+              <p>
+                Tiga kata ini merupakan ajakan nyata untuk berani mencegah perundungan dan mengambil sikap ketika melihat tindakan bullying terjadi. Baik sebagai korban, saksi, maupun teman semua punya peran dalam menciptakan lingkungan
+                sekolah yang sehat.
+              </p>
+            </div>
+          </div>
+          <div class="space-y-6">
+            <h2 class="font-figtree font-semibold text-black text-3xl leading-snug">Tiga Janji Siswa IDN Boarding School atas Sikap Anti Bullying</h2>
+            <div class="font-figtree font-medium text-xl text-gray-500 leading-8 space-y-6 text-left">
+              <p>
+                Melalui deklarasi ini, seluruh siswa menyatakan tiga janji utama:<br />Akan saling menjaga, bukan menjatuhkan.<br />Akan saling menguatkan, bukan mempermalukan.<br />Akan jadi bagian dari perubahan, bukan penonton
+                penderitaan.
+              </p>
+              <p>Karena perubahan besar selalu dimulai dari langkah kecil. Dari keberanian seorang siswa untuk berkata “tidak” pada kekerasan. Dari ketulusan untuk memeluk teman yang sedang terluka.</p>
+              <p>
+                IDN Boarding School tidak hanya fokus pada kemampuan kognitif siswa dan skill di bidang teknologi. Sekolah model asrama ini juga sangat fokus pada pembentukan akhlak dan mental para siswanya. Adab bergaul dan bermuamalah
+                diajarkan sesuai dengan syariat Islam yang berlandaskan al-Qur`an, sunnah, dan salafus saleh.
+              </p>
+            </div>
+          </div>
+          <div class="space-y-6">
+            <h2 class="font-figtree font-semibold text-black text-3xl leading-snug">Mau jadi langganan juara kompetisi dan dibimbing di Boarding School Islami terbaik?</h2>
+            <div class="font-figtree font-medium text-xl text-gray-500 leading-8 space-y-4 text-left break-words">
+              <p>
+                Baca juga artikel lain tentang prestasi siswa SMK IDN <a href="#" class="underline hover:text-primary-blue">di sini</a>.<br />Semoga bermanfaat.<br />Kunjungi youtube kami<br /><a
+                  href="https://www.youtube.com/@IDNTV2022"
+                  class="underline break-all hover:text-primary-blue"
+                  >https://www.youtube.com/@IDNTV2022</a
+                >
+              </p>
+              <p>
+                Ada yang ingin ditanyakan? Silahkan konsultasikan dengan Admin Kami.<br />Hubungi Kami (Admin): 0822 – 1010 – 2006<br />Klik link di bawah ini untuk melihat semua cabang sekolah kami Ikhwan & Akhwat<br />– Pamijahan<br />–
+                Solo<br />– Sentul<br />-Jonggol<br />-Akhwat<br />-Malang
+              </p>
+              <p>
+                Kita Sharing Bareng Yuk<br />Like, Comment & Share<br />Mau Tau Lebih Banyak Edukasi Bermanfaat?<br />Follow sosial media kami:<br />Jonggol: <a href="#" class="underline hover:text-primary-blue">@idnboardingschool</a
+                ><br />Solo: <a href="#" class="underline hover:text-primary-blue">@idnboardingschoolsolo</a><br />Pamijahan: <a href="#" class="underline hover:text-primary-blue">@idnboardingschoolpmjbogor</a><br />Sentul:
+                <a href="#" class="underline hover:text-primary-blue">@idnboardingschoolsentul</a><br />idn akhwat : <a href="#" class="underline hover:text-primary-blue">@smpsmk.idnakhwat</a>
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <section id="location" class="relative overflow-hidden bg-primary-blue py-[60px] md:py-[90px]">
+      <div class="container w-full max-w-[1220px] mx-auto px-5 box-border flex flex-col gap-[60px] items-center">
+        <h3 class="font-semibold text-2xl md:text-3xl text-center text-white animate-fade-in">Lokasi IDN Boarding School</h3>
+        <div class="w-full rounded-lg overflow-hidden shadow-[0_4px_15px_rgba(0,0,0,0.2)] animate-on-scroll">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.258712395156!2d107.01323331526425!3d-6.488339465225191!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69bdf0e322f183%3A0x1c590562e3a1f2c2!2sIDN%20Boarding%20School%20Jonggol!5e0!3m2!1sen!2sid!4v1668063721345!5m2!1sen!2sid"
+            width="100%"
+            height="450"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <footer id="footer" class="font-figtree">
+      <div class="bg-dark-blue text-white py-[50px]">
+        <div class="container w-full max-w-[1220px] mx-auto px-5 box-border flex flex-col lg:flex-row justify-between gap-[60px]">
+          <div class="max-w-[360px] flex flex-col gap-[30px] items-start animate-slide-left">
+            <img src="../images/logo_idn.png" alt="IDN Boarding School Logo" class="h-[81px] transition-transform duration-300 ease-in-out hover:scale-110">
+            <p class="text-base leading-6 font-medium">lembaga pendidikan berbasis IT yang memandang pendidikan sebagai investasi terbaik dalam kehidupan manusia, karena melalui pendidikan, kita dapat membangun karakter dan peradaban yang lebih maju.</p>
+            <div class="flex gap-6">
+              <a href="https://www.instagram.com/idnboardingschool/" target="_blank" class="transition-transform duration-300 ease-in-out hover:-translate-y-1"><img src="../images/8836_1040.svg" alt="Instagram" class="w-[30px] h-[30px]"></a>
+              <a href="https://api.whatsapp.com/send?phone=6281216653328" target="_blank" class="transition-transform duration-300 ease-in-out hover:-translate-y-1"><img src="../images/8836_1041.svg" alt="WhatsApp" class="w-[30px] h-[30px]"></a>
+              <a href="https://www.facebook.com/idnboardingschool/?locale=id_ID" target="_blank" class="transition-transform duration-300 ease-in-out hover:-translate-y-1"><img src="../images/8836_1042.svg" alt="Facebook" class="w-[30px] h-[30px]"></a>
+              <a href="https://www.youtube.com/@IDNTV2022" class="transition-transform duration-300 ease-in-out hover:-translate-y-1"><img src="../images/8836_1043.svg" alt="YouTube" class="w-[30px] h-[30px]"></a>
+            </div>
+          </div>
+          <div class="footer-links flex flex-col md:flex-row gap-[30px] md:gap-[60px] animate-slide-right">
+            <nav class="flex flex-col gap-3">
+              <a href="#" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">PPDB</a>
+              <a href="#" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">Akademik SMK</a>
+              <a href="#" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">Akademik SMP</a>
+              <a href="#" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">Ekstrakurikuler</a>
+              <a href="#" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">Program Internasional</a>
+              <a href="#" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">Backpacker</a>
+              <a href="#" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">IDN Mengajar</a>
+              <a href="#" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">Live In</a>
+            </nav>
+            <nav class="flex flex-col gap-3">
+              <a href="#" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">Susur Goa</a>
+              <a href="#" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">Business Survival</a>
+              <a href="#" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">Edurace</a>
+              <a href="#" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">IDN Bersyukur</a>
+              <a href="#" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">LDKS</a>
+              <a href="#" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">IT Camp</a>
+              <a href="#" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">Artikel</a>
+              <a href="https://api.whatsapp.com/send?phone=6282116653328" target="_blank" class="text-xl leading-7 font-normal transition-all duration-300 ease-in-out relative hover:text-accent-orange">Kontak</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white py-2.5">
+        <div class="container w-full max-w-[1220px] mx-auto px-5 box-border flex flex-col md:flex-row justify-between items-center gap-5">
+          <p class="font-poppins text-sm text-[#535353] font-light">© Copyright 2025 - <strong class="font-semibold text-blue-500">IDN Boarding School</strong></p>
+          <div class="flex items-center gap-4">
+            <img src="../images/016698a76ad9a32430b855f5b14e67f975aa7f1d.png" alt="Partner Logo 1" class="h-[41px] object-contain">
+            <img src="../images/ff4dd3f58988e9c84b9bb141610e22b15ccd7517.png" alt="Partner Logo 2" class="h-[41px] object-contain">
+            <img src="../images/7aa61f391f8a3e5ee44b96311384f438a35fda38.png" alt="Partner Logo 3" class="h-[41px] object-contain">
+            <img src="../images/afa19fa50240996d441fda41861cd78ab62d92c7.png" alt="Partner Logo 4" class="h-[41px] object-contain">
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Custom Cursor
+    const cursorRing = document.querySelector('.custom-cursor');
+    const cursorDot = document.querySelector('.cursor-follower');
+    let mouseX = 0;
+    let mouseY = 0;
+    let ringX = 0;
+    let ringY = 0;
+    let dotX = 0;
+    let dotY = 0;
+    const ringSpeed = 0.10;
+    const dotSpeed = 0.7;
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (!cursorRing.classList.contains('active')) {
+        cursorRing.classList.add('active');
+        cursorDot.classList.add('active');
+      }
+    });
+    document.addEventListener('mouseleave', () => {
+      cursorRing.classList.remove('active');
+      cursorDot.classList.remove('active');
+    });
+    function animateCursor() {
+      ringX += (mouseX - ringX) * ringSpeed;
+      ringY += (mouseY - ringY) * ringSpeed;
+      dotX += (mouseX - dotX) * dotSpeed;
+      dotY += (mouseY - dotY) * dotSpeed;
+      cursorRing.style.left = ringX + 'px';
+      cursorRing.style.top = ringY + 'px';
+      cursorDot.style.left = dotX + 'px';
+      cursorDot.style.top = dotY + 'px';
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+    document.addEventListener('mousedown', () => {
+      cursorRing.classList.add('clicked');
+      cursorDot.classList.add('clicked');
+    });
+    document.addEventListener('mouseup', () => {
+      cursorRing.classList.remove('clicked');
+      cursorDot.classList.remove('clicked');
+    });
+
+    // Hover effect listeners for cursor
+    const hoverElements = document.querySelectorAll('a, button, .btn, .major-card, .project-card, .achievement-card, .branch-card, .logo-box, .logo, blockquote, .timeline-dot');
+    hoverElements.forEach(el => {
+      el.addEventListener('mouseenter', () => cursorRing.classList.add('hover'));
+      el.addEventListener('mouseleave', () => cursorRing.classList.remove('hover'));
+    });
+
+    // Scroll Animations
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -100px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animated');
+        }
+      });
+    }, observerOptions);
+    // Tambahkan elemen dari halaman artikel ke observer
+    const animatedElements = document.querySelectorAll('.animate-on-scroll, .animate-fade-in, .animate-slide-left, .animate-slide-right, .animate-scale');
+    animatedElements.forEach(el => observer.observe(el));
+
+    // Header scroll effect
+    const header = document.querySelector('.main-header');
+    window.addEventListener('scroll', () => {
+      if (header) {
+        window.pageYOffset > 50 ? header.classList.add('scrolled') : header.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+</html>

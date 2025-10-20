@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IDN Boarding School - Jagoan IT Pinter Ngaji</title>
-  
+  <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -111,6 +111,7 @@
 
     .btn:hover::before { width: 300px; height: 300px; }
 
+
     /* Header Nav Link Underline Effect */
     .main-nav a::after {
       content: '';
@@ -152,6 +153,39 @@
         right: 130px;
         animation: float 6s ease-in-out infinite 3s; 
     }
+
+    .dropdown-menu {
+  will-change: opacity, transform;
+}
+
+.main-nav a::after, .dropdown-container > a::after {
+  content: '';
+  position: absolute;
+  bottom: 8px;
+  left: 14px;
+  right: 14px;
+  height: 2px;
+  background-color: white;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.main-nav a:hover::after, .dropdown-container:hover > a::after { 
+  transform: scaleX(1); 
+}
+
+.mobile-nav-toggle span {
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+.mobile-nav-toggle.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.mobile-nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.mobile-nav-toggle.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
 
     /* Hero Title Glow Animation */
     @keyframes titleGlow {
@@ -263,20 +297,60 @@
           <img src="images/logo_idn.png" alt="IDN Boarding School Logo" class="h-[50px] transition-transform duration-300 ease-in-out hover:scale-110">
         </a>
         <nav class="main-nav hidden lg:flex items-center gap-4">
-          <a href="#hero-about" class="text-white text-lg font-bold flex items-center gap-2 py-3 px-3.5 rounded-lg transition-all duration-300 ease-in-out relative hover:bg-white/10 hover:-translate-y-0.5">Beranda</a>
-          <a href="#registration" class="text-white text-lg font-normal flex items-center gap-2 py-3 px-3.5 rounded-lg transition-all duration-300 ease-in-out relative hover:bg-white/10 hover:-translate-y-0.5">PPDB</a>
-          <a href="#majors" class="text-white text-lg font-normal flex items-center gap-2 py-3 px-3.5 rounded-lg transition-all duration-300 ease-in-out relative hover:bg-white/10 hover:-translate-y-0.5">Kurikulum <img src="images/I8931_31074_8931_30754_8039_20104.svg" alt="dropdown" class="w-6 h-6 transition-transform duration-300 ease-in-out group-hover:rotate-180"></a>
-          <a href="#projects" class="text-white text-lg font-normal flex items-center gap-2 py-3 px-3.5 rounded-lg transition-all duration-300 ease-in-out relative hover:bg-white/10 hover:-translate-y-0.5">Program <img src="images/I8931_31074_8931_30755_8039_20104.svg" alt="dropdown" class="w-6 h-6 transition-transform duration-300 ease-in-out group-hover:rotate-180"></a>
-          <a href="#" class="text-white text-lg font-normal flex items-center gap-2 py-3 px-3.5 rounded-lg transition-all duration-300 ease-in-out relative hover:bg-white/10 hover:-translate-y-0.5">Artikel</a>
-          <a href="https://api.whatsapp.com/send?phone=6282116653328" target="_blank" class="text-white text-lg font-normal flex items-center gap-2 py-3 px-3.5 rounded-lg transition-all duration-300 ease-in-out relative hover:bg-white/10 hover:-translate-y-0.5">Kontak</a>
-        </nav>
-        <button class="mobile-nav-toggle block lg:hidden bg-none border-none cursor-pointer">
-          <span class="block w-[25px] h-[3px] bg-white my-[5px] transition-all duration-300 ease-in-out"></span>
-          <span class="block w-[25px] h-[3px] bg-white my-[5px] transition-all duration-300 ease-in-out"></span>
-          <span class="block w-[25px] h-[3px] bg-white my-[5px] transition-all duration-300 ease-in-out"></span>
-        </button>
+  <a href="#hero-about" class="text-white text-lg font-bold flex items-center gap-2 py-3 px-3.5 rounded-lg transition-all duration-300 ease-in-out relative hover:bg-white/10 hover:-translate-y-0.5">Beranda</a>
+  <a href="#registration" class="text-white text-lg font-normal flex items-center gap-2 py-3 px-3.5 rounded-lg transition-all duration-300 ease-in-out relative hover:bg-white/10 hover:-translate-y-0.5">PPDB</a>
+  
+  <div class="relative group">
+    <a href="#majors" class="text-white text-lg font-normal flex items-center gap-2 py-3 px-3.5 rounded-lg transition-all duration-300 ease-in-out relative hover:bg-white/10 hover:-translate-y-0.5">
+      Kurikulum 
+      <img src="images/I8931_31074_8931_30754_8039_20104.svg" alt="dropdown" class="w-6 h-6 transition-transform duration-300 ease-in-out group-hover:rotate-180">
+    </a>
+    <div class="dropdown-menu absolute top-full mt-2 w-48 bg-dark-blue rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+      <a href="kurikulumsmp.html" class="block px-5 py-3 text-white hover:bg-primary-blue rounded-t-lg">SMP</a>
+      <a href="#" class="block px-5 py-3 text-white hover:bg-primary-blue rounded-b-lg">SMK</a>
+    </div>
+  </div>
+
+  <div class="relative group">
+    <a href="#projects" class="text-white text-lg font-normal flex items-center gap-2 py-3 px-3.5 rounded-lg transition-all duration-300 ease-in-out relative hover:bg-white/10 hover:-translate-y-0.5">
+      Program 
+      <img src="images/I8931_31074_8931_30755_8039_20104.svg" alt="dropdown" class="w-6 h-6 transition-transform duration-300 ease-in-out group-hover:rotate-180">
+    </a>
+    <div class="dropdown-menu absolute top-full mt-2 w-56 bg-dark-blue rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0">
+      <a href="#" class="block px-5 py-3 text-white hover:bg-primary-blue rounded-t-lg">Backpacker</a>
+      <a href="#" class="block px-5 py-3 text-white hover:bg-primary-blue">Ekstrakurikuler</a>
+      <a href="#" class="block px-5 py-3 text-white hover:bg-primary-blue">Internasional</a>
+      <a href="#" class="block px-5 py-3 text-white hover:bg-primary-blue">IDN Mengajar</a>
+      <a href="#" class="block px-5 py-3 text-white hover:bg-primary-blue">Live In</a>
+      <a href="#" class="block px-5 py-3 text-white hover:bg-primary-blue">Business Survival</a>
+      <a href="#" class="block px-5 py-3 text-white hover:bg-primary-blue">Edurace</a>
+      <a href="#" class="block px-5 py-3 text-white hover:bg-primary-blue">IDN Bersyukur</a>
+      <a href="#" class="block px-5 py-3 text-white hover:bg-primary-blue">LDKS</a>
+      <a href="#" class="block px-5 py-3 text-white hover:bg-primary-blue rounded-b-lg">IT Camp</a>
+    </div>
+  </div>
+
+  <a href="artikel/index.html" class="text-white text-lg font-normal flex items-center gap-2 py-3 px-3.5 rounded-lg transition-all duration-300 ease-in-out relative hover:bg-white/10 hover:-translate-y-0.5">Artikel</a>
+  <a href="https://api.whatsapp.com/send?phone=6282116653328" target="_blank" class="text-white text-lg font-normal flex items-center gap-2 py-3 px-3.5 rounded-lg transition-all duration-300 ease-in-out relative hover:bg-white/10 hover:-translate-y-0.5">Kontak</a>
+</nav>
+<button class="mobile-nav-toggle block lg:hidden bg-none border-none cursor-pointer z-50">
+  <span class="block w-[25px] h-[3px] bg-white my-[5px]"></span>
+  <span class="block w-[25px] h-[3px] bg-white my-[5px]"></span>
+  <span class="block w-[25px] h-[3px] bg-white my-[5px]"></span>
+</button>
       </div>
     </header>
+
+    <div id="mobile-menu" class="fixed top-0 left-0 w-full h-full bg-dark-blue/95 backdrop-blur-sm z-40 flex items-center justify-center opacity-0 invisible transition-all duration-500 -translate-x-full">
+    <nav class="flex flex-col items-center gap-8 text-center">
+        <a href="#hero-about" class="mobile-link text-white text-3xl font-bold">Beranda</a>
+        <a href="#registration" class="mobile-link text-white text-3xl font-bold">PPDB</a>
+        <a href="#majors" class="mobile-link text-white text-3xl font-bold">Kurikulum</a>
+        <a href="#projects" class="mobile-link text-white text-3xl font-bold">Program</a>
+        <a href="artikel/index.html" class="mobile-link text-white text-3xl font-bold">Artikel</a>
+        <a href="https://api.whatsapp.com/send?phone=6282116653328" target="_blank" class="mobile-link text-white text-3xl font-bold">Kontak</a>
+    </nav>
+</div>
 
     <main>
       <section id="hero-about" class="relative overflow-hidden bg-gradient-to-br from-[#0025ba] to-[#5879ff] text-white pt-16 pb-10 flex flex-col items-center">
@@ -788,7 +862,7 @@
                 <span class="rounded-full bg-white/20 px-5 py-2.5 text-base font-medium text-white">Politeknik</span>
               </div>
             </div>
-            <a href="#" class="w-full rounded-xl border-2 border-gray-200 bg-white py-4 px-6 text-center text-lg font-semibold text-gray-800 transition hover:bg-gray-100">Selengkapnya</a>
+            <a href="#branches" onclick="showBranchPopup('Popup-jonggol')" class="w-full rounded-xl border-2 border-gray-200 bg-white py-4 px-6 text-center text-lg font-semibold text-gray-800 transition hover:bg-gray-100">Selengkapnya</a>
           </div>
         </div>
       </div>
@@ -807,7 +881,7 @@
                 <span class="rounded-full bg-white/20 px-5 py-2.5 text-base font-medium text-white">Politeknik</span>
               </div>
             </div>
-            <a href="#" class="w-full rounded-xl border-2 border-gray-200 bg-white py-4 px-6 text-center text-lg font-semibold text-gray-800 transition hover:bg-gray-100">Selengkapnya</a>
+            <a href="#branches" onclick="showBranchPopup('Popup-akhwat')" class="w-full rounded-xl border-2 border-gray-200 bg-white py-4 px-6 text-center text-lg font-semibold text-gray-800 transition hover:bg-gray-100">Selengkapnya</a>
           </div>
         </div>
       </div>
@@ -825,7 +899,7 @@
                 <span class="rounded-full bg-white/20 px-5 py-2.5 text-base font-medium text-white">SMK</span>
               </div>
             </div>
-            <a href="#" class="w-full rounded-xl border-2 border-gray-200 bg-white py-4 px-6 text-center text-lg font-semibold text-gray-800 transition hover:bg-gray-100">Selengkapnya</a>
+            <a href="#branches" onclick="showBranchPopup('Popup-pamijahan')" class="w-full rounded-xl border-2 border-gray-200 bg-white py-4 px-6 text-center text-lg font-semibold text-gray-800 transition hover:bg-gray-100">Selengkapnya</a>
           </div>
         </div>
       </div>
@@ -843,7 +917,7 @@
                 <span class="rounded-full bg-white/20 px-5 py-2.5 text-base font-medium text-white">SMK</span>
               </div>
             </div>
-            <a href="#" class="w-full rounded-xl border-2 border-gray-200 bg-white py-4 px-6 text-center text-lg font-semibold text-gray-800 transition hover:bg-gray-100">Selengkapnya</a>
+            <a href="#branches" onclick="showBranchPopup('Popup-solo')" class="w-full rounded-xl border-2 border-gray-200 bg-white py-4 px-6 text-center text-lg font-semibold text-gray-800 transition hover:bg-gray-100">Selengkapnya</a>
           </div>
         </div>
       </div>
@@ -861,7 +935,7 @@
                 <span class="rounded-full bg-white/20 px-5 py-2.5 text-base font-medium text-white">SMK</span>
               </div>
             </div>
-            <a href="#" class="w-full rounded-xl border-2 border-gray-200 bg-white py-4 px-6 text-center text-lg font-semibold text-gray-800 transition hover:bg-gray-100">Selengkapnya</a>
+            <a href="#branches" onclick="showBranchPopup('Popup-sentul')" class="w-full rounded-xl border-2 border-gray-200 bg-white py-4 px-6 text-center text-lg font-semibold text-gray-800 transition hover:bg-gray-100">Selengkapnya</a>
           </div>
         </div>
       </div>
@@ -879,13 +953,281 @@
                 <span class="rounded-full bg-white/20 px-5 py-2.5 text-base font-medium text-white">SMK</span>
               </div>
             </div>
-            <a href="#" class="w-full rounded-xl border-2 border-gray-200 bg-white py-4 px-6 text-center text-lg font-semibold text-gray-800 transition hover:bg-gray-100">Selengkapnya</a>
+            <a href="#branches" onclick="showBranchPopup('Popup-malang')" class="w-full rounded-xl border-2 border-gray-200 bg-white py-4 px-6 text-center text-lg font-semibold text-gray-800 transition hover:bg-gray-100">Selengkapnya</a>
           </div>
         </div>
       </div>
 
     </div>
   </div>
+      </section>
+
+      <!-- Pop up Cabang IDN -->
+      <section class="h-full w-full fixed top-0 left-0 flex items-center justify-center bg-black/50 z-50 hidden" id="branch-popup-backdrop">
+        <div id="Popup-jonggol" class="hidden flex-col rounded-2xl border-[3px] border-black bg-white p-5">
+        <img src="images/idn_jonggol.png" alt="Campus of IDN Boarding School Jonggol" class="h-44 w-full rounded-xl object-cover">
+        <div class="flex flex-1 flex-col justify-between pt-6">
+          <div class="flex flex-col gap-6">
+            <div class="flex flex-col gap-2">
+              <div class="flex items-center gap-1.5">
+                <img src="images/6_66.svg" alt="Location pin" class="h-4 w-4">
+                <p class="text-xs font-medium text-gray-500">Jl. Raya Jonggol-Dayeuh</p>
+              </div>
+              <h3 class="text-xl font-semibold text-black">IDN Boarding School Jonggol</h3>
+              <p class="text-sm font-medium leading-relaxed text-gray-500">Sebagai kampus pusat IDN Boarding School, cabang Jonggol menjadi tempat utama kegiatan akademik dan manajemen. Di sini berdiri jenjang SMP, SMK, dan Politeknik IDN. Fokus pembelajarannya menekankan kombinasi antara keahlian IT, penguasaan bahasa asing, dan pembinaan akhlak santri. Lingkungannya asri dan tenang — sangat mendukung pembelajaran dan pembentukan karakter mandiri.</p>
+            </div>
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="rounded-full border border-gray-200 px-4 py-1.5 text-base font-medium text-black">SMP</span>
+              <span class="rounded-full border border-gray-200 px-4 py-1.5 text-base font-medium text-black">SMK</span>
+              <span class="rounded-full border border-gray-200 px-4 py-1.5 text-base font-medium text-black">Politeknik</span>
+            </div>
+          </div>
+          <div class="mt-6 flex justify-between divide-x divide-gray-200 border-t border-gray-200 pt-6">
+            <div class="flex flex-1 items-center justify-center gap-3 px-1">
+              <img src="images/6_80.svg" alt="Students icon" class="h-8 w-8">
+              <div>
+                <p class="text-xl font-semibold text-gray-500">300+</p>
+                <p class="text-base font-medium text-gray-500">Santri</p>
+              </div>
+            </div>
+            <div class="flex flex-1 items-center justify-center gap-3 px-1">
+              <img src="images/6_85.svg" alt="Teacher icon" class="h-8 w-8">
+              <div>
+                <p class="text-xl font-semibold text-gray-500">40+</p>
+                <p class="text-base font-medium text-gray-500">Guru</p>
+              </div>
+            </div>
+            <div class="flex flex-1 items-center justify-center gap-3 px-1">
+              <img src="images/6_90.svg" alt="Admin icon" class="h-8 w-8">
+              <div>
+                <p class="text-xl font-semibold text-gray-500">12+</p>
+                <p class="text-base font-medium text-gray-500">Admin</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: IDN Akhwat -->
+      <div id="Popup-akhwat" class="hidden flex-col rounded-2xl border-[3px] border-black bg-white p-5">
+        <img src="images/idn_akhwat.png" alt="Campus of IDN Boarding School Akhwat" class="h-44 w-full rounded-xl object-cover">
+        <div class="flex flex-1 flex-col justify-between pt-6">
+          <div class="flex flex-col gap-6">
+            <div class="flex flex-col gap-2">
+              <div class="flex items-center gap-1.5">
+                <img src="images/6_100.svg" alt="Location pin" class="h-4 w-4">
+                <p class="text-xs font-medium text-gray-500">Jl. Raya Jonggol-Dayeuh</p>
+              </div>
+              <h3 class="text-xl font-semibold text-black">IDN Boarding School Akhwat</h3>
+              <p class="text-sm font-medium leading-relaxed text-gray-500">IDN Akhwat adalah cabang khusus untuk santri putri yang ingin menimba ilmu teknologi sekaligus memperdalam nilai-nilai Islam. Kurikulumnya disesuaikan dengan kebutuhan siswi, mengutamakan adab, tanggung jawab, dan kemandirian.</p>
+            </div>
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="rounded-full border border-gray-200 px-4 py-1.5 text-base font-medium text-black">SMP</span>
+              <span class="rounded-full border border-gray-200 px-4 py-1.5 text-base font-medium text-black">SMK</span>
+              <span class="rounded-full border border-gray-200 px-4 py-1.5 text-base font-medium text-black">Politeknik</span>
+            </div>
+          </div>
+          <div class="mt-6 flex justify-between divide-x divide-gray-200 border-t border-gray-200 pt-6">
+            <div class="flex flex-1 items-center justify-center gap-3 px-1">
+              <img src="images/6_114.svg" alt="Students icon" class="h-8 w-8">
+              <div>
+                <p class="text-xl font-semibold text-gray-500">250+</p>
+                <p class="text-base font-medium text-gray-500">Santriwati</p>
+              </div>
+            </div>
+            <div class="flex flex-1 items-center justify-center gap-3 px-1">
+              <img src="images/6_119.svg" alt="Teacher icon" class="h-8 w-8">
+              <div>
+                <p class="text-xl font-semibold text-gray-500">20+</p>
+                <p class="text-base font-medium text-gray-500">Guru</p>
+              </div>
+            </div>
+            <div class="flex flex-1 items-center justify-center gap-3 px-1">
+              <img src="images/6_124.svg" alt="Admin icon" class="h-8 w-8">
+              <div>
+                <p class="text-xl font-semibold text-gray-500">5+</p>
+                <p class="text-base font-medium text-gray-500">Admin</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: IDN Pamijahan -->
+      <div id="Popup-pamijahan" class="hidden flex-col rounded-2xl border-[3px] border-black bg-white p-5">
+        <img src="images/idn_pamijahan.png" alt="Campus of IDN Boarding School Pamijahan" class="h-44 w-full rounded-xl object-cover">
+        <div class="flex flex-1 flex-col justify-between pt-6">
+          <div class="flex flex-col gap-6">
+            <div class="flex flex-col gap-2">
+              <div class="flex items-center gap-1.5">
+                <img src="images/6_134.svg" alt="Location pin" class="h-4 w-4">
+                <p class="text-xs font-medium text-gray-500">Jl. KH. Abdul Hamid, Gunung Sari</p>
+              </div>
+              <h3 class="text-xl font-semibold text-black">IDN Boarding School Pamijahan</h3>
+              <p class="text-sm font-medium leading-relaxed text-gray-500">Cabang Pamijahan dikenal dengan suasananya yang sejuk dan religius, berada di kawasan pegunungan Bogor. Di sini para santri fokus mendalami ilmu agama, tahfidz, serta teknologi praktis. Fasilitasnya dibuat agar santri bisa beribadah dan belajar dengan nyaman, sekaligus mengasah keterampilan IT di bawah bimbingan ustadz dan mentor berpengalaman.</p>
+            </div>
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="rounded-full border border-gray-200 px-4 py-1.5 text-base font-medium text-black">SMP</span>
+              <span class="rounded-full border border-gray-200 px-4 py-1.5 text-base font-medium text-black">SMK</span>
+            </div>
+          </div>
+          <div class="mt-6 flex justify-between divide-x divide-gray-200 border-t border-gray-200 pt-6">
+            <div class="flex flex-1 items-center justify-center gap-3 px-1">
+              <img src="images/6_146.svg" alt="Students icon" class="h-8 w-8">
+              <div>
+                <p class="text-xl font-semibold text-gray-500">120+</p>
+                <p class="text-base font-medium text-gray-500">Santri</p>
+              </div>
+            </div>
+            <div class="flex flex-1 items-center justify-center gap-3 px-1">
+              <img src="images/6_151.svg" alt="Teacher icon" class="h-8 w-8">
+              <div>
+                <p class="text-xl font-semibold text-gray-500">20+</p>
+                <p class="text-base font-medium text-gray-500">Guru</p>
+              </div>
+            </div>
+            <div class="flex flex-1 items-center justify-center gap-3 px-1">
+              <img src="images/6_156.svg" alt="Admin icon" class="h-8 w-8">
+              <div>
+                <p class="text-xl font-semibold text-gray-500">5+</p>
+                <p class="text-base font-medium text-gray-500">Admin</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: IDN Solo -->
+      <div id="Popup-solo" class="hidden flex-col rounded-2xl border-[3px] border-black bg-white p-5">
+        <img src="images/idn_solo.png" alt="Campus of IDN Boarding School Solo" class="h-44 w-full rounded-xl object-cover">
+        <div class="flex flex-1 flex-col justify-between pt-6">
+          <div class="flex flex-col gap-6">
+            <div class="flex flex-col gap-2">
+              <div class="flex items-center gap-1.5">
+                <img src="images/6_166.svg" alt="Location pin" class="h-4 w-4">
+                <p class="text-xs font-medium text-gray-500">Dusun Gondanglegi, Karanganyar</p>
+              </div>
+              <h3 class="text-xl font-semibold text-black">IDN Boarding School Solo</h3>
+              <p class="text-sm font-medium leading-relaxed text-gray-500">Cabang Solo hadir sebagai perluasan misi IDN untuk menjangkau lebih banyak pelajar di Jawa Tengah dan sekitarnya. Sekolah ini menawarkan pendidikan kejuruan berbasis teknologi dan pembinaan karakter Islami dengan pendekatan khas pesantren. Santri di Solo juga dibimbing untuk menjadi kreatif, produktif, dan berjiwa wirausaha, sejalan dengan visi IDN mencetak generasi ahli IT yang bermanfaat.</p>
+            </div>
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="rounded-full border border-gray-200 px-4 py-1.5 text-base font-medium text-black">SMP</span>
+              <span class="rounded-full border border-gray-200 px-4 py-1.5 text-base font-medium text-black">SMK</span>
+            </div>
+          </div>
+          <div class="mt-6 flex justify-between divide-x divide-gray-200 border-t border-gray-200 pt-6">
+            <div class="flex flex-1 items-center justify-center gap-3 px-1">
+              <img src="images/6_178.svg" alt="Students icon" class="h-8 w-8">
+              <div>
+                <p class="text-xl font-semibold text-gray-500">150+</p>
+                <p class="text-base font-medium text-gray-500">Santri</p>
+              </div>
+            </div>
+            <div class="flex flex-1 items-center justify-center gap-3 px-1">
+              <img src="images/6_183.svg" alt="Teacher icon" class="h-8 w-8">
+              <div>
+                <p class="text-xl font-semibold text-gray-500">15+</p>
+                <p class="text-base font-medium text-gray-500">Guru</p>
+              </div>
+            </div>
+            <div class="flex flex-1 items-center justify-center gap-3 px-1">
+              <img src="images/6_188.svg" alt="Admin icon" class="h-8 w-8">
+              <div>
+                <p class="text-xl font-semibold text-gray-500">7+</p>
+                <p class="text-base font-medium text-gray-500">Admin</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5: IDN Sentul -->
+      <div id="Popup-sentul" class="hidden flex-col rounded-2xl border-[3px] border-black bg-white p-5">
+        <img src="images/idn_sentul.png" alt="Campus of IDN Boarding School Sentul" class="h-44 w-full rounded-xl object-cover">
+        <div class="flex flex-1 flex-col justify-between pt-6">
+          <div class="flex flex-col gap-6">
+            <div class="flex flex-col gap-2">
+              <div class="flex items-center gap-1.5">
+                <img src="images/6_198.svg" alt="Location pin" class="h-4 w-4">
+                <p class="text-xs font-medium text-gray-500">Central Karang, Babakan Madang</p>
+              </div>
+              <h3 class="text-xl font-semibold text-black">IDN Boarding School Sentul</h3>
+              <p class="text-sm font-medium leading-relaxed text-gray-500">IDN Sentul menjadi salah satu cabang dengan fasilitas modern dan lokasi yang strategis dekat pusat kota Bogor. Di cabang ini, pembelajaran berbasis proyek (project-based learning) berjalan aktif, memadukan teori dengan praktik nyata. Santri di Sentul sering terlibat dalam berbagai proyek internal dan kolaborasi dengan dunia industri untuk menyiapkan mereka menghadapi dunia profesional.</p>
+            </div>
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="rounded-full border border-gray-200 px-4 py-1.5 text-base font-medium text-black">SMP</span>
+              <span class="rounded-full border border-gray-200 px-4 py-1.5 text-base font-medium text-black">SMK</span>
+            </div>
+          </div>
+          <div class="mt-6 flex justify-between divide-x divide-gray-200 border-t border-gray-200 pt-6">
+            <div class="flex flex-1 items-center justify-center gap-3 px-1">
+              <img src="images/6_210.svg" alt="Students icon" class="h-8 w-8">
+              <div>
+                <p class="text-xl font-semibold text-gray-500">100+</p>
+                <p class="text-base font-medium text-gray-500">Santri</p>
+              </div>
+            </div>
+            <div class="flex flex-1 items-center justify-center gap-3 px-1">
+              <img src="images/6_215.svg" alt="Teacher icon" class="h-8 w-8">
+              <div>
+                <p class="text-xl font-semibold text-gray-500">10+</p>
+                <p class="text-base font-medium text-gray-500">Guru</p>
+              </div>
+            </div>
+            <div class="flex flex-1 items-center justify-center gap-3 px-1">
+              <img src="images/6_220.svg" alt="Admin icon" class="h-8 w-8">
+              <div>
+                <p class="text-xl font-semibold text-gray-500">10+</p>
+                <p class="text-base font-medium text-gray-500">Admin</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6: IDN Malang -->
+      <div id="Popup-malang" class="hidden flex-col rounded-2xl border-[3px] border-black bg-white p-5">
+        <img src="images/idn_solo.png" alt="Campus of IDN Boarding School Malang" class="h-44 w-full rounded-xl object-cover">
+        <div class="flex flex-1 flex-col justify-between pt-6">
+          <div class="flex flex-col gap-6">
+            <div class="flex flex-col gap-2">
+              <div class="flex items-center gap-1.5">
+                <img src="images/6_230.svg" alt="Location pin" class="h-4 w-4">
+                <p class="text-xs font-medium text-gray-500">Dusun Ngadas, Poncokusumo</p>
+              </div>
+              <h3 class="text-xl font-semibold text-black">IDN Boarding School Malang</h3>
+              <p class="text-sm font-medium leading-relaxed text-gray-500">Berlokasi di lingkungan yang sejuk dan kondusif, IDN Malang menjadi cabang yang mengedepankan kreativitas dan eksplorasi teknologi. Santri di Malang mendapat pengalaman belajar yang kuat di bidang desain, jaringan, dan pengembangan perangkat lunak, didukung oleh pembinaan agama yang intensif. Suasananya mendorong santri untuk fokus belajar, berinovasi, dan tetap beradab.</p>
+            </div>
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="rounded-full border border-gray-200 px-4 py-1.5 text-base font-medium text-black">SMP</span>
+              <span class="rounded-full border border-gray-200 px-4 py-1.5 text-base font-medium text-black">SMK</span>
+            </div>
+          </div>
+          <div class="mt-6 flex justify-between divide-x divide-gray-200 border-t border-gray-200 pt-6">
+            <div class="flex flex-1 items-center justify-center gap-3 px-1">
+              <img src="images/6_242.svg" alt="Students icon" class="h-8 w-8">
+              <div>
+                <p class="text-xl font-semibold text-gray-500">50+</p>
+                <p class="text-base font-medium text-gray-500">Santri</p>
+              </div>
+            </div>
+            <div class="flex flex-1 items-center justify-center gap-3 px-1">
+              <img src="images/6_247.svg" alt="Teacher icon" class="h-8 w-8">
+              <div>
+                <p class="text-xl font-semibold text-gray-500">10+</p>
+                <p class="text-base font-medium text-gray-500">Guru</p>
+              </div>
+            </div>
+            <div class="flex flex-1 items-center justify-center gap-3 px-1">
+              <img src="images/6_252.svg" alt="Admin icon" class="h-8 w-8">
+              <div>
+                <p class="text-xl font-semibold text-gray-500">5+</p>
+                <p class="text-base font-medium text-gray-500">Admin</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       </section>
 
 
@@ -989,6 +1331,39 @@
   </div>
 
   <script>
+
+const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+const mobileLinks = document.querySelectorAll('.mobile-link');
+
+const toggleMenu = () => {
+  mobileNavToggle.classList.toggle('active');
+  const isMenuOpen = mobileNavToggle.classList.contains('active');
+  
+  if (isMenuOpen) {
+    // Tampilkan menu
+    mobileMenu.classList.remove('invisible', '-translate-x-full');
+    mobileMenu.classList.add('visible', 'translate-x-0', 'opacity-100');
+    document.body.style.overflow = 'hidden'; // Mencegah scroll body
+  } else {
+    // Sembunyikan menu
+    mobileMenu.classList.remove('visible', 'translate-x-0', 'opacity-100');
+    mobileMenu.classList.add('invisible', '-translate-x-full');
+    document.body.style.overflow = ''; // Mengizinkan scroll body kembali
+  }
+};
+
+mobileNavToggle.addEventListener('click', toggleMenu);
+
+// Menutup menu saat salah satu link di-klik (opsional tapi disarankan)
+mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        if (mobileNavToggle.classList.contains('active')) {
+            toggleMenu();
+        }
+    });
+});
+
   // Custom Cursor
   const cursorRing = document.querySelector('.custom-cursor');
   const cursorDot = document.querySelector('.cursor-follower');
@@ -1415,6 +1790,49 @@ projectFilterButtons.forEach(btn => {
 document.addEventListener('DOMContentLoaded', () => {
   renderProjects('dkv');
 });
-  </script>
+
+const branchPopupBackdrop = document.getElementById('branch-popup-backdrop');
+const allPopupCards = branchPopupBackdrop.querySelectorAll('.flex-col[id^="Popup-"]'); // Selects all popup cards
+
+/**
+ * Shows a specific popup by its ID and displays the backdrop.
+ * @param {string} popupId The ID of the popup element to show (e.g., 'Popup-jonggol').
+ */
+function showBranchPopup(popupId) {
+  // First, hide all popups to ensure a clean state
+  allPopupCards.forEach(card => {
+    card.classList.add('hidden');
+    card.classList.remove('flex');
+  });
+
+  // Find the specific popup card the user wants to see
+  const targetPopup = document.getElementById(popupId);
+
+  // If the target exists, show it and the backdrop
+  if (targetPopup) {
+    targetPopup.classList.remove('hidden');
+    targetPopup.classList.add('flex');
+    branchPopupBackdrop.classList.remove('hidden');
+  }
+}
+
+/**
+ * Hides the backdrop and all popup cards.
+ */
+function closeBranchPopups() {
+  branchPopupBackdrop.classList.add('hidden');
+}
+
+// Add an event listener to the backdrop to close it when clicked
+branchPopupBackdrop.addEventListener('click', closeBranchPopups);
+
+// Add an event listener to each card to prevent closing when the card itself is clicked
+allPopupCards.forEach(card => {
+  card.addEventListener('click', function (event) {
+    event.stopPropagation(); // Prevents the click from reaching the backdrop
+  });
+});  
+
+</script>
 </body>
 </html>
